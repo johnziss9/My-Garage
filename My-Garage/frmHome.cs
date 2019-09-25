@@ -28,5 +28,12 @@ namespace My_Garage
             frmCustomerRegistration customerRegistration = new frmCustomerRegistration();
             customerRegistration.Show();
         }
+
+        private void btnCarRental_Click(object sender, EventArgs e)
+        {
+            Hide();
+            frmCarRental carRental = new frmCarRental();
+            carRental.Show();
+        }
     }
 }

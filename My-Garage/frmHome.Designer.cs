@@ -76,6 +76,7 @@
             this.btnCarRental.TabIndex = 3;
             this.btnCarRental.Text = "Car Rental";
             this.btnCarRental.UseVisualStyleBackColor = true;
+            this.btnCarRental.Click += new System.EventHandler(this.btnCarRental_Click);
             // 
             // btnNotifications
             // 

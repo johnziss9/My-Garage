@@ -52,6 +52,12 @@
     <Compile Include="frmCarRegistration.Designer.cs">
       <DependentUpon>frmCarRegistration.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCarRental.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCarRental.Designer.cs">
+      <DependentUpon>frmCarRental.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCustomerRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +74,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmCarRegistration.resx">
       <DependentUpon>frmCarRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCarRental.resx">
+      <DependentUpon>frmCarRental.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCustomerRegistration.resx">
       <DependentUpon>frmCustomerRegistration.cs</DependentUpon>
