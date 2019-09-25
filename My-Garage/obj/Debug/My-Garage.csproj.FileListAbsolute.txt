@@ -8,3 +8,5 @@ C:\Users\johnz\source\repos\My-Garage\My-Garage\bin\Debug\My-Garage.exe
 C:\Users\johnz\source\repos\My-Garage\My-Garage\bin\Debug\My-Garage.pdb
 C:\Users\johnz\source\repos\My-Garage\My-Garage\obj\Debug\My-Garage.exe
 C:\Users\johnz\source\repos\My-Garage\My-Garage\obj\Debug\My-Garage.pdb
+C:\Users\johnz\source\repos\My-Garage\My-Garage\obj\Debug\My_Garage.frmCarRegistration.resources
+C:\Users\johnz\source\repos\My-Garage\My-Garage\obj\Debug\My_Garage.frmCustomerRegistration.resources

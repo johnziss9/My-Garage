@@ -13,6 +13,20 @@ namespace My_Garage
         private void btnCarRegistration_Click(object sender, EventArgs e)
         {
             Hide();
+            frmCarRegistration carRegistration = new frmCarRegistration();
+            carRegistration.Show();
+        }
+
+        private void frmHome_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnCustomerRegistration_Click(object sender, EventArgs e)
+        {
+            Hide();
+            frmCustomerRegistration customerRegistration = new frmCustomerRegistration();
+            customerRegistration.Show();
         }
     }
 }

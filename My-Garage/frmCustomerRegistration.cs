@@ -10,20 +10,11 @@ using System.Windows.Forms;
 
 namespace My_Garage
 {
-    public partial class frmCarRegistration : Form
+    public partial class frmCustomerRegistration : Form
     {
-        public frmCarRegistration()
+        public frmCustomerRegistration()
         {
             InitializeComponent();
-        }
-
-        private void btnRegister_Click(object sender, EventArgs e)
-        {
-            Hide();
-            frmHome home = new frmHome();
-            home.Show();
-
-            // TODO Save customer code goes here
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -33,9 +24,18 @@ namespace My_Garage
             home.Show();
         }
 
-        private void frmCarRegistration_FormClosing(object sender, FormClosingEventArgs e)
+        private void frmCustomerRegistration_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            Hide();
+            frmHome home = new frmHome();
+            home.Show();
+
+            // TODO Code for saving the customer goes here
         }
     }
 }

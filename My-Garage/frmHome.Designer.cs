@@ -38,18 +38,19 @@
             // lblMyGarage
             // 
             this.lblMyGarage.AutoSize = true;
-            this.lblMyGarage.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMyGarage.Location = new System.Drawing.Point(91, 32);
+            this.lblMyGarage.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMyGarage.Location = new System.Drawing.Point(12, 9);
             this.lblMyGarage.Name = "lblMyGarage";
-            this.lblMyGarage.Size = new System.Drawing.Size(156, 31);
+            this.lblMyGarage.Size = new System.Drawing.Size(147, 31);
             this.lblMyGarage.TabIndex = 0;
             this.lblMyGarage.Text = "My Garage";
             // 
             // btnCarRegistration
             // 
-            this.btnCarRegistration.Location = new System.Drawing.Point(70, 91);
+            this.btnCarRegistration.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnCarRegistration.Location = new System.Drawing.Point(12, 60);
             this.btnCarRegistration.Name = "btnCarRegistration";
-            this.btnCarRegistration.Size = new System.Drawing.Size(212, 55);
+            this.btnCarRegistration.Size = new System.Drawing.Size(328, 55);
             this.btnCarRegistration.TabIndex = 1;
             this.btnCarRegistration.Text = "Car Registration";
             this.btnCarRegistration.UseVisualStyleBackColor = true;
@@ -57,27 +58,31 @@
             // 
             // btnCustomerRegistration
             // 
-            this.btnCustomerRegistration.Location = new System.Drawing.Point(70, 179);
+            this.btnCustomerRegistration.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnCustomerRegistration.Location = new System.Drawing.Point(12, 140);
             this.btnCustomerRegistration.Name = "btnCustomerRegistration";
-            this.btnCustomerRegistration.Size = new System.Drawing.Size(212, 55);
+            this.btnCustomerRegistration.Size = new System.Drawing.Size(328, 55);
             this.btnCustomerRegistration.TabIndex = 2;
             this.btnCustomerRegistration.Text = "Customer Registration";
             this.btnCustomerRegistration.UseVisualStyleBackColor = true;
+            this.btnCustomerRegistration.Click += new System.EventHandler(this.btnCustomerRegistration_Click);
             // 
             // btnCarRental
             // 
-            this.btnCarRental.Location = new System.Drawing.Point(70, 265);
+            this.btnCarRental.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnCarRental.Location = new System.Drawing.Point(12, 220);
             this.btnCarRental.Name = "btnCarRental";
-            this.btnCarRental.Size = new System.Drawing.Size(212, 55);
+            this.btnCarRental.Size = new System.Drawing.Size(328, 55);
             this.btnCarRental.TabIndex = 3;
             this.btnCarRental.Text = "Car Rental";
             this.btnCarRental.UseVisualStyleBackColor = true;
             // 
             // btnNotifications
             // 
-            this.btnNotifications.Location = new System.Drawing.Point(70, 352);
+            this.btnNotifications.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnNotifications.Location = new System.Drawing.Point(12, 300);
             this.btnNotifications.Name = "btnNotifications";
-            this.btnNotifications.Size = new System.Drawing.Size(212, 55);
+            this.btnNotifications.Size = new System.Drawing.Size(328, 55);
             this.btnNotifications.TabIndex = 4;
             this.btnNotifications.Text = "Notifications";
             this.btnNotifications.UseVisualStyleBackColor = true;
@@ -86,7 +91,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(347, 450);
+            this.ClientSize = new System.Drawing.Size(352, 381);
             this.Controls.Add(this.btnNotifications);
             this.Controls.Add(this.btnCarRental);
             this.Controls.Add(this.btnCustomerRegistration);
@@ -95,6 +100,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "frmHome";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmHome_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
