@@ -1,0 +1,10 @@
+C:\Users\johnz\source\repos\My-Garage\My-Garage\obj\Debug\My-Garage.csprojAssemblyReference.cache
+C:\Users\johnz\source\repos\My-Garage\My-Garage\obj\Debug\My_Garage.frmHome.resources
+C:\Users\johnz\source\repos\My-Garage\My-Garage\obj\Debug\My_Garage.Properties.Resources.resources
+C:\Users\johnz\source\repos\My-Garage\My-Garage\obj\Debug\My-Garage.csproj.GenerateResource.cache
+C:\Users\johnz\source\repos\My-Garage\My-Garage\obj\Debug\My-Garage.csproj.CoreCompileInputs.cache
+C:\Users\johnz\source\repos\My-Garage\My-Garage\bin\Debug\My-Garage.exe.config
+C:\Users\johnz\source\repos\My-Garage\My-Garage\bin\Debug\My-Garage.exe
+C:\Users\johnz\source\repos\My-Garage\My-Garage\bin\Debug\My-Garage.pdb
+C:\Users\johnz\source\repos\My-Garage\My-Garage\obj\Debug\My-Garage.exe
+C:\Users\johnz\source\repos\My-Garage\My-Garage\obj\Debug\My-Garage.pdb
