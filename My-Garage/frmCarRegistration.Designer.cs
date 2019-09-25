@@ -196,6 +196,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "frmCarRegistration";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Car Registration";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCarRegistration_FormClosing);
             this.ResumeLayout(false);

@@ -38,5 +38,14 @@ namespace My_Garage
         {
             Application.Exit();
         }
+
+        private void dateTimeTo_ValueChanged(object sender, EventArgs e)
+        {
+            if (dateTimeFrom.Value > dateTimeTo.Value)
+            {
+                MessageBox.Show("Date should be after From date.");
+                dateTimeTo.Value = DateTime.Now;
+            }
+        }
     }
 }

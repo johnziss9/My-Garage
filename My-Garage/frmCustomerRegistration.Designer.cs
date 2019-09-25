@@ -152,6 +152,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "frmCustomerRegistration";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Customer Registration";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCustomerRegistration_FormClosing);
             this.ResumeLayout(false);

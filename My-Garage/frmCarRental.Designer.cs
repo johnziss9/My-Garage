@@ -28,26 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeFrom = new System.Windows.Forms.DateTimePicker();
             this.lblFrom = new System.Windows.Forms.Label();
             this.lblTo = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeTo = new System.Windows.Forms.DateTimePicker();
             this.lblCustomer = new System.Windows.Forms.Label();
             this.lblCar = new System.Windows.Forms.Label();
             this.cmbCustomer = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbCar = new System.Windows.Forms.ComboBox();
             this.txtNotes = new System.Windows.Forms.TextBox();
             this.lblNotes = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // dateTimePicker1
+            // dateTimeFrom
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(125, 12);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker1.TabIndex = 1;
+            this.dateTimeFrom.Location = new System.Drawing.Point(125, 12);
+            this.dateTimeFrom.Name = "dateTimeFrom";
+            this.dateTimeFrom.Size = new System.Drawing.Size(200, 22);
+            this.dateTimeFrom.TabIndex = 1;
             // 
             // lblFrom
             // 
@@ -69,12 +69,13 @@
             this.lblTo.TabIndex = 18;
             this.lblTo.Text = "To:";
             // 
-            // dateTimePicker2
+            // dateTimeTo
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(125, 52);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker2.TabIndex = 2;
+            this.dateTimeTo.Location = new System.Drawing.Point(125, 52);
+            this.dateTimeTo.Name = "dateTimeTo";
+            this.dateTimeTo.Size = new System.Drawing.Size(200, 22);
+            this.dateTimeTo.TabIndex = 2;
+            this.dateTimeTo.ValueChanged += new System.EventHandler(this.dateTimeTo_ValueChanged);
             // 
             // lblCustomer
             // 
@@ -104,13 +105,13 @@
             this.cmbCustomer.Size = new System.Drawing.Size(200, 24);
             this.cmbCustomer.TabIndex = 3;
             // 
-            // comboBox1
+            // cmbCar
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(125, 132);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 24);
-            this.comboBox1.TabIndex = 4;
+            this.cmbCar.FormattingEnabled = true;
+            this.cmbCar.Location = new System.Drawing.Point(125, 132);
+            this.cmbCar.Name = "cmbCar";
+            this.cmbCar.Size = new System.Drawing.Size(200, 24);
+            this.cmbCar.TabIndex = 4;
             // 
             // txtNotes
             // 
@@ -161,17 +162,18 @@
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.lblNotes);
             this.Controls.Add(this.txtNotes);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbCar);
             this.Controls.Add(this.cmbCustomer);
             this.Controls.Add(this.lblCar);
             this.Controls.Add(this.lblCustomer);
-            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.dateTimeTo);
             this.Controls.Add(this.lblTo);
             this.Controls.Add(this.lblFrom);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dateTimeFrom);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "frmCarRental";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Car Rental";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCarRental_FormClosing);
             this.ResumeLayout(false);
@@ -181,14 +183,14 @@
 
         #endregion
 
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimeFrom;
         private System.Windows.Forms.Label lblFrom;
         private System.Windows.Forms.Label lblTo;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dateTimeTo;
         private System.Windows.Forms.Label lblCustomer;
         private System.Windows.Forms.Label lblCar;
         private System.Windows.Forms.ComboBox cmbCustomer;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbCar;
         private System.Windows.Forms.TextBox txtNotes;
         private System.Windows.Forms.Label lblNotes;
         private System.Windows.Forms.Button btnCancel;
