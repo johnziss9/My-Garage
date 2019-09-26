@@ -32,7 +32,7 @@
             this.btnCarRegistration = new System.Windows.Forms.Button();
             this.btnCustomerRegistration = new System.Windows.Forms.Button();
             this.btnCarRental = new System.Windows.Forms.Button();
-            this.btnNotifications = new System.Windows.Forms.Button();
+            this.btnReminders = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblMyGarage
@@ -78,22 +78,23 @@
             this.btnCarRental.UseVisualStyleBackColor = true;
             this.btnCarRental.Click += new System.EventHandler(this.btnCarRental_Click);
             // 
-            // btnNotifications
+            // btnReminders
             // 
-            this.btnNotifications.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnNotifications.Location = new System.Drawing.Point(12, 300);
-            this.btnNotifications.Name = "btnNotifications";
-            this.btnNotifications.Size = new System.Drawing.Size(328, 55);
-            this.btnNotifications.TabIndex = 4;
-            this.btnNotifications.Text = "Notifications";
-            this.btnNotifications.UseVisualStyleBackColor = true;
+            this.btnReminders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnReminders.Location = new System.Drawing.Point(12, 300);
+            this.btnReminders.Name = "btnReminders";
+            this.btnReminders.Size = new System.Drawing.Size(328, 55);
+            this.btnReminders.TabIndex = 4;
+            this.btnReminders.Text = "Reminders";
+            this.btnReminders.UseVisualStyleBackColor = true;
+            this.btnReminders.Click += new System.EventHandler(this.btnReminders_Click);
             // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(352, 381);
-            this.Controls.Add(this.btnNotifications);
+            this.Controls.Add(this.btnReminders);
             this.Controls.Add(this.btnCarRental);
             this.Controls.Add(this.btnCustomerRegistration);
             this.Controls.Add(this.btnCarRegistration);
@@ -114,7 +115,7 @@
         private System.Windows.Forms.Button btnCarRegistration;
         private System.Windows.Forms.Button btnCustomerRegistration;
         private System.Windows.Forms.Button btnCarRental;
-        private System.Windows.Forms.Button btnNotifications;
+        private System.Windows.Forms.Button btnReminders;
     }
 }
 

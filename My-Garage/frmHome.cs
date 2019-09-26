@@ -35,5 +35,12 @@ namespace My_Garage
             frmCarRental carRental = new frmCarRental();
             carRental.Show();
         }
+
+        private void btnReminders_Click(object sender, EventArgs e)
+        {
+            Hide();
+            frmReminders notifications = new frmReminders();
+            notifications.Show();
+        }
     }
 }
