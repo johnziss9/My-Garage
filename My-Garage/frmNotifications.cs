@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -38,24 +39,19 @@ namespace My_Garage
 
         private void ShowReminders()
         {
-            OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.19.0;Data Source=C:\GarageDB.accdb");
+            string sqlConnection = "Data Source=.;Initial Catalog=GarageDB; Integrated Security=SSPI";
+            SqlConnection conn = new SqlConnection(sqlConnection);
+
             DataTable dt = new DataTable();
-            OleDbDataAdapter da = new OleDbDataAdapter();
+            SqlDataAdapter da = new SqlDataAdapter();
             BindingSource bs = new BindingSource();
 
             dt = new DataTable();
-            da = new OleDbDataAdapter("SELECT * FROM Customers", con);
+            da = new SqlDataAdapter("SELECT * FROM Customers", conn);
 
             da.Fill(dt);
             bs.DataSource = dt;
             dataGridReminders.DataSource = bs;
-            //dataGridReminders.Columns[0].Visible = false;
-
-            dataGridReminders.Columns["Customer_ID"].DisplayIndex = 0;
-            dataGridReminders.Columns["Customer_ID"].HeaderText = "Αριθμός Πελάτη";
-            dataGridReminders.Columns["First_Name_s"].HeaderText = "Πρώτο Όνομα(τα)";
-            dataGridReminders.Columns["Last_Name"].HeaderText = "Εμώνυμο";
-            dataGridReminders.Columns["Address"].HeaderText = "Διεύθυνση";
         }
     }
 }
