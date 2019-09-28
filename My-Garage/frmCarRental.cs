@@ -1,17 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace My_Garage
 {
     public partial class frmCarRental : Form
     {
+        SqlConnection conn = new SqlConnection("Data Source=.;Initial Catalog=GarageDB; Integrated Security=SSPI");
+        SqlCommand command;
+        SqlDataAdapter adapter = new SqlDataAdapter();
+
+        int _rentalId = 0;
+
         public frmCarRental()
         {
             InitializeComponent();
@@ -23,8 +24,25 @@ namespace My_Garage
             frmHome home = new frmHome();
             home.Show();
 
-            // TODO Code for saving the customer goes here
+            string query = "INSERT INTO dbo.Rentals(Id, FromDate, ToDate, Customer, Car, Notes) " +
+                "VALUES (@id, @fromDate, @toDate, @customer, @car, @notes)";
 
+            GetRentalId();
+
+            conn.Open();
+
+            command = new SqlCommand(query, conn);
+
+            command.Parameters.AddWithValue("@id", _rentalId);
+            command.Parameters.AddWithValue("@fromDate", dateTimeFrom.Value);
+            command.Parameters.AddWithValue("@toDate", dateTimeTo.Value);
+            command.Parameters.AddWithValue("@customer", cmbCustomer.Text);
+            command.Parameters.AddWithValue("@car", cmbCar.Text);
+            command.Parameters.AddWithValue("@notes", txtNotes.Text);
+
+            command.ExecuteNonQuery();
+
+            conn.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -45,6 +63,60 @@ namespace My_Garage
             {
                 MessageBox.Show("Date should be after From date.");
                 dateTimeTo.Value = DateTime.Now;
+            }
+        }
+
+        private void frmCarRental_Load(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=GarageDB; Integrated Security=SSPI"))
+            {
+                try
+                {
+                    string carQuery = "SELECT Id, CarMake, CarModel, CarMake + ' ' + CarModel AS [Car] FROM Cars";
+                    string customerQuery = "SELECT Id, FirstName, LastName, FirstName + ' ' + LastName AS [Name] FROM Customers";
+
+                    SqlDataAdapter daCars = new SqlDataAdapter(carQuery, conn);
+                    SqlDataAdapter daCustomers = new SqlDataAdapter(customerQuery, conn);
+
+                    conn.Open();
+
+                    DataSet dsCars = new DataSet();
+                    DataSet dsCustomers = new DataSet();
+
+                    daCars.Fill(dsCars, "Cars");
+                    daCustomers.Fill(dsCustomers, "Customers");
+
+                    cmbCar.DisplayMember = "Car";
+                    cmbCar.ValueMember = "Id";
+                    cmbCar.DataSource = dsCars.Tables["Cars"];
+
+                    cmbCustomer.DisplayMember = "Name";
+                    cmbCustomer.ValueMember = "Id";
+                    cmbCustomer.DataSource = dsCustomers.Tables["Customers"];
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error occured!");
+                }
+            }
+        }
+
+        public void GetRentalId()
+        {
+            using (command = new SqlCommand("SELECT TOP 1 [Id] FROM dbo.Rentals ORDER BY Id DESC", conn))
+            {
+                conn.Open();
+                SqlDataReader dr = command.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    dr.Read();
+                    _rentalId = Convert.ToInt32(dr["Id"]) + 1;
+                }
+                else
+                {
+                    _rentalId = 1;
+                }
+                conn.Close();
             }
         }
     }

@@ -33,7 +33,6 @@ namespace My_Garage
 
         private void frmReminders_Shown(object sender, EventArgs e)
         {
-            MessageBox.Show("Im working");
             ShowReminders();
         }
 
@@ -47,11 +46,13 @@ namespace My_Garage
             BindingSource bs = new BindingSource();
 
             dt = new DataTable();
-            da = new SqlDataAdapter("SELECT * FROM Customers", conn);
+            da = new SqlDataAdapter("SELECT * FROM Rentals", conn);
 
             da.Fill(dt);
             bs.DataSource = dt;
             dataGridReminders.DataSource = bs;
+
+            dataGridReminders.Columns[0].Visible = false;
         }
     }
 }
