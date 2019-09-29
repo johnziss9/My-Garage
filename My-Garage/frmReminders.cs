@@ -39,13 +39,14 @@ namespace My_Garage
             BindingSource bs = new BindingSource();
 
             dt = new DataTable();
-            da = new SqlDataAdapter("SELECT * FROM Cars", conn);
+            da = new SqlDataAdapter("SELECT * FROM Reminders", conn);
 
             da.Fill(dt);
             bs.DataSource = dt;
             dataGridReminders.DataSource = bs;
 
             dataGridReminders.Columns[0].Visible = false;
+            dataGridReminders.Columns[2].Visible = false;
         }
 
         private void dataGridReminders_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)

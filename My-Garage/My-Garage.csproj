@@ -78,6 +78,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReminderTypes.cs" />
     <EmbeddedResource Include="frmCarRegistration.resx">
       <DependentUpon>frmCarRegistration.cs</DependentUpon>
     </EmbeddedResource>
