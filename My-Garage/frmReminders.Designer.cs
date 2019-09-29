@@ -40,6 +40,7 @@
             this.dataGridReminders.Name = "dataGridReminders";
             this.dataGridReminders.Size = new System.Drawing.Size(653, 307);
             this.dataGridReminders.TabIndex = 0;
+            this.dataGridReminders.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridReminders_RowHeaderMouseDoubleClick);
             // 
             // btnDone
             // 

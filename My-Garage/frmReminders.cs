@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.OleDb;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace My_Garage
@@ -46,13 +39,18 @@ namespace My_Garage
             BindingSource bs = new BindingSource();
 
             dt = new DataTable();
-            da = new SqlDataAdapter("SELECT * FROM Rentals", conn);
+            da = new SqlDataAdapter("SELECT * FROM Cars", conn);
 
             da.Fill(dt);
             bs.DataSource = dt;
             dataGridReminders.DataSource = bs;
 
             dataGridReminders.Columns[0].Visible = false;
+        }
+
+        private void dataGridReminders_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            MessageBox.Show("Test");
         }
     }
 }

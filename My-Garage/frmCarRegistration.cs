@@ -23,8 +23,8 @@ namespace My_Garage
             frmHome home = new frmHome();
             home.Show();
 
-            string query = "INSERT INTO dbo.Cars (Id, CarMake, CarModel, NumberPlate, AdiaKikloforias, MOT, OilChange) " +
-                "VALUES (@id, @carMake, @carModel, @numberPlate, @adiaKikloforias, @MOT, @oilChange)";
+            string query = "INSERT INTO dbo.Cars (Id, CarMake, CarModel, NumberPlate, RoadTax, RoadTaxDuration, MOT, MOTDuration) " +
+                "VALUES (@id, @carMake, @carModel, @numberPlate, @roadTax, @roadTaxDuration, @MOT, @MOTDuration)";
 
             GetCarId();
 
@@ -36,9 +36,10 @@ namespace My_Garage
             command.Parameters.AddWithValue("@carMake", txtCarMake.Text);
             command.Parameters.AddWithValue("@carModel", txtCarModel.Text);
             command.Parameters.AddWithValue("@numberPlate", txtNumberPlate.Text);
-            command.Parameters.AddWithValue("@adiaKikloforias", dateTimeAdiaKikloforias.Value);
+            command.Parameters.AddWithValue("@roadTax", dateTimeRoadTax.Value);
+            command.Parameters.AddWithValue("@roadTaxDuration", cmbRTDuration.Text);
             command.Parameters.AddWithValue("@MOT", dateTimeMOT.Value);
-            command.Parameters.AddWithValue("@oilChange", dateTimeOilChange.Value);
+            command.Parameters.AddWithValue("@MOTDuration", cmbMOTDuration.Text);
 
             if (txtCarMake.Text == "" || txtCarModel.Text == "")
                 MessageBox.Show("Please enter the car make and model.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
