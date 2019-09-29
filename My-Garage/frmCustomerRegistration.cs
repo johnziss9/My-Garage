@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace My_Garage
@@ -42,9 +43,9 @@ namespace My_Garage
             command = new SqlCommand(query, conn);
 
             command.Parameters.AddWithValue("@id", _customerId);
-            command.Parameters.AddWithValue("@firstName", txtFirstName.Text);
-            command.Parameters.AddWithValue("@lastName", txtLastName.Text);
-            command.Parameters.AddWithValue("@address", txtAddress.Text);
+            command.Parameters.AddWithValue("@firstName", txtFirstName.Text.Substring(0, 1).ToUpper(CultureInfo.CurrentCulture) + txtFirstName.Text.Substring(1));
+            command.Parameters.AddWithValue("@lastName", txtLastName.Text.Substring(0, 1).ToUpper(CultureInfo.CurrentCulture) + txtLastName.Text.Substring(1));
+            command.Parameters.AddWithValue("@address", txtAddress.Text.Substring(0, 1).ToUpper(CultureInfo.CurrentCulture) + txtAddress.Text.Substring(1));
             command.Parameters.AddWithValue("@phoneNumber", txtPhoneNo.Text);
 
             if (txtFirstName.Text == "" || txtLastName.Text == "")

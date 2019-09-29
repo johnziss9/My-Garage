@@ -52,7 +52,7 @@
             this.btnCarRegistration.Location = new System.Drawing.Point(12, 140);
             this.btnCarRegistration.Name = "btnCarRegistration";
             this.btnCarRegistration.Size = new System.Drawing.Size(328, 55);
-            this.btnCarRegistration.TabIndex = 1;
+            this.btnCarRegistration.TabIndex = 2;
             this.btnCarRegistration.Text = "Car Registration";
             this.btnCarRegistration.UseVisualStyleBackColor = true;
             this.btnCarRegistration.Click += new System.EventHandler(this.btnCarRegistration_Click);
@@ -63,7 +63,7 @@
             this.btnCustomerRegistration.Location = new System.Drawing.Point(12, 60);
             this.btnCustomerRegistration.Name = "btnCustomerRegistration";
             this.btnCustomerRegistration.Size = new System.Drawing.Size(328, 55);
-            this.btnCustomerRegistration.TabIndex = 2;
+            this.btnCustomerRegistration.TabIndex = 1;
             this.btnCustomerRegistration.Text = "Customer Registration";
             this.btnCustomerRegistration.UseVisualStyleBackColor = true;
             this.btnCustomerRegistration.Click += new System.EventHandler(this.btnCustomerRegistration_Click);

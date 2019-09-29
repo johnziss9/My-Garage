@@ -34,9 +34,9 @@ namespace My_Garage
             command = new SqlCommand(queryCar, conn);
 
             command.Parameters.AddWithValue("@id", _carId);
-            command.Parameters.AddWithValue("@carMake", txtCarMake.Text);
-            command.Parameters.AddWithValue("@carModel", txtCarModel.Text);
-            command.Parameters.AddWithValue("@numberPlate", txtNumberPlate.Text);
+            command.Parameters.AddWithValue("@carMake", txtCarMake.Text.ToUpper());
+            command.Parameters.AddWithValue("@carModel", txtCarModel.Text.ToUpper());
+            command.Parameters.AddWithValue("@numberPlate", txtNumberPlate.Text.ToUpper());
             command.Parameters.AddWithValue("@roadTax", dateTimeRoadTax.Value);
             command.Parameters.AddWithValue("@roadTaxDuration", cmbRTDuration.Text);
             command.Parameters.AddWithValue("@MOT", dateTimeMOT.Value);
@@ -67,9 +67,9 @@ namespace My_Garage
 
                     command.Parameters.AddWithValue("@id", _reminderId);
                     command.Parameters.AddWithValue("@type", i == 0 ? "Road Tax Due" : "MOT Due");
-                    command.Parameters.AddWithValue("@car", txtCarMake.Text);
-                    command.Parameters.AddWithValue("@customer", "NA");
-                    command.Parameters.AddWithValue("@notes", "NA");
+                    command.Parameters.AddWithValue("@car", txtCarMake.Text.ToUpper() + " " + txtCarModel.Text.ToUpper());
+                    command.Parameters.AddWithValue("@customer", "N/A");
+                    command.Parameters.AddWithValue("@notes", "N/A");
                     command.Parameters.AddWithValue("@dueOn", i == 0 ? GetRoadTaxDate(dateTimeRoadTax.Value) : GetMOTDate(dateTimeMOT.Value));
 
                     command.ExecuteNonQuery();
@@ -78,7 +78,7 @@ namespace My_Garage
 
             conn.Close();
 
-            MessageBox.Show("Car Added", "CAr Addition", MessageBoxButtons.OK, MessageBoxIcon.None);
+            MessageBox.Show("Car Added", "Car Addition", MessageBoxButtons.OK, MessageBoxIcon.None);
 
             frmHome home = new frmHome();
             home.Show();
@@ -150,7 +150,7 @@ namespace My_Garage
                 case "9 Months":
                     roadTaxEndDate = roadTaxStartDate.AddMonths(3);
                     break;
-                case "10 Months":
+                case "12 Months":
                     roadTaxEndDate = roadTaxStartDate.AddMonths(3);
                     break;
                 default:

@@ -130,7 +130,7 @@
             this.btnRegister.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(145, 34);
-            this.btnRegister.TabIndex = 7;
+            this.btnRegister.TabIndex = 8;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
@@ -142,7 +142,7 @@
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(145, 34);
-            this.btnCancel.TabIndex = 8;
+            this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -150,18 +150,18 @@
             // dateTimeRoadTax
             // 
             this.dateTimeRoadTax.Location = new System.Drawing.Point(161, 132);
-            this.dateTimeRoadTax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimeRoadTax.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimeRoadTax.Name = "dateTimeRoadTax";
             this.dateTimeRoadTax.Size = new System.Drawing.Size(265, 22);
-            this.dateTimeRoadTax.TabIndex = 10;
+            this.dateTimeRoadTax.TabIndex = 4;
             // 
             // dateTimeMOT
             // 
             this.dateTimeMOT.Location = new System.Drawing.Point(161, 171);
-            this.dateTimeMOT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimeMOT.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimeMOT.Name = "dateTimeMOT";
             this.dateTimeMOT.Size = new System.Drawing.Size(265, 22);
-            this.dateTimeMOT.TabIndex = 11;
+            this.dateTimeMOT.TabIndex = 6;
             // 
             // cmbRTDuration
             // 
@@ -174,7 +174,7 @@
             this.cmbRTDuration.Location = new System.Drawing.Point(464, 132);
             this.cmbRTDuration.Name = "cmbRTDuration";
             this.cmbRTDuration.Size = new System.Drawing.Size(121, 24);
-            this.cmbRTDuration.TabIndex = 13;
+            this.cmbRTDuration.TabIndex = 5;
             // 
             // lblForRT
             // 
@@ -203,7 +203,7 @@
             this.cmbMOTDuration.Location = new System.Drawing.Point(464, 169);
             this.cmbMOTDuration.Name = "cmbMOTDuration";
             this.cmbMOTDuration.Size = new System.Drawing.Size(121, 24);
-            this.cmbMOTDuration.TabIndex = 15;
+            this.cmbMOTDuration.TabIndex = 7;
             // 
             // frmCarRegistration
             // 
