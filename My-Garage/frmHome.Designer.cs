@@ -33,6 +33,7 @@
             this.btnCustomerRegistration = new System.Windows.Forms.Button();
             this.btnCarRental = new System.Windows.Forms.Button();
             this.btnReminders = new System.Windows.Forms.Button();
+            this.btnFutureReminders = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblMyGarage
@@ -48,7 +49,7 @@
             // btnCarRegistration
             // 
             this.btnCarRegistration.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnCarRegistration.Location = new System.Drawing.Point(12, 60);
+            this.btnCarRegistration.Location = new System.Drawing.Point(12, 140);
             this.btnCarRegistration.Name = "btnCarRegistration";
             this.btnCarRegistration.Size = new System.Drawing.Size(328, 55);
             this.btnCarRegistration.TabIndex = 1;
@@ -59,7 +60,7 @@
             // btnCustomerRegistration
             // 
             this.btnCustomerRegistration.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnCustomerRegistration.Location = new System.Drawing.Point(12, 140);
+            this.btnCustomerRegistration.Location = new System.Drawing.Point(12, 60);
             this.btnCustomerRegistration.Name = "btnCustomerRegistration";
             this.btnCustomerRegistration.Size = new System.Drawing.Size(328, 55);
             this.btnCustomerRegistration.TabIndex = 2;
@@ -89,11 +90,23 @@
             this.btnReminders.UseVisualStyleBackColor = true;
             this.btnReminders.Click += new System.EventHandler(this.btnReminders_Click);
             // 
+            // btnFutureReminders
+            // 
+            this.btnFutureReminders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnFutureReminders.Location = new System.Drawing.Point(12, 380);
+            this.btnFutureReminders.Name = "btnFutureReminders";
+            this.btnFutureReminders.Size = new System.Drawing.Size(328, 55);
+            this.btnFutureReminders.TabIndex = 5;
+            this.btnFutureReminders.Text = "Future Reminders";
+            this.btnFutureReminders.UseVisualStyleBackColor = true;
+            this.btnFutureReminders.Click += new System.EventHandler(this.btnFutureReminders_Click);
+            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(352, 381);
+            this.ClientSize = new System.Drawing.Size(352, 456);
+            this.Controls.Add(this.btnFutureReminders);
             this.Controls.Add(this.btnReminders);
             this.Controls.Add(this.btnCarRental);
             this.Controls.Add(this.btnCustomerRegistration);
@@ -116,6 +129,7 @@
         private System.Windows.Forms.Button btnCustomerRegistration;
         private System.Windows.Forms.Button btnCarRental;
         private System.Windows.Forms.Button btnReminders;
+        private System.Windows.Forms.Button btnFutureReminders;
     }
 }
 

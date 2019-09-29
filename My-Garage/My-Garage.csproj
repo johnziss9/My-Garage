@@ -64,6 +64,12 @@
     <Compile Include="frmCustomerRegistration.Designer.cs">
       <DependentUpon>frmCustomerRegistration.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmFutureReminders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFutureReminders.Designer.cs">
+      <DependentUpon>frmFutureReminders.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,7 +84,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReminderTypes.cs" />
     <EmbeddedResource Include="frmCarRegistration.resx">
       <DependentUpon>frmCarRegistration.cs</DependentUpon>
     </EmbeddedResource>
@@ -87,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCustomerRegistration.resx">
       <DependentUpon>frmCustomerRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFutureReminders.resx">
+      <DependentUpon>frmFutureReminders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>

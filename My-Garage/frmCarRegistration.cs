@@ -53,9 +53,9 @@ namespace My_Garage
 
             if (cmbRTDuration.Text != "" || cmbMOTDuration.Text != "")
             {
-                string queryReminder = "INSERT INTO dbo.Reminders (Id, Type, DueOn) " +
-                "VALUES (@id, @type, @dueOn)";
-                
+                string queryReminder = "INSERT INTO dbo.Reminders (Id, Type, Car, Customer, Notes, DueOn) " +
+                "VALUES (@id, @type, @car, @customer, @notes, @dueOn)";
+
 
                 for (int i = 0; i < 2; i++)
                 {
@@ -69,8 +69,10 @@ namespace My_Garage
 
                     command.Parameters.AddWithValue("@id", _reminderId);
                     command.Parameters.AddWithValue("@type", i == 0 ? "Road Tax Due" : "MOT Due");
+                    command.Parameters.AddWithValue("@car", txtCarMake.Text);
+                    command.Parameters.AddWithValue("@customer", "NA");
+                    command.Parameters.AddWithValue("@notes", "NA");
                     command.Parameters.AddWithValue("@dueOn", i == 0 ? GetRoadTaxDate(dateTimeRoadTax.Value) : GetMOTDate(dateTimeMOT.Value));
-                    // command.Parameters.AddWithValue("@dueOn", _reminderId);
 
                     command.ExecuteNonQuery();
                 }

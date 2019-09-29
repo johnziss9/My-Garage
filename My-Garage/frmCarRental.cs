@@ -12,6 +12,7 @@ namespace My_Garage
         SqlDataAdapter adapter = new SqlDataAdapter();
 
         int _rentalId = 0;
+        int _reminderId = 0;
 
         public frmCarRental()
         {
@@ -39,6 +40,29 @@ namespace My_Garage
             command.Parameters.AddWithValue("@customer", cmbCustomer.Text);
             command.Parameters.AddWithValue("@car", cmbCar.Text);
             command.Parameters.AddWithValue("@notes", txtNotes.Text);
+
+            command.ExecuteNonQuery();
+
+            // Reminders Add
+
+            string queryReminder = "INSERT INTO dbo.Reminders (Id, Type, Car, Customer, Notes, DueOn) " +
+                "VALUES (@id, @type, @car, @customer, @notes, @dueOn)";
+
+
+            conn.Close();
+
+            GetReminderId();
+
+            conn.Open();
+
+            command = new SqlCommand(queryReminder, conn);
+
+            command.Parameters.AddWithValue("@id", _reminderId);
+            command.Parameters.AddWithValue("@type", "Rental Car");
+            command.Parameters.AddWithValue("@car", cmbCar.Text);
+            command.Parameters.AddWithValue("@customer", cmbCustomer.Text);
+            command.Parameters.AddWithValue("@notes", txtNotes.Text);
+            command.Parameters.AddWithValue("@dueOn", dateTimeTo.Value);
 
             command.ExecuteNonQuery();
 
@@ -115,6 +139,25 @@ namespace My_Garage
                 else
                 {
                     _rentalId = 1;
+                }
+                conn.Close();
+            }
+        }
+
+        public void GetReminderId()
+        {
+            using (command = new SqlCommand("SELECT TOP 1 [Id] FROM dbo.Reminders ORDER BY Id DESC", conn))
+            {
+                conn.Open();
+                SqlDataReader dr = command.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    dr.Read();
+                    _reminderId = Convert.ToInt32(dr["Id"]) + 1;
+                }
+                else
+                {
+                    _reminderId = 1001;
                 }
                 conn.Close();
             }

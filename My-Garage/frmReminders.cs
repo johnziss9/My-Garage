@@ -39,7 +39,7 @@ namespace My_Garage
             BindingSource bs = new BindingSource();
 
             dt = new DataTable();
-            da = new SqlDataAdapter("SELECT * FROM Reminders", conn);
+            da = new SqlDataAdapter("SELECT * FROM Reminders WHERE DueOn <= GETDATE()", conn);
 
             da.Fill(dt);
             bs.DataSource = dt;
