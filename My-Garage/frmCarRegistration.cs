@@ -21,8 +21,6 @@ namespace My_Garage
         private void btnRegister_Click(object sender, EventArgs e)
         {
             Hide();
-            frmHome home = new frmHome();
-            home.Show();
 
             // Cars Add
 
@@ -79,6 +77,11 @@ namespace My_Garage
             }
 
             conn.Close();
+
+            MessageBox.Show("Car Added", "CAr Addition", MessageBoxButtons.OK, MessageBoxIcon.None);
+
+            frmHome home = new frmHome();
+            home.Show();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

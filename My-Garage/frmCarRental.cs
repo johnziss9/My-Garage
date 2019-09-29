@@ -22,8 +22,6 @@ namespace My_Garage
         private void btnRegister_Click(object sender, EventArgs e)
         {
             Hide();
-            frmHome home = new frmHome();
-            home.Show();
 
             string query = "INSERT INTO dbo.Rentals(Id, FromDate, ToDate, Customer, Car, Notes) " +
                 "VALUES (@id, @fromDate, @toDate, @customer, @car, @notes)";
@@ -67,6 +65,11 @@ namespace My_Garage
             command.ExecuteNonQuery();
 
             conn.Close();
+
+            MessageBox.Show("Rental Added", "Rental Addition", MessageBoxButtons.OK, MessageBoxIcon.None);
+
+            frmHome home = new frmHome();
+            home.Show();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

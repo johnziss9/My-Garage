@@ -35,9 +35,12 @@
             // 
             // dataGridFutureReminders
             // 
+            this.dataGridFutureReminders.AllowUserToAddRows = false;
+            this.dataGridFutureReminders.AllowUserToDeleteRows = false;
             this.dataGridFutureReminders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridFutureReminders.Location = new System.Drawing.Point(12, 12);
             this.dataGridFutureReminders.Name = "dataGridFutureReminders";
+            this.dataGridFutureReminders.ReadOnly = true;
             this.dataGridFutureReminders.Size = new System.Drawing.Size(653, 307);
             this.dataGridFutureReminders.TabIndex = 1;
             // 
@@ -60,6 +63,7 @@
             this.Controls.Add(this.btnDone);
             this.Controls.Add(this.dataGridFutureReminders);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmFutureReminders";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Future Reminders";

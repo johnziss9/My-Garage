@@ -32,8 +32,6 @@ namespace My_Garage
         private void btnRegister_Click(object sender, EventArgs e)
         {
             Hide();
-            frmHome home = new frmHome();
-            home.Show();
 
             string query = "INSERT INTO dbo.Customers (Id, FirstName, LastName, Address, Phone) VALUES (@id, @firstName, @lastName, @address, @phoneNumber)";
 
@@ -55,6 +53,11 @@ namespace My_Garage
                 command.ExecuteNonQuery();
 
             conn.Close();
+
+            MessageBox.Show("Customer Added", "Customer Addition", MessageBoxButtons.OK, MessageBoxIcon.None);
+
+            frmHome home = new frmHome();
+            home.Show();
         }
 
         public void GetCustomerId()

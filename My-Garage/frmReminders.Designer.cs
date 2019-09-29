@@ -35,9 +35,12 @@
             // 
             // dataGridReminders
             // 
+            this.dataGridReminders.AllowUserToAddRows = false;
+            this.dataGridReminders.AllowUserToDeleteRows = false;
             this.dataGridReminders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridReminders.Location = new System.Drawing.Point(12, 12);
             this.dataGridReminders.Name = "dataGridReminders";
+            this.dataGridReminders.ReadOnly = true;
             this.dataGridReminders.Size = new System.Drawing.Size(653, 307);
             this.dataGridReminders.TabIndex = 0;
             this.dataGridReminders.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridReminders_RowHeaderMouseDoubleClick);
