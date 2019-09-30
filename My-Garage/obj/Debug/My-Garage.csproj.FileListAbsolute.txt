@@ -13,3 +13,7 @@ C:\Users\johnz\source\repos\My-Garage\My-Garage\obj\Debug\My_Garage.frmCustomerR
 C:\Users\johnz\source\repos\My-Garage\My-Garage\obj\Debug\My_Garage.frmCarRental.resources
 C:\Users\johnz\source\repos\My-Garage\My-Garage\obj\Debug\My_Garage.frmReminders.resources
 C:\Users\johnz\source\repos\My-Garage\My-Garage\obj\Debug\My_Garage.frmFutureReminders.resources
+C:\Users\johnz\source\repos\My-Garage\My-Garage\bin\Debug\System.Data.SQLite.dll
+C:\Users\johnz\source\repos\My-Garage\My-Garage\bin\Debug\System.Data.SQLite.xml
+C:\Users\johnz\source\repos\My-Garage\My-Garage\bin\Debug\System.Data.SQLite.dll.config
+C:\Users\johnz\source\repos\My-Garage\My-Garage\obj\Debug\My-Garage.csproj.CopyComplete

@@ -2,14 +2,16 @@
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Windows.Forms;
+using System.Data.SQLite;
+using System.Data;
 
 namespace My_Garage
 {
     public partial class frmCustomerRegistration : Form
     {
-        SqlConnection conn = new SqlConnection("Data Source=.;Initial Catalog=GarageDB; Integrated Security=SSPI");
-        SqlCommand command;
-        SqlDataAdapter adapter = new SqlDataAdapter();
+        SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Test\MyGarageDB.db;Version=3;");
+        SQLiteCommand command;
+        SQLiteDataAdapter adapter = new SQLiteDataAdapter();
 
         int _customerId = 0;
 
@@ -34,13 +36,14 @@ namespace My_Garage
         {
             Hide();
 
-            string query = "INSERT INTO dbo.Customers (Id, FirstName, LastName, Address, Phone) VALUES (@id, @firstName, @lastName, @address, @phoneNumber)";
+            string query = "INSERT INTO Customers (Id, FirstName, LastName, Address, Phone) " +
+                "VALUES (@id, @firstName, @lastName, @address, @phoneNumber)";
 
             GetCustomerId();
 
             conn.Open();
 
-            command = new SqlCommand(query, conn);
+            command = new SQLiteCommand(query, conn);
 
             command.Parameters.AddWithValue("@id", _customerId);
             command.Parameters.AddWithValue("@firstName", txtFirstName.Text.Substring(0, 1).ToUpper(CultureInfo.CurrentCulture) + txtFirstName.Text.Substring(1));
@@ -63,21 +66,22 @@ namespace My_Garage
 
         public void GetCustomerId()
         {
-            using (command = new SqlCommand("SELECT TOP 1 [Id] FROM dbo.Customers ORDER BY Id DESC", conn))
+            conn.Open();
+
+            string query = "SELECT Id FROM Customers ORDER BY Id DESC LIMIT 1";
+
+            using (SQLiteCommand command = new SQLiteCommand(query, conn))
             {
-                conn.Open();
-                SqlDataReader dr = command.ExecuteReader();
-                if (dr.HasRows)
+                using (SQLiteDataReader dr = command.ExecuteReader())
                 {
-                    dr.Read();
-                    _customerId = Convert.ToInt32(dr["Id"]) + 1;
+                    while (dr.Read())
+                    {
+                        _customerId = dr.GetInt32(0) + 1;
+                    }
                 }
-                else
-                {
-                    _customerId = 101;
-                }
-                conn.Close();
             }
+
+            conn.Close();
         }
 
         private void txtPhoneNo_KeyPress(object sender, KeyPressEventArgs e)
