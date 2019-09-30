@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Data.SqlClient;
 using System.Globalization;
 using System.Windows.Forms;
 using System.Data.SQLite;
-using System.Data;
 
 namespace My_Garage
 {
