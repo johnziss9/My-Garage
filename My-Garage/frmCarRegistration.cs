@@ -33,19 +33,23 @@ namespace My_Garage
 
             command = new SQLiteCommand(queryCar, conn);
 
-            command.Parameters.AddWithValue("@id", _carId);
-            command.Parameters.AddWithValue("@carMake", txtCarMake.Text.ToUpper());
-            command.Parameters.AddWithValue("@carModel", txtCarModel.Text.ToUpper());
-            command.Parameters.AddWithValue("@numberPlate", txtNumberPlate.Text.ToUpper());
-            command.Parameters.AddWithValue("@roadTax", dateTimeRoadTax.Value);
-            command.Parameters.AddWithValue("@roadTaxDuration", cmbRTDuration.Text);
-            command.Parameters.AddWithValue("@MOT", dateTimeMOT.Value);
-            command.Parameters.AddWithValue("@MOTDuration", cmbMOTDuration.Text);
-
-            if (txtCarMake.Text == "" || txtCarModel.Text == "")
-                MessageBox.Show("Please enter the car make and model.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (txtCarMake.Text == "" || txtCarModel.Text == "" || txtNumberPlate.Text == "")
+                MessageBox.Show("Please enter the car make, model and number plate.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
+            {
+                command.Parameters.AddWithValue("@id", _carId);
+                command.Parameters.AddWithValue("@carMake", txtCarMake.Text.ToUpper());
+                command.Parameters.AddWithValue("@carModel", txtCarModel.Text.ToUpper());
+                command.Parameters.AddWithValue("@numberPlate", txtNumberPlate.Text.ToUpper());
+                command.Parameters.AddWithValue("@roadTax", dateTimeRoadTax.Value.ToShortDateString());
+                command.Parameters.AddWithValue("@roadTaxDuration", cmbRTDuration.Text);
+                command.Parameters.AddWithValue("@MOT", dateTimeMOT.Value.ToShortDateString());
+                command.Parameters.AddWithValue("@MOTDuration", cmbMOTDuration.Text);
+
                 command.ExecuteNonQuery();
+
+                MessageBox.Show("Car Added", "Car Addition", MessageBoxButtons.OK, MessageBoxIcon.None);
+            }
 
             // Reminders Add
 
@@ -54,7 +58,7 @@ namespace My_Garage
                 string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn) " +
                 "VALUES (@id, @type, @car, @customer, @notes, @dueOn)";
 
-
+                // Runs twice - First time is gets the road tax and second time it gets the MOT
                 for (int i = 0; i < 2; i++)
                 {
                     conn.Close();
@@ -70,15 +74,13 @@ namespace My_Garage
                     command.Parameters.AddWithValue("@car", txtCarMake.Text.ToUpper() + " " + txtCarModel.Text.ToUpper());
                     command.Parameters.AddWithValue("@customer", "N/A");
                     command.Parameters.AddWithValue("@notes", "N/A");
-                    command.Parameters.AddWithValue("@dueOn", i == 0 ? GetRoadTaxDate(dateTimeRoadTax.Value) : GetMOTDate(dateTimeMOT.Value));
+                    command.Parameters.AddWithValue("@dueOn", i == 0 ? Convert.ToDateTime(GetRoadTaxDate(dateTimeRoadTax.Value).ToShortDateString()) : Convert.ToDateTime(GetMOTDate(dateTimeMOT.Value).ToShortDateString()));
 
                     command.ExecuteNonQuery();
                 }
             }
 
             conn.Close();
-
-            MessageBox.Show("Car Added", "Car Addition", MessageBoxButtons.OK, MessageBoxIcon.None);
 
             frmHome home = new frmHome();
             home.Show();

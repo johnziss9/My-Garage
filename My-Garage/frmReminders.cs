@@ -40,14 +40,13 @@ namespace My_Garage
             BindingSource bs = new BindingSource();
 
             dt = new DataTable();
-            da = new SQLiteDataAdapter("SELECT * FROM Reminders WHERE DueOn <= DATE()", conn);
+            da = new SQLiteDataAdapter("SELECT * FROM Reminders WHERE DueOn < DATE()", conn);
 
             da.Fill(dt);
             bs.DataSource = dt;
             dataGridReminders.DataSource = bs;
 
             dataGridReminders.Columns[0].Visible = false;
-            //dataGridReminders.Columns[2].Visible = false;
 
             foreach (DataGridViewRow row in dataGridReminders.Rows)
             {

@@ -43,20 +43,22 @@ namespace My_Garage
 
             command = new SQLiteCommand(query, conn);
 
-            command.Parameters.AddWithValue("@id", _customerId);
-            command.Parameters.AddWithValue("@firstName", txtFirstName.Text.Substring(0, 1).ToUpper(CultureInfo.CurrentCulture) + txtFirstName.Text.Substring(1));
-            command.Parameters.AddWithValue("@lastName", txtLastName.Text.Substring(0, 1).ToUpper(CultureInfo.CurrentCulture) + txtLastName.Text.Substring(1));
-            command.Parameters.AddWithValue("@address", txtAddress.Text.Substring(0, 1).ToUpper(CultureInfo.CurrentCulture) + txtAddress.Text.Substring(1));
-            command.Parameters.AddWithValue("@phoneNumber", txtPhoneNo.Text);
-
-            if (txtFirstName.Text == "" || txtLastName.Text == "")
-                MessageBox.Show("Please enter a first and last name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (txtFirstName.Text == "" || txtLastName.Text == "" || txtAddress.Text == "" || txtPhoneNo.Text == "")
+                MessageBox.Show("Please fill in all the details.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
+            {
+                command.Parameters.AddWithValue("@id", _customerId);
+                command.Parameters.AddWithValue("@firstName", txtFirstName.Text.Substring(0, 1).ToUpper(CultureInfo.CurrentCulture) + txtFirstName.Text.Substring(1));
+                command.Parameters.AddWithValue("@lastName", txtLastName.Text.Substring(0, 1).ToUpper(CultureInfo.CurrentCulture) + txtLastName.Text.Substring(1));
+                command.Parameters.AddWithValue("@address", txtAddress.Text.Substring(0, 1).ToUpper(CultureInfo.CurrentCulture) + txtAddress.Text.Substring(1));
+                command.Parameters.AddWithValue("@phoneNumber", txtPhoneNo.Text);
+
                 command.ExecuteNonQuery();
 
-            conn.Close();
+                MessageBox.Show("Customer Added", "Customer Addition", MessageBoxButtons.OK, MessageBoxIcon.None);
+            }
 
-            MessageBox.Show("Customer Added", "Customer Addition", MessageBoxButtons.OK, MessageBoxIcon.None);
+            conn.Close();
 
             frmHome home = new frmHome();
             home.Show();

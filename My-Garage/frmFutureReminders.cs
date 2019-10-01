@@ -45,7 +45,6 @@ namespace My_Garage
             dataGridFutureReminders.DataSource = bs;
 
             dataGridFutureReminders.Columns[0].Visible = false;
-            //dataGridFutureReminders.Columns[2].Visible = false;
         }
     }
 }

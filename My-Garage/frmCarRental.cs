@@ -33,8 +33,8 @@ namespace My_Garage
             command = new SQLiteCommand(query, conn);
 
             command.Parameters.AddWithValue("@id", _rentalId);
-            command.Parameters.AddWithValue("@fromDate", dateTimeFrom.Value);
-            command.Parameters.AddWithValue("@toDate", dateTimeTo.Value);
+            command.Parameters.AddWithValue("@fromDate", dateTimeFrom.Value.ToShortDateString());
+            command.Parameters.AddWithValue("@toDate", dateTimeTo.Value.ToShortDateString());
             command.Parameters.AddWithValue("@customer", cmbCustomer.Text);
             command.Parameters.AddWithValue("@car", cmbCar.Text);
             command.Parameters.AddWithValue("@notes", txtNotes.Text);
@@ -60,7 +60,7 @@ namespace My_Garage
             command.Parameters.AddWithValue("@car", cmbCar.Text);
             command.Parameters.AddWithValue("@customer", cmbCustomer.Text);
             command.Parameters.AddWithValue("@notes", txtNotes.Text);
-            command.Parameters.AddWithValue("@dueOn", dateTimeTo.Value);
+            command.Parameters.AddWithValue("@dueOn", dateTimeTo.Value.ToShortDateString());
 
             command.ExecuteNonQuery();
 
