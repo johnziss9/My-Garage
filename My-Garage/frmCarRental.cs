@@ -7,7 +7,7 @@ namespace My_Garage
 {
     public partial class frmCarRental : Form
     {
-        SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;");
+        SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture");
         SQLiteCommand command;
         SQLiteDataAdapter adapter = new SQLiteDataAdapter();
 
@@ -33,8 +33,8 @@ namespace My_Garage
             command = new SQLiteCommand(query, conn);
 
             command.Parameters.AddWithValue("@id", _rentalId);
-            command.Parameters.AddWithValue("@fromDate", dateTimeFrom.Value.ToShortDateString());
-            command.Parameters.AddWithValue("@toDate", dateTimeTo.Value.ToShortDateString());
+            command.Parameters.AddWithValue("@fromDate", dateTimeFrom.Value.Date);
+            command.Parameters.AddWithValue("@toDate", dateTimeTo.Value.Date);
             command.Parameters.AddWithValue("@customer", cmbCustomer.Text);
             command.Parameters.AddWithValue("@car", cmbCar.Text);
             command.Parameters.AddWithValue("@notes", txtNotes.Text);
@@ -60,7 +60,7 @@ namespace My_Garage
             command.Parameters.AddWithValue("@car", cmbCar.Text);
             command.Parameters.AddWithValue("@customer", cmbCustomer.Text);
             command.Parameters.AddWithValue("@notes", txtNotes.Text);
-            command.Parameters.AddWithValue("@dueOn", dateTimeTo.Value.ToShortDateString());
+            command.Parameters.AddWithValue("@dueOn", dateTimeTo.Value.Date);
 
             command.ExecuteNonQuery();
 
@@ -95,7 +95,7 @@ namespace My_Garage
 
         private void frmCarRental_Load(object sender, EventArgs e)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;"))
+            using (SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture"))
             {
                 try
                 {

@@ -30,7 +30,7 @@ namespace My_Garage
 
         public void ShowFutureReminders()
         {
-            string connString = @"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;";
+            string connString = @"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture";
             SQLiteConnection conn = new SQLiteConnection(connString);
 
             DataTable dt = new DataTable();
@@ -38,7 +38,7 @@ namespace My_Garage
             BindingSource bs = new BindingSource();
 
             dt = new DataTable();
-            da = new SQLiteDataAdapter("SELECT * FROM Reminders WHERE DueOn > DATE()", conn);
+            da = new SQLiteDataAdapter("SELECT * FROM Reminders WHERE DueOn > DATE('now', '+1 day')", conn);
 
             da.Fill(dt);
             bs.DataSource = dt;

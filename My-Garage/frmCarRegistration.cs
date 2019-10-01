@@ -6,7 +6,7 @@ namespace My_Garage
 {
     public partial class frmCarRegistration : Form
     {
-        SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;");
+        SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture");
         SQLiteCommand command;
         SQLiteDataAdapter adapter = new SQLiteDataAdapter();
 
@@ -41,9 +41,9 @@ namespace My_Garage
                 command.Parameters.AddWithValue("@carMake", txtCarMake.Text.ToUpper());
                 command.Parameters.AddWithValue("@carModel", txtCarModel.Text.ToUpper());
                 command.Parameters.AddWithValue("@numberPlate", txtNumberPlate.Text.ToUpper());
-                command.Parameters.AddWithValue("@roadTax", dateTimeRoadTax.Value.ToShortDateString());
+                command.Parameters.AddWithValue("@roadTax", dateTimeRoadTax.Value.Date);
                 command.Parameters.AddWithValue("@roadTaxDuration", cmbRTDuration.Text);
-                command.Parameters.AddWithValue("@MOT", dateTimeMOT.Value.ToShortDateString());
+                command.Parameters.AddWithValue("@MOT", dateTimeMOT.Value.Date);
                 command.Parameters.AddWithValue("@MOTDuration", cmbMOTDuration.Text);
 
                 command.ExecuteNonQuery();
@@ -74,7 +74,7 @@ namespace My_Garage
                     command.Parameters.AddWithValue("@car", txtCarMake.Text.ToUpper() + " " + txtCarModel.Text.ToUpper());
                     command.Parameters.AddWithValue("@customer", "N/A");
                     command.Parameters.AddWithValue("@notes", "N/A");
-                    command.Parameters.AddWithValue("@dueOn", i == 0 ? Convert.ToDateTime(GetRoadTaxDate(dateTimeRoadTax.Value).ToShortDateString()) : Convert.ToDateTime(GetMOTDate(dateTimeMOT.Value).ToShortDateString()));
+                    command.Parameters.AddWithValue("@dueOn", i == 0 ? GetRoadTaxDate(dateTimeRoadTax.Value).Date : GetMOTDate(dateTimeMOT.Value).Date);
 
                     command.ExecuteNonQuery();
                 }
@@ -149,13 +149,13 @@ namespace My_Garage
                     roadTaxEndDate = roadTaxStartDate.AddMonths(3);
                     break;
                 case "6 Months":
-                    roadTaxEndDate = roadTaxStartDate.AddMonths(3);
+                    roadTaxEndDate = roadTaxStartDate.AddMonths(6);
                     break;
                 case "9 Months":
-                    roadTaxEndDate = roadTaxStartDate.AddMonths(3);
+                    roadTaxEndDate = roadTaxStartDate.AddMonths(9);
                     break;
                 case "12 Months":
-                    roadTaxEndDate = roadTaxStartDate.AddMonths(3);
+                    roadTaxEndDate = roadTaxStartDate.AddMonths(12);
                     break;
                 default:
                     break;

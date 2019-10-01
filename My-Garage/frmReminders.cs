@@ -32,7 +32,7 @@ namespace My_Garage
 
         private void ShowReminders()
         {
-            string connString = @"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;";
+            string connString = @"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture";
             SQLiteConnection conn = new SQLiteConnection(connString);
 
             DataTable dt = new DataTable();
@@ -40,7 +40,7 @@ namespace My_Garage
             BindingSource bs = new BindingSource();
 
             dt = new DataTable();
-            da = new SQLiteDataAdapter("SELECT * FROM Reminders WHERE DueOn < DATE()", conn);
+            da = new SQLiteDataAdapter("SELECT * FROM Reminders WHERE DueOn <= DATE('now', '+1 day')", conn);
 
             da.Fill(dt);
             bs.DataSource = dt;
@@ -50,7 +50,9 @@ namespace My_Garage
 
             foreach (DataGridViewRow row in dataGridReminders.Rows)
             {
-                if (Convert.ToDateTime(row.Cells[5].Value) < DateTime.Now)
+                var date = Convert.ToDateTime(row.Cells[5].Value);
+
+                if (date < DateTime.Now.AddDays(-1))
                     row.DefaultCellStyle.BackColor = Color.Red;
             }
         }
