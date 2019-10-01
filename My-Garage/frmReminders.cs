@@ -59,7 +59,24 @@ namespace My_Garage
 
         private void dataGridReminders_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            MessageBox.Show("Test");
+            var reminderId = dataGridReminders.SelectedRows[0].Cells[0].Value.ToString();
+            string query = $"DELETE FROM Reminders WHERE Id = {reminderId}";
+
+            using (SQLiteConnection conn = new SQLiteConnection(@"Data Source = C:\Users\jzissimou\Downloads\GarageDB.db; Version = 3; datetimeformat = CurrentCulture"))
+            {
+                conn.Open();
+
+                SQLiteCommand command = new SQLiteCommand();
+
+                command = new SQLiteCommand(query, conn);
+
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this reminder?", "Delete Reminder", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    command.ExecuteNonQuery();
+                    ShowReminders();
+                }
+            }
         }
     }
 }
