@@ -1,5 +1,5 @@
 ﻿using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Windows.Forms;
 
 namespace My_Garage
@@ -30,22 +30,22 @@ namespace My_Garage
 
         public void ShowFutureReminders()
         {
-            string sqlConnection = "Data Source=.;Initial Catalog=GarageDB; Integrated Security=SSPI";
-            SqlConnection conn = new SqlConnection(sqlConnection);
+            string connString = @"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;";
+            SQLiteConnection conn = new SQLiteConnection(connString);
 
             DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter();
+            SQLiteDataAdapter da = new SQLiteDataAdapter();
             BindingSource bs = new BindingSource();
 
             dt = new DataTable();
-            da = new SqlDataAdapter("SELECT * FROM Reminders WHERE DueOn > GETDATE()", conn);
+            da = new SQLiteDataAdapter("SELECT * FROM Reminders WHERE DueOn > DATE()", conn);
 
             da.Fill(dt);
             bs.DataSource = dt;
             dataGridFutureReminders.DataSource = bs;
 
             dataGridFutureReminders.Columns[0].Visible = false;
-            dataGridFutureReminders.Columns[2].Visible = false;
+            //dataGridFutureReminders.Columns[2].Visible = false;
         }
     }
 }

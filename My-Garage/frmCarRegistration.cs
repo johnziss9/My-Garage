@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Windows.Forms;
 
 namespace My_Garage
 {
     public partial class frmCarRegistration : Form
     {
-        SqlConnection conn = new SqlConnection("Data Source=.;Initial Catalog=GarageDB; Integrated Security=SSPI");
-        SqlCommand command;
-        SqlDataAdapter adapter = new SqlDataAdapter();
+        SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;");
+        SQLiteCommand command;
+        SQLiteDataAdapter adapter = new SQLiteDataAdapter();
 
         int _carId = 0;
         int _reminderId = 0;
@@ -24,14 +24,14 @@ namespace My_Garage
 
             // Cars Add
 
-            string queryCar = "INSERT INTO dbo.Cars (Id, CarMake, CarModel, NumberPlate, RoadTax, RoadTaxDuration, MOT, MOTDuration) " +
+            string queryCar = "INSERT INTO Cars (Id, CarMake, CarModel, NumberPlate, RoadTax, RoadTaxDuration, MOT, MOTDuration) " +
                 "VALUES (@id, @carMake, @carModel, @numberPlate, @roadTax, @roadTaxDuration, @MOT, @MOTDuration)";
 
             GetCarId();
 
             conn.Open();
 
-            command = new SqlCommand(queryCar, conn);
+            command = new SQLiteCommand(queryCar, conn);
 
             command.Parameters.AddWithValue("@id", _carId);
             command.Parameters.AddWithValue("@carMake", txtCarMake.Text.ToUpper());
@@ -51,7 +51,7 @@ namespace My_Garage
 
             if (cmbRTDuration.Text != "" || cmbMOTDuration.Text != "")
             {
-                string queryReminder = "INSERT INTO dbo.Reminders (Id, Type, Car, Customer, Notes, DueOn) " +
+                string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn) " +
                 "VALUES (@id, @type, @car, @customer, @notes, @dueOn)";
 
 
@@ -63,7 +63,7 @@ namespace My_Garage
 
                     conn.Open();
 
-                    command = new SqlCommand(queryReminder, conn);
+                    command = new SQLiteCommand(queryReminder, conn);
 
                     command.Parameters.AddWithValue("@id", _reminderId);
                     command.Parameters.AddWithValue("@type", i == 0 ? "Road Tax Due" : "MOT Due");
@@ -98,40 +98,42 @@ namespace My_Garage
 
         public void GetCarId()
         {
-            using (command = new SqlCommand("SELECT TOP 1 [Id] FROM dbo.Cars ORDER BY Id DESC", conn))
+            string query = "SELECT Id FROM Cars ORDER BY Id DESC LIMIT 1";
+
+            conn.Open();
+
+            using (SQLiteCommand command = new SQLiteCommand(query, conn))
             {
-                conn.Open();
-                SqlDataReader dr = command.ExecuteReader();
-                if (dr.HasRows)
+                using (SQLiteDataReader dr = command.ExecuteReader())
                 {
-                    dr.Read();
-                    _carId = Convert.ToInt32(dr["Id"]) + 1;
+                    while (dr.Read())
+                    {
+                        _carId = dr.GetInt32(0) + 1;
+                    }
                 }
-                else
-                {
-                    _carId = 1;
-                }
-                conn.Close();
             }
+
+            conn.Close();
         }
 
         public void GetReminderId()
         {
-            using (command = new SqlCommand("SELECT TOP 1 [Id] FROM dbo.Reminders ORDER BY Id DESC", conn))
+            string query = "SELECT Id FROM Reminders ORDER BY Id DESC LIMIT 1";
+
+            conn.Open();
+
+            using (SQLiteCommand command = new SQLiteCommand(query, conn))
             {
-                conn.Open();
-                SqlDataReader dr = command.ExecuteReader();
-                if (dr.HasRows)
+                using (SQLiteDataReader dr = command.ExecuteReader())
                 {
-                    dr.Read();
-                    _reminderId = Convert.ToInt32(dr["Id"]) + 1;
+                    while (dr.Read())
+                    {
+                        _reminderId = dr.GetInt32(0) + 1;
+                    }
                 }
-                else
-                {
-                    _reminderId = 1001;
-                }
-                conn.Close();
             }
+
+            conn.Close();
         }
 
         public DateTime GetRoadTaxDate(DateTime roadTaxStartDate)

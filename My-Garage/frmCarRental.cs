@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Windows.Forms;
 
 namespace My_Garage
 {
     public partial class frmCarRental : Form
     {
-        SqlConnection conn = new SqlConnection("Data Source=.;Initial Catalog=GarageDB; Integrated Security=SSPI");
-        SqlCommand command;
-        SqlDataAdapter adapter = new SqlDataAdapter();
+        SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;");
+        SQLiteCommand command;
+        SQLiteDataAdapter adapter = new SQLiteDataAdapter();
 
         int _rentalId = 0;
         int _reminderId = 0;
@@ -23,14 +23,14 @@ namespace My_Garage
         {
             Hide();
 
-            string query = "INSERT INTO dbo.Rentals(Id, FromDate, ToDate, Customer, Car, Notes) " +
+            string query = "INSERT INTO Rentals(Id, FromDate, ToDate, Customer, Car, Notes) " +
                 "VALUES (@id, @fromDate, @toDate, @customer, @car, @notes)";
 
             GetRentalId();
 
             conn.Open();
 
-            command = new SqlCommand(query, conn);
+            command = new SQLiteCommand(query, conn);
 
             command.Parameters.AddWithValue("@id", _rentalId);
             command.Parameters.AddWithValue("@fromDate", dateTimeFrom.Value);
@@ -43,7 +43,7 @@ namespace My_Garage
 
             // Reminders Add
 
-            string queryReminder = "INSERT INTO dbo.Reminders (Id, Type, Car, Customer, Notes, DueOn) " +
+            string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn) " +
                 "VALUES (@id, @type, @car, @customer, @notes, @dueOn)";
 
 
@@ -53,7 +53,7 @@ namespace My_Garage
 
             conn.Open();
 
-            command = new SqlCommand(queryReminder, conn);
+            command = new SQLiteCommand(queryReminder, conn);
 
             command.Parameters.AddWithValue("@id", _reminderId);
             command.Parameters.AddWithValue("@type", "Rental Car");
@@ -95,15 +95,15 @@ namespace My_Garage
 
         private void frmCarRental_Load(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=GarageDB; Integrated Security=SSPI"))
+            using (SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;"))
             {
                 try
                 {
-                    string carQuery = "SELECT Id, CarMake, CarModel, CarMake + ' ' + CarModel AS [Car] FROM Cars";
-                    string customerQuery = "SELECT Id, FirstName, LastName, FirstName + ' ' + LastName AS [Name] FROM Customers";
+                    string carQuery = "SELECT Id, CarMake, CarModel, (CarMake || ' ' || CarModel) AS Car FROM Cars";
+                    string customerQuery = "SELECT Id, FirstName, LastName, (FirstName || ' ' || LastName) AS [Name] FROM Customers";
 
-                    SqlDataAdapter daCars = new SqlDataAdapter(carQuery, conn);
-                    SqlDataAdapter daCustomers = new SqlDataAdapter(customerQuery, conn);
+                    SQLiteDataAdapter daCars = new SQLiteDataAdapter(carQuery, conn);
+                    SQLiteDataAdapter daCustomers = new SQLiteDataAdapter(customerQuery, conn);
 
                     conn.Open();
 
@@ -130,40 +130,42 @@ namespace My_Garage
 
         public void GetRentalId()
         {
-            using (command = new SqlCommand("SELECT TOP 1 [Id] FROM dbo.Rentals ORDER BY Id DESC", conn))
+            string query = "SELECT Id FROM Rentals ORDER BY Id DESC LIMIT 1";
+
+            conn.Open();
+
+            using (SQLiteCommand command = new SQLiteCommand(query, conn))
             {
-                conn.Open();
-                SqlDataReader dr = command.ExecuteReader();
-                if (dr.HasRows)
+                using (SQLiteDataReader dr = command.ExecuteReader())
                 {
-                    dr.Read();
-                    _rentalId = Convert.ToInt32(dr["Id"]) + 1;
+                    while (dr.Read())
+                    {
+                        _rentalId = dr.GetInt32(0) + 1;
+                    }
                 }
-                else
-                {
-                    _rentalId = 1;
-                }
-                conn.Close();
             }
+
+            conn.Close();
         }
 
         public void GetReminderId()
         {
-            using (command = new SqlCommand("SELECT TOP 1 [Id] FROM dbo.Reminders ORDER BY Id DESC", conn))
+            string query = "SELECT Id FROM Reminders ORDER BY Id DESC LIMIT 1";
+
+            conn.Open();
+
+            using (SQLiteCommand command = new SQLiteCommand(query, conn))
             {
-                conn.Open();
-                SqlDataReader dr = command.ExecuteReader();
-                if (dr.HasRows)
+                using (SQLiteDataReader dr = command.ExecuteReader())
                 {
-                    dr.Read();
-                    _reminderId = Convert.ToInt32(dr["Id"]) + 1;
+                    while (dr.Read())
+                    {
+                        _reminderId = dr.GetInt32(0) + 1;
+                    }
                 }
-                else
-                {
-                    _reminderId = 1001;
-                }
-                conn.Close();
             }
+
+            conn.Close();
         }
     }
 }

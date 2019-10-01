@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace My_Garage
@@ -31,22 +32,28 @@ namespace My_Garage
 
         private void ShowReminders()
         {
-            string sqlConnection = "Data Source=.;Initial Catalog=GarageDB; Integrated Security=SSPI";
-            SqlConnection conn = new SqlConnection(sqlConnection);
+            string connString = @"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;";
+            SQLiteConnection conn = new SQLiteConnection(connString);
 
             DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter();
+            SQLiteDataAdapter da = new SQLiteDataAdapter();
             BindingSource bs = new BindingSource();
 
             dt = new DataTable();
-            da = new SqlDataAdapter("SELECT * FROM Reminders WHERE DueOn <= GETDATE()", conn);
+            da = new SQLiteDataAdapter("SELECT * FROM Reminders WHERE DueOn <= DATE()", conn);
 
             da.Fill(dt);
             bs.DataSource = dt;
             dataGridReminders.DataSource = bs;
 
             dataGridReminders.Columns[0].Visible = false;
-            dataGridReminders.Columns[2].Visible = false;
+            //dataGridReminders.Columns[2].Visible = false;
+
+            foreach (DataGridViewRow row in dataGridReminders.Rows)
+            {
+                if (Convert.ToDateTime(row.Cells[5].Value) < DateTime.Now)
+                    row.DefaultCellStyle.BackColor = Color.Red;
+            }
         }
 
         private void dataGridReminders_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
