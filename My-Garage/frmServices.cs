@@ -97,7 +97,7 @@ namespace My_Garage
                     frmServices services = new frmServices();
                     services.Show();
                 }
-                    
+
             }
             else if (chkRoadTax.Checked && chkMOT.Checked == false)
             {
@@ -149,7 +149,7 @@ namespace My_Garage
                     services.Show();
                 }
             }
-            else 
+            else if (chkRoadTax.Checked == false && chkMOT.Checked)
             {
                 command = new SQLiteCommand(queryMOT, conn);
 
@@ -199,6 +199,8 @@ namespace My_Garage
                     services.Show();
                 }
             }
+            else
+                MessageBox.Show("Please select at least one service.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void btnCancel_Click(object sender, System.EventArgs e)
