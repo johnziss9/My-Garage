@@ -7,7 +7,7 @@ namespace My_Garage
 {
     public partial class frmServices : Form
     {
-        SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\johnz\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture");
+        SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture");
         SQLiteCommand command;
         SQLiteDataAdapter adapter = new SQLiteDataAdapter();
 
@@ -17,7 +17,11 @@ namespace My_Garage
         public frmServices()
         {
             InitializeComponent();
-        }
+            dateTimeRoadTax.Enabled = false;
+            cmbRTDuration.Enabled = false;
+            dateTimeMOT.Enabled = false;
+            cmbMOTDuration.Enabled = false;
+        }        
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
@@ -25,35 +29,96 @@ namespace My_Garage
 
             // Service Add
 
-            string queryService = "INSERT INTO CarServices (Id, Car, RoadTax, RoadTaxDuration, MOT, MOTDuration) " +
+            string queryServices = "INSERT INTO CarServices (Id, Car, RoadTax, RoadTaxDuration, MOT, MOTDuration) " +
                 "VALUES (@id, @car, @roadTax, @roadTaxDuration, @MOT, @MOTDuration)";
+
+            string queryRoadTax = "INSERT INTO CarServices (Id, Car, RoadTax, RoadTaxDuration) " +
+                "VALUES (@id, @car, @roadTax, @roadTaxDuration)";
+
+            string queryMOT = "INSERT INTO CarServices (Id, Car, MOT, MOTDuration) " +
+                "VALUES (@id, @car, @MOT, @MOTDuration)";
 
             GetServiceId();
 
             conn.Open();
 
-            command = new SQLiteCommand(queryService, conn);
-
-            if (cmbRTDuration.Text != "" || cmbMOTDuration.Text != "")
+            if (chkRoadTax.Checked && chkMOT.Checked)
             {
-                command.Parameters.AddWithValue("@car", cmbCar.Text);
-                command.Parameters.AddWithValue("@roadTax", dateTimeRoadTax.Value.Date);
-                command.Parameters.AddWithValue("@roadTaxDuration", cmbRTDuration.Text);
-                command.Parameters.AddWithValue("@MOT", dateTimeMOT.Value.Date);
-                command.Parameters.AddWithValue("@MOTDuration", cmbMOTDuration.Text);
+                command = new SQLiteCommand(queryServices, conn);
 
-                command.ExecuteNonQuery();
-
-                MessageBox.Show("Service Added", "Service Addition", MessageBoxButtons.OK, MessageBoxIcon.None);
-
-                // Reminders Add
-
-                string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn) " +
-                "VALUES (@id, @type, @car, @customer, @notes, @dueOn)";
-
-                // Runs twice - First time is gets the road tax and second time it gets the MOT
-                for (int i = 0; i < 2; i++)
+                if (cmbRTDuration.Text != "" || cmbMOTDuration.Text != "")
                 {
+                    command.Parameters.AddWithValue("@id", _serviceId);
+                    command.Parameters.AddWithValue("@car", cmbCar.Text);
+                    command.Parameters.AddWithValue("@roadTax", dateTimeRoadTax.Value.Date);
+                    command.Parameters.AddWithValue("@roadTaxDuration", cmbRTDuration.Text);
+                    command.Parameters.AddWithValue("@MOT", dateTimeMOT.Value.Date);
+                    command.Parameters.AddWithValue("@MOTDuration", cmbMOTDuration.Text);
+
+                    command.ExecuteNonQuery();
+
+                    MessageBox.Show("Service Added", "Service Addition", MessageBoxButtons.OK, MessageBoxIcon.None);
+
+                    // Reminders Add
+
+                    string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn) " +
+                    "VALUES (@id, @type, @car, @customer, @notes, @dueOn)";
+
+                    // Runs twice - First time is gets the road tax and second time it gets the MOT
+                    for (int i = 0; i < 2; i++)
+                    {
+                        conn.Close();
+
+                        GetReminderId();
+
+                        conn.Open();
+
+                        command = new SQLiteCommand(queryReminder, conn);
+
+                        command.Parameters.AddWithValue("@id", _reminderId);
+                        command.Parameters.AddWithValue("@type", i == 0 ? "Road Tax Due" : "MOT Due");
+                        command.Parameters.AddWithValue("@car", cmbCar.Text.ToUpper());
+                        command.Parameters.AddWithValue("@customer", "N/A");
+                        command.Parameters.AddWithValue("@notes", "N/A");
+                        command.Parameters.AddWithValue("@dueOn", i == 0 ? GetRoadTaxDate(dateTimeRoadTax.Value).Date : GetMOTDate(dateTimeMOT.Value).Date);
+
+                        command.ExecuteNonQuery();
+                    }
+
+                    conn.Close();
+
+                    frmHome home = new frmHome();
+                    home.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Please enter a duration.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    frmServices services = new frmServices();
+                    services.Show();
+                }
+                    
+            }
+            else if (chkRoadTax.Checked && chkMOT.Checked == false)
+            {
+                command = new SQLiteCommand(queryRoadTax, conn);
+
+                if (cmbRTDuration.Text != "")
+                {
+                    command.Parameters.AddWithValue("@id", _serviceId);
+                    command.Parameters.AddWithValue("@car", cmbCar.Text);
+                    command.Parameters.AddWithValue("@roadTax", dateTimeRoadTax.Value.Date);
+                    command.Parameters.AddWithValue("@roadTaxDuration", cmbRTDuration.Text);
+
+                    command.ExecuteNonQuery();
+
+                    MessageBox.Show("Service Added", "Service Addition", MessageBoxButtons.OK, MessageBoxIcon.None);
+
+                    // Reminders Add
+
+                    string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn) " +
+                    "VALUES (@id, @type, @car, @customer, @notes, @dueOn)";
+
                     conn.Close();
 
                     GetReminderId();
@@ -63,22 +128,77 @@ namespace My_Garage
                     command = new SQLiteCommand(queryReminder, conn);
 
                     command.Parameters.AddWithValue("@id", _reminderId);
-                    command.Parameters.AddWithValue("@type", i == 0 ? "Road Tax Due" : "MOT Due");
+                    command.Parameters.AddWithValue("@type", "Road Tax Due");
                     command.Parameters.AddWithValue("@car", cmbCar.Text.ToUpper());
                     command.Parameters.AddWithValue("@customer", "N/A");
                     command.Parameters.AddWithValue("@notes", "N/A");
-                    command.Parameters.AddWithValue("@dueOn", i == 0 ? GetRoadTaxDate(dateTimeRoadTax.Value).Date : GetMOTDate(dateTimeMOT.Value).Date);
+                    command.Parameters.AddWithValue("@dueOn", GetRoadTaxDate(dateTimeRoadTax.Value).Date);
 
                     command.ExecuteNonQuery();
+
+                    conn.Close();
+
+                    frmHome home = new frmHome();
+                    home.Show();
                 }
+                else
+                {
+                    MessageBox.Show("Please enter a duration.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                conn.Close();
-
-                frmHome home = new frmHome();
-                home.Show();
+                    frmServices services = new frmServices();
+                    services.Show();
+                }
             }
-            else
-                MessageBox.Show("Please enter a duration.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else 
+            {
+                command = new SQLiteCommand(queryMOT, conn);
+
+                if (cmbMOTDuration.Text != "")
+                {
+                    command.Parameters.AddWithValue("@id", _serviceId);
+                    command.Parameters.AddWithValue("@car", cmbCar.Text);
+                    command.Parameters.AddWithValue("@MOT", dateTimeMOT.Value.Date);
+                    command.Parameters.AddWithValue("@MOTDuration", cmbMOTDuration.Text);
+
+                    command.ExecuteNonQuery();
+
+                    MessageBox.Show("Service Added", "Service Addition", MessageBoxButtons.OK, MessageBoxIcon.None);
+
+                    // Reminders Add
+
+                    string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn) " +
+                    "VALUES (@id, @type, @car, @customer, @notes, @dueOn)";
+
+                    conn.Close();
+
+                    GetReminderId();
+
+                    conn.Open();
+
+                    command = new SQLiteCommand(queryReminder, conn);
+
+                    command.Parameters.AddWithValue("@id", _reminderId);
+                    command.Parameters.AddWithValue("@type", "MOT Due");
+                    command.Parameters.AddWithValue("@car", cmbCar.Text.ToUpper());
+                    command.Parameters.AddWithValue("@customer", "N/A");
+                    command.Parameters.AddWithValue("@notes", "N/A");
+                    command.Parameters.AddWithValue("@dueOn", GetMOTDate(dateTimeMOT.Value).Date);
+
+                    command.ExecuteNonQuery();
+
+                    conn.Close();
+
+                    frmHome home = new frmHome();
+                    home.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Please enter a duration.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    frmServices services = new frmServices();
+                    services.Show();
+                }
+            }
         }
 
         private void btnCancel_Click(object sender, System.EventArgs e)
@@ -181,7 +301,7 @@ namespace My_Garage
 
         private void frmServices_Load(object sender, EventArgs e)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\johnz\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture"))
+            using (SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture"))
             {
                 try
                 {
@@ -203,6 +323,34 @@ namespace My_Garage
                 {
                     MessageBox.Show("Error occured!");
                 }
+            }
+        }
+
+        private void chkRoadTax_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!chkRoadTax.Checked)
+            {
+                dateTimeRoadTax.Enabled = false;
+                cmbRTDuration.Enabled = false;
+            }
+            else
+            {
+                dateTimeRoadTax.Enabled = true;
+                cmbRTDuration.Enabled = true;
+            }
+        }
+
+        private void chkMOT_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!chkMOT.Checked)
+            {
+                dateTimeMOT.Enabled = false;
+                cmbMOTDuration.Enabled = false;
+            }
+            else
+            {
+                dateTimeMOT.Enabled = true;
+                cmbMOTDuration.Enabled = true;
             }
         }
     }
