@@ -35,6 +35,7 @@
             this.btnReminders = new System.Windows.Forms.Button();
             this.btnFutureReminders = new System.Windows.Forms.Button();
             this.btnCarServices = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblMyGarage
@@ -113,11 +114,23 @@
             this.btnCarServices.UseVisualStyleBackColor = true;
             this.btnCarServices.Click += new System.EventHandler(this.btnCarServices_Click_1);
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnSearch.Location = new System.Drawing.Point(12, 489);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(328, 55);
+            this.btnSearch.TabIndex = 7;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(352, 539);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnCarServices);
             this.Controls.Add(this.btnFutureReminders);
             this.Controls.Add(this.btnReminders);
@@ -144,6 +157,7 @@
         private System.Windows.Forms.Button btnReminders;
         private System.Windows.Forms.Button btnFutureReminders;
         private System.Windows.Forms.Button btnCarServices;
+        private System.Windows.Forms.Button btnSearch;
     }
 }
 

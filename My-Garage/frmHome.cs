@@ -56,5 +56,12 @@ namespace My_Garage
             frmServices services = new frmServices();
             services.Show();
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            Hide();
+            frmSearch search = new frmSearch();
+            search.Show();
+        }
     }
 }

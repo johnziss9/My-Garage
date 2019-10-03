@@ -48,10 +48,9 @@
             // 
             this.lblForMOT.AutoSize = true;
             this.lblForMOT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblForMOT.Location = new System.Drawing.Point(325, 115);
-            this.lblForMOT.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblForMOT.Location = new System.Drawing.Point(433, 142);
             this.lblForMOT.Name = "lblForMOT";
-            this.lblForMOT.Size = new System.Drawing.Size(25, 17);
+            this.lblForMOT.Size = new System.Drawing.Size(29, 20);
             this.lblForMOT.TabIndex = 24;
             this.lblForMOT.Text = "for";
             // 
@@ -61,20 +60,19 @@
             this.cmbMOTDuration.Items.AddRange(new object[] {
             "1 Year",
             "2 Years"});
-            this.cmbMOTDuration.Location = new System.Drawing.Point(351, 115);
-            this.cmbMOTDuration.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbMOTDuration.Location = new System.Drawing.Point(468, 142);
+            this.cmbMOTDuration.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbMOTDuration.Name = "cmbMOTDuration";
-            this.cmbMOTDuration.Size = new System.Drawing.Size(92, 21);
+            this.cmbMOTDuration.Size = new System.Drawing.Size(121, 24);
             this.cmbMOTDuration.TabIndex = 5;
             // 
             // lblForRT
             // 
             this.lblForRT.AutoSize = true;
             this.lblForRT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblForRT.Location = new System.Drawing.Point(325, 64);
-            this.lblForRT.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblForRT.Location = new System.Drawing.Point(433, 79);
             this.lblForRT.Name = "lblForRT";
-            this.lblForRT.Size = new System.Drawing.Size(25, 17);
+            this.lblForRT.Size = new System.Drawing.Size(29, 20);
             this.lblForRT.TabIndex = 23;
             this.lblForRT.Text = "for";
             // 
@@ -86,34 +84,35 @@
             "6 Months",
             "9 Months",
             "12 Months"});
-            this.cmbRTDuration.Location = new System.Drawing.Point(351, 63);
-            this.cmbRTDuration.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbRTDuration.Location = new System.Drawing.Point(468, 78);
+            this.cmbRTDuration.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbRTDuration.Name = "cmbRTDuration";
-            this.cmbRTDuration.Size = new System.Drawing.Size(92, 21);
+            this.cmbRTDuration.Size = new System.Drawing.Size(121, 24);
             this.cmbRTDuration.TabIndex = 3;
             // 
             // dateTimeMOT
             // 
-            this.dateTimeMOT.Location = new System.Drawing.Point(121, 117);
+            this.dateTimeMOT.Location = new System.Drawing.Point(161, 144);
+            this.dateTimeMOT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dateTimeMOT.Name = "dateTimeMOT";
-            this.dateTimeMOT.Size = new System.Drawing.Size(200, 20);
+            this.dateTimeMOT.Size = new System.Drawing.Size(265, 22);
             this.dateTimeMOT.TabIndex = 4;
             // 
             // dateTimeRoadTax
             // 
-            this.dateTimeRoadTax.Location = new System.Drawing.Point(121, 64);
+            this.dateTimeRoadTax.Location = new System.Drawing.Point(161, 79);
+            this.dateTimeRoadTax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dateTimeRoadTax.Name = "dateTimeRoadTax";
-            this.dateTimeRoadTax.Size = new System.Drawing.Size(200, 20);
+            this.dateTimeRoadTax.Size = new System.Drawing.Size(265, 22);
             this.dateTimeRoadTax.TabIndex = 2;
             // 
             // lblMOT
             // 
             this.lblMOT.AutoSize = true;
             this.lblMOT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMOT.Location = new System.Drawing.Point(11, 119);
-            this.lblMOT.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblMOT.Location = new System.Drawing.Point(15, 146);
             this.lblMOT.Name = "lblMOT";
-            this.lblMOT.Size = new System.Drawing.Size(43, 17);
+            this.lblMOT.Size = new System.Drawing.Size(51, 20);
             this.lblMOT.TabIndex = 22;
             this.lblMOT.Text = "MOT:";
             // 
@@ -121,10 +120,9 @@
             // 
             this.lblRoadTax.AutoSize = true;
             this.lblRoadTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoadTax.Location = new System.Drawing.Point(11, 64);
-            this.lblRoadTax.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRoadTax.Location = new System.Drawing.Point(15, 79);
             this.lblRoadTax.Name = "lblRoadTax";
-            this.lblRoadTax.Size = new System.Drawing.Size(109, 17);
+            this.lblRoadTax.Size = new System.Drawing.Size(130, 20);
             this.lblRoadTax.TabIndex = 19;
             this.lblRoadTax.Text = "Adia Kikloforias:";
             // 
@@ -132,29 +130,28 @@
             // 
             this.lblCar.AutoSize = true;
             this.lblCar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCar.Location = new System.Drawing.Point(9, 6);
-            this.lblCar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCar.Location = new System.Drawing.Point(12, 11);
             this.lblCar.Name = "lblCar";
-            this.lblCar.Size = new System.Drawing.Size(70, 17);
+            this.lblCar.Size = new System.Drawing.Size(83, 20);
             this.lblCar.TabIndex = 25;
             this.lblCar.Text = "Aftokinito:";
             // 
             // cmbCar
             // 
             this.cmbCar.FormattingEnabled = true;
-            this.cmbCar.Location = new System.Drawing.Point(121, 6);
-            this.cmbCar.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbCar.Location = new System.Drawing.Point(161, 11);
+            this.cmbCar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCar.Name = "cmbCar";
-            this.cmbCar.Size = new System.Drawing.Size(200, 21);
+            this.cmbCar.Size = new System.Drawing.Size(265, 24);
             this.cmbCar.TabIndex = 1;
             // 
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnCancel.Location = new System.Drawing.Point(9, 149);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancel.Location = new System.Drawing.Point(12, 183);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(109, 28);
+            this.btnCancel.Size = new System.Drawing.Size(145, 34);
             this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -163,10 +160,10 @@
             // btnRegister
             // 
             this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnRegister.Location = new System.Drawing.Point(333, 149);
-            this.btnRegister.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRegister.Location = new System.Drawing.Point(444, 183);
+            this.btnRegister.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(109, 28);
+            this.btnRegister.Size = new System.Drawing.Size(145, 34);
             this.btnRegister.TabIndex = 6;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = true;
@@ -175,9 +172,10 @@
             // chkRoadTax
             // 
             this.chkRoadTax.AutoSize = true;
-            this.chkRoadTax.Location = new System.Drawing.Point(12, 38);
+            this.chkRoadTax.Location = new System.Drawing.Point(16, 47);
+            this.chkRoadTax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkRoadTax.Name = "chkRoadTax";
-            this.chkRoadTax.Size = new System.Drawing.Size(98, 17);
+            this.chkRoadTax.Size = new System.Drawing.Size(124, 21);
             this.chkRoadTax.TabIndex = 26;
             this.chkRoadTax.Text = "Add Road Tax:";
             this.chkRoadTax.UseVisualStyleBackColor = true;
@@ -186,9 +184,10 @@
             // chkMOT
             // 
             this.chkMOT.AutoSize = true;
-            this.chkMOT.Location = new System.Drawing.Point(12, 92);
+            this.chkMOT.Location = new System.Drawing.Point(16, 113);
+            this.chkMOT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkMOT.Name = "chkMOT";
-            this.chkMOT.Size = new System.Drawing.Size(75, 17);
+            this.chkMOT.Size = new System.Drawing.Size(94, 21);
             this.chkMOT.TabIndex = 27;
             this.chkMOT.Text = "Add MOT:";
             this.chkMOT.UseVisualStyleBackColor = true;
@@ -196,9 +195,9 @@
             // 
             // frmServices
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(453, 188);
+            this.ClientSize = new System.Drawing.Size(604, 231);
             this.Controls.Add(this.chkMOT);
             this.Controls.Add(this.chkRoadTax);
             this.Controls.Add(this.btnCancel);
@@ -214,7 +213,7 @@
             this.Controls.Add(this.lblMOT);
             this.Controls.Add(this.lblRoadTax);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "frmServices";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
