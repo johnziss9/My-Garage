@@ -49,5 +49,12 @@ namespace My_Garage
             frmFutureReminders futureReminders = new frmFutureReminders();
             futureReminders.Show();
         }
+
+        private void btnCarServices_Click_1(object sender, EventArgs e)
+        {
+            Hide();
+            frmServices services = new frmServices();
+            services.Show();
+        }
     }
 }

@@ -34,6 +34,7 @@
             this.btnCarRental = new System.Windows.Forms.Button();
             this.btnReminders = new System.Windows.Forms.Button();
             this.btnFutureReminders = new System.Windows.Forms.Button();
+            this.btnCarServices = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblMyGarage
@@ -71,7 +72,7 @@
             // btnCarRental
             // 
             this.btnCarRental.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnCarRental.Location = new System.Drawing.Point(12, 220);
+            this.btnCarRental.Location = new System.Drawing.Point(12, 300);
             this.btnCarRental.Name = "btnCarRental";
             this.btnCarRental.Size = new System.Drawing.Size(328, 55);
             this.btnCarRental.TabIndex = 3;
@@ -82,7 +83,7 @@
             // btnReminders
             // 
             this.btnReminders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnReminders.Location = new System.Drawing.Point(12, 300);
+            this.btnReminders.Location = new System.Drawing.Point(12, 380);
             this.btnReminders.Name = "btnReminders";
             this.btnReminders.Size = new System.Drawing.Size(328, 55);
             this.btnReminders.TabIndex = 4;
@@ -93,7 +94,7 @@
             // btnFutureReminders
             // 
             this.btnFutureReminders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnFutureReminders.Location = new System.Drawing.Point(12, 380);
+            this.btnFutureReminders.Location = new System.Drawing.Point(12, 460);
             this.btnFutureReminders.Name = "btnFutureReminders";
             this.btnFutureReminders.Size = new System.Drawing.Size(328, 55);
             this.btnFutureReminders.TabIndex = 5;
@@ -101,11 +102,23 @@
             this.btnFutureReminders.UseVisualStyleBackColor = true;
             this.btnFutureReminders.Click += new System.EventHandler(this.btnFutureReminders_Click);
             // 
+            // btnCarServices
+            // 
+            this.btnCarServices.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnCarServices.Location = new System.Drawing.Point(12, 220);
+            this.btnCarServices.Name = "btnCarServices";
+            this.btnCarServices.Size = new System.Drawing.Size(328, 55);
+            this.btnCarServices.TabIndex = 6;
+            this.btnCarServices.Text = "Car Services";
+            this.btnCarServices.UseVisualStyleBackColor = true;
+            this.btnCarServices.Click += new System.EventHandler(this.btnCarServices_Click_1);
+            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(352, 456);
+            this.ClientSize = new System.Drawing.Size(352, 539);
+            this.Controls.Add(this.btnCarServices);
             this.Controls.Add(this.btnFutureReminders);
             this.Controls.Add(this.btnReminders);
             this.Controls.Add(this.btnCarRental);
@@ -130,6 +143,7 @@
         private System.Windows.Forms.Button btnCarRental;
         private System.Windows.Forms.Button btnReminders;
         private System.Windows.Forms.Button btnFutureReminders;
+        private System.Windows.Forms.Button btnCarServices;
     }
 }
 
