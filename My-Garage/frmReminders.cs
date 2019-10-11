@@ -32,7 +32,7 @@ namespace My_Garage
 
         private void ShowReminders()
         {
-            string connString = @"Data Source=C:\Users\johnz\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture";
+            string connString = @"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture";
             SQLiteConnection conn = new SQLiteConnection(connString);
 
             DataTable dt = new DataTable();
@@ -62,7 +62,7 @@ namespace My_Garage
             var reminderId = dataGridReminders.SelectedRows[0].Cells[0].Value.ToString();
             string query = $"DELETE FROM Reminders WHERE Id = {reminderId}";
 
-            using (SQLiteConnection conn = new SQLiteConnection(@"Data Source = C:\Users\johnz\Downloads\GarageDB.db; Version = 3; datetimeformat = CurrentCulture"))
+            using (SQLiteConnection conn = new SQLiteConnection(@"Data Source = C:\Users\jzissimou\Downloads\GarageDB.db; Version = 3; datetimeformat = CurrentCulture"))
             {
                 conn.Open();
 
