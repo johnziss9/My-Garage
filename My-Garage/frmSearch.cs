@@ -36,7 +36,7 @@ namespace My_Garage
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string connString = @"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture";
+            string connString = @"Data Source=C:\Users\johnz\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture";
             SQLiteConnection conn = new SQLiteConnection(connString);
 
             DataTable dt = new DataTable();
@@ -55,7 +55,7 @@ namespace My_Garage
 
         private void dataGridCars_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture");
+            SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\johnz\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture");
 
             SQLiteCommand command;
             SQLiteDataReader dr;
@@ -83,7 +83,7 @@ namespace My_Garage
 
             // Fill in services
 
-            string queryServices = "SELECT * FROM CarServices WHERE CarId = " + currentRow;
+            string queryServices = "SELECT * FROM CarServices WHERE CarId = " + currentRow + " ORDER BY Id DESC LIMIT 1";
 
             conn.Open();
 
@@ -93,17 +93,52 @@ namespace My_Garage
 
             while (dr.Read())
             {
-                var roadTaxDate = Convert.ToDateTime(dr["RoadTax"]);
-                string[] roadTaxDurationSplit = dr["RoadTaxDuration"].ToString().Split(' ');
-                var roadTaxDuration = Convert.ToInt32(roadTaxDurationSplit[0]);
+                if (dr["RoadTax"] != DBNull.Value)
+                {
+                    var roadTaxDate = Convert.ToDateTime(dr["RoadTax"]);
+                    string[] roadTaxDurationSplit = dr["RoadTaxDuration"].ToString().Split(' ');
+                    var roadTaxDuration = Convert.ToInt32(roadTaxDurationSplit[0]);
 
-                txtRoadTaxExpires.Text = roadTaxDate.AddMonths(roadTaxDuration).ToShortDateString();
+                    txtRoadTaxExpires.Text = roadTaxDate.AddMonths(roadTaxDuration).ToShortDateString();
+                }
+                else
+                    txtRoadTaxExpires.Text = "Not Added";
 
-                var MOTDate = Convert.ToDateTime(dr["MOT"]);
-                string[] MOTDurationSplit = dr["MOTDuration"].ToString().Split(' ');
-                var MOTDuration = Convert.ToInt32(MOTDurationSplit[0]);
 
-                txtMOTExpires.Text = MOTDate.AddMonths(MOTDuration).ToShortDateString();
+                if (dr["MOT"] != DBNull.Value)
+                {
+                    var MOTDate = Convert.ToDateTime(dr["MOT"]);
+                    string[] MOTDurationSplit = dr["MOTDuration"].ToString().Split(' ');
+                    var MOTDuration = Convert.ToInt32(MOTDurationSplit[0]);
+
+                    txtMOTExpires.Text = MOTDate.AddMonths(MOTDuration).ToShortDateString();
+                }
+                else
+                    txtMOTExpires.Text = "Not Added";
+            }
+
+            conn.Close();
+
+            // Fill in rental services
+
+            string queryRental = "SELECT * FROM Rentals WHERE CarId = " + currentRow + " ORDER BY Id DESC LIMIT 1";
+
+            conn.Open();
+
+            command = new SQLiteCommand(queryRental, conn);
+
+            dr = command.ExecuteReader();
+
+            while (dr.Read())
+            {
+                if (Convert.ToBoolean(dr["Rented"]) == true)
+                    radioYes.Checked = true;
+                else
+                    radioNo.Checked = true;
+
+                txtCustomer.Text = dr["Customer"].ToString();
+                txtFrom.Text = Convert.ToDateTime(dr["FromDate"]).ToShortDateString();
+                txtTo.Text = Convert.ToDateTime(dr["ToDate"]).ToShortDateString();
             }
         }
     }

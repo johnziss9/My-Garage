@@ -7,7 +7,7 @@ namespace My_Garage
 {
     public partial class frmCarServices : Form
     {
-        SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture");
+        SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\johnz\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture");
         SQLiteCommand command;
         SQLiteDataAdapter adapter = new SQLiteDataAdapter();
 
@@ -62,8 +62,8 @@ namespace My_Garage
 
                     // Reminders Add
 
-                    string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn, ServiceId, CarId) " +
-                    "VALUES (@id, @type, @car, @customer, @notes, @dueOn, @serviceId, @carId)";
+                    string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn, CarId) " +
+                    "VALUES (@id, @type, @car, @customer, @notes, @dueOn, @carId)";
 
                     // Runs twice - First time is gets the road tax and second time it gets the MOT
                     for (int i = 0; i < 2; i++)
@@ -82,7 +82,6 @@ namespace My_Garage
                         command.Parameters.AddWithValue("@customer", "N/A");
                         command.Parameters.AddWithValue("@notes", "N/A");
                         command.Parameters.AddWithValue("@dueOn", i == 0 ? GetRoadTaxDate(dateTimeRoadTax.Value).Date : GetMOTDate(dateTimeMOT.Value).Date);
-                        command.Parameters.AddWithValue("@serviceId", _serviceId);
                         command.Parameters.AddWithValue("@carId", cmbCar.SelectedValue);
 
                         command.ExecuteNonQuery();
@@ -120,8 +119,8 @@ namespace My_Garage
 
                     // Reminders Add
 
-                    string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn, ServiceId, CarId) " +
-                    "VALUES (@id, @type, @car, @customer, @notes, @dueOn, @serviceId, @carId)";
+                    string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn, CarId) " +
+                    "VALUES (@id, @type, @car, @customer, @notes, @dueOn, @carId)";
 
                     conn.Close();
 
@@ -137,7 +136,6 @@ namespace My_Garage
                     command.Parameters.AddWithValue("@customer", "N/A");
                     command.Parameters.AddWithValue("@notes", "N/A");
                     command.Parameters.AddWithValue("@dueOn", GetRoadTaxDate(dateTimeRoadTax.Value).Date);
-                    command.Parameters.AddWithValue("@serviceId", _serviceId);
                     command.Parameters.AddWithValue("@carId", cmbCar.SelectedValue);
 
                     command.ExecuteNonQuery();
@@ -173,8 +171,8 @@ namespace My_Garage
 
                     // Reminders Add
 
-                    string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn, ServiceId, CarId) " +
-                    "VALUES (@id, @type, @car, @customer, @notes, @dueOn, @serviceId, @carId)";
+                    string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn, CarId) " +
+                    "VALUES (@id, @type, @car, @customer, @notes, @dueOn, @carId)";
 
                     conn.Close();
 
@@ -190,7 +188,6 @@ namespace My_Garage
                     command.Parameters.AddWithValue("@customer", "N/A");
                     command.Parameters.AddWithValue("@notes", "N/A");
                     command.Parameters.AddWithValue("@dueOn", GetMOTDate(dateTimeMOT.Value).Date);
-                    command.Parameters.AddWithValue("@serviceId", _serviceId);
                     command.Parameters.AddWithValue("@carId", cmbCar.SelectedValue);
 
                     command.ExecuteNonQuery();
@@ -312,7 +309,7 @@ namespace My_Garage
 
         private void frmServices_Load(object sender, EventArgs e)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture"))
+            using (SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\johnz\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture"))
             {
                 try
                 {

@@ -7,7 +7,7 @@ namespace My_Garage
 {
     public partial class frmCarRental : Form
     {
-        SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture");
+        SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\johnz\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture");
         SQLiteCommand command;
         SQLiteDataAdapter adapter = new SQLiteDataAdapter();
 
@@ -23,8 +23,8 @@ namespace My_Garage
         {
             Hide();
 
-            string query = "INSERT INTO Rentals(Id, FromDate, ToDate, Customer, Car, Notes, CustomerId, CarId) " +
-                "VALUES (@id, @fromDate, @toDate, @customer, @car, @notes, @customerId, @carId)";
+            string query = "INSERT INTO Rentals(Id, FromDate, ToDate, Customer, Car, Notes, CarId, Rented, Returned) " +
+                "VALUES (@id, @fromDate, @toDate, @customer, @car, @notes, @carId, @rented, @returned)";
 
             GetRentalId();
 
@@ -38,13 +38,14 @@ namespace My_Garage
             command.Parameters.AddWithValue("@customer", cmbCustomer.Text);
             command.Parameters.AddWithValue("@car", cmbCar.Text);
             command.Parameters.AddWithValue("@notes", txtNotes.Text);
-            command.Parameters.AddWithValue("@customerId", cmbCustomer.SelectedValue);
             command.Parameters.AddWithValue("@carId", cmbCar.SelectedValue);
+            command.Parameters.AddWithValue("@rented", true);
+            command.Parameters.AddWithValue("@returned", false);
 
             command.ExecuteNonQuery();
 
-            string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn, RentalId, CarId) " +
-                "VALUES (@id, @type, @car, @customer, @notes, @dueOn, @rentalId, @carId)";
+            string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn, CarId) " +
+                "VALUES (@id, @type, @car, @customer, @notes, @dueOn, @carId)";
 
 
             conn.Close();
@@ -61,7 +62,6 @@ namespace My_Garage
             command.Parameters.AddWithValue("@customer", cmbCustomer.Text);
             command.Parameters.AddWithValue("@notes", txtNotes.Text);
             command.Parameters.AddWithValue("@dueOn", dateTimeTo.Value.Date);
-            command.Parameters.AddWithValue("@rentalId", _rentalId);
             command.Parameters.AddWithValue("@carId", cmbCar.SelectedValue);
 
             command.ExecuteNonQuery();
@@ -97,7 +97,7 @@ namespace My_Garage
 
         private void frmCarRental_Load(object sender, EventArgs e)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture"))
+            using (SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\johnz\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture"))
             {
                 try
                 {
