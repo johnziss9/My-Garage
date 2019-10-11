@@ -37,6 +37,6 @@ C:\Users\jzissimou\Source\Repos\My-Garage\My-Garage\obj\Debug\My-Garage.csproj.C
 C:\Users\jzissimou\Source\Repos\My-Garage\My-Garage\obj\Debug\My-Garage.exe
 C:\Users\jzissimou\Source\Repos\My-Garage\My-Garage\obj\Debug\My-Garage.pdb
 C:\Users\johnz\source\repos\My-Garage\My-Garage\obj\Debug\My_Garage.frmServices.resources
-C:\Users\jzissimou\Source\Repos\My-Garage\My-Garage\obj\Debug\My_Garage.frmServices.resources
 C:\Users\johnz\source\repos\My-Garage\My-Garage\obj\Debug\My_Garage.frmSearch.resources
 C:\Users\jzissimou\Source\Repos\My-Garage\My-Garage\obj\Debug\My_Garage.frmSearch.resources
+C:\Users\jzissimou\Source\Repos\My-Garage\My-Garage\obj\Debug\My_Garage.frmCarServices.resources

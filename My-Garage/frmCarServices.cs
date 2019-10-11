@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace My_Garage
 {
-    public partial class frmServices : Form
+    public partial class frmCarServices : Form
     {
         SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture");
         SQLiteCommand command;
@@ -14,7 +14,7 @@ namespace My_Garage
         int _serviceId = 0;
         int _reminderId = 0;
 
-        public frmServices()
+        public frmCarServices()
         {
             InitializeComponent();
             dateTimeRoadTax.Enabled = false;
@@ -29,14 +29,14 @@ namespace My_Garage
 
             // Service Add
 
-            string queryServices = "INSERT INTO CarServices (Id, Car, RoadTax, RoadTaxDuration, MOT, MOTDuration) " +
-                "VALUES (@id, @car, @roadTax, @roadTaxDuration, @MOT, @MOTDuration)";
+            string queryServices = "INSERT INTO CarServices (Id, Car, RoadTax, RoadTaxDuration, MOT, MOTDuration, CarId) " +
+                "VALUES (@id, @car, @roadTax, @roadTaxDuration, @MOT, @MOTDuration, @carId)";
 
-            string queryRoadTax = "INSERT INTO CarServices (Id, Car, RoadTax, RoadTaxDuration) " +
-                "VALUES (@id, @car, @roadTax, @roadTaxDuration)";
+            string queryRoadTax = "INSERT INTO CarServices (Id, Car, RoadTax, RoadTaxDuration, CarId) " +
+                "VALUES (@id, @car, @roadTax, @roadTaxDuration, @carId)";
 
-            string queryMOT = "INSERT INTO CarServices (Id, Car, MOT, MOTDuration) " +
-                "VALUES (@id, @car, @MOT, @MOTDuration)";
+            string queryMOT = "INSERT INTO CarServices (Id, Car, MOT, MOTDuration, CarId) " +
+                "VALUES (@id, @car, @MOT, @MOTDuration, @carId)";
 
             GetServiceId();
 
@@ -54,6 +54,7 @@ namespace My_Garage
                     command.Parameters.AddWithValue("@roadTaxDuration", cmbRTDuration.Text);
                     command.Parameters.AddWithValue("@MOT", dateTimeMOT.Value.Date);
                     command.Parameters.AddWithValue("@MOTDuration", cmbMOTDuration.Text);
+                    command.Parameters.AddWithValue("@carId", cmbCar.SelectedValue);
 
                     command.ExecuteNonQuery();
 
@@ -61,8 +62,8 @@ namespace My_Garage
 
                     // Reminders Add
 
-                    string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn) " +
-                    "VALUES (@id, @type, @car, @customer, @notes, @dueOn)";
+                    string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn, ServiceId) " +
+                    "VALUES (@id, @type, @car, @customer, @notes, @dueOn, @serviceId)";
 
                     // Runs twice - First time is gets the road tax and second time it gets the MOT
                     for (int i = 0; i < 2; i++)
@@ -81,6 +82,7 @@ namespace My_Garage
                         command.Parameters.AddWithValue("@customer", "N/A");
                         command.Parameters.AddWithValue("@notes", "N/A");
                         command.Parameters.AddWithValue("@dueOn", i == 0 ? GetRoadTaxDate(dateTimeRoadTax.Value).Date : GetMOTDate(dateTimeMOT.Value).Date);
+                        command.Parameters.AddWithValue("@serviceId", _serviceId);
 
                         command.ExecuteNonQuery();
                     }
@@ -94,7 +96,7 @@ namespace My_Garage
                 {
                     MessageBox.Show("Please enter a duration.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    frmServices services = new frmServices();
+                    frmCarServices services = new frmCarServices();
                     services.Show();
                 }
 
@@ -109,6 +111,7 @@ namespace My_Garage
                     command.Parameters.AddWithValue("@car", cmbCar.Text);
                     command.Parameters.AddWithValue("@roadTax", dateTimeRoadTax.Value.Date);
                     command.Parameters.AddWithValue("@roadTaxDuration", cmbRTDuration.Text);
+                    command.Parameters.AddWithValue("@carId", cmbCar.SelectedValue);
 
                     command.ExecuteNonQuery();
 
@@ -116,8 +119,8 @@ namespace My_Garage
 
                     // Reminders Add
 
-                    string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn) " +
-                    "VALUES (@id, @type, @car, @customer, @notes, @dueOn)";
+                    string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn, ServiceId) " +
+                    "VALUES (@id, @type, @car, @customer, @notes, @dueOn, @serviceId)";
 
                     conn.Close();
 
@@ -133,6 +136,7 @@ namespace My_Garage
                     command.Parameters.AddWithValue("@customer", "N/A");
                     command.Parameters.AddWithValue("@notes", "N/A");
                     command.Parameters.AddWithValue("@dueOn", GetRoadTaxDate(dateTimeRoadTax.Value).Date);
+                    command.Parameters.AddWithValue("@serviceId", _serviceId);
 
                     command.ExecuteNonQuery();
 
@@ -145,7 +149,7 @@ namespace My_Garage
                 {
                     MessageBox.Show("Please enter a duration.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    frmServices services = new frmServices();
+                    frmCarServices services = new frmCarServices();
                     services.Show();
                 }
             }
@@ -159,6 +163,7 @@ namespace My_Garage
                     command.Parameters.AddWithValue("@car", cmbCar.Text);
                     command.Parameters.AddWithValue("@MOT", dateTimeMOT.Value.Date);
                     command.Parameters.AddWithValue("@MOTDuration", cmbMOTDuration.Text);
+                    command.Parameters.AddWithValue("@carId", cmbCar.SelectedValue);
 
                     command.ExecuteNonQuery();
 
@@ -166,8 +171,8 @@ namespace My_Garage
 
                     // Reminders Add
 
-                    string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn) " +
-                    "VALUES (@id, @type, @car, @customer, @notes, @dueOn)";
+                    string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn, ServiceId) " +
+                    "VALUES (@id, @type, @car, @customer, @notes, @dueOn, @serviceId)";
 
                     conn.Close();
 
@@ -183,6 +188,7 @@ namespace My_Garage
                     command.Parameters.AddWithValue("@customer", "N/A");
                     command.Parameters.AddWithValue("@notes", "N/A");
                     command.Parameters.AddWithValue("@dueOn", GetMOTDate(dateTimeMOT.Value).Date);
+                    command.Parameters.AddWithValue("@serviceId", _serviceId);
 
                     command.ExecuteNonQuery();
 
@@ -195,7 +201,7 @@ namespace My_Garage
                 {
                     MessageBox.Show("Please enter a duration.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    frmServices services = new frmServices();
+                    frmCarServices services = new frmCarServices();
                     services.Show();
                 }
             }

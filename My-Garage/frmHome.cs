@@ -53,7 +53,7 @@ namespace My_Garage
         private void btnCarServices_Click_1(object sender, EventArgs e)
         {
             Hide();
-            frmServices services = new frmServices();
+            frmCarServices services = new frmCarServices();
             services.Show();
         }
 

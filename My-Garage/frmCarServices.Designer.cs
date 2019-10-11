@@ -1,6 +1,6 @@
 ﻿namespace My_Garage
 {
-    partial class frmServices
+    partial class frmCarServices
     {
         /// <summary>
         /// Required designer variable.

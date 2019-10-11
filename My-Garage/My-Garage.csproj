@@ -95,11 +95,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="frmServices.cs">
+    <Compile Include="frmCarServices.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmServices.Designer.cs">
-      <DependentUpon>frmServices.cs</DependentUpon>
+    <Compile Include="frmCarServices.Designer.cs">
+      <DependentUpon>frmCarServices.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="frmCarRegistration.resx">
       <DependentUpon>frmCarRegistration.cs</DependentUpon>
@@ -131,8 +131,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frmServices.resx">
-      <DependentUpon>frmServices.cs</DependentUpon>
+    <EmbeddedResource Include="frmCarServices.resx">
+      <DependentUpon>frmCarServices.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
