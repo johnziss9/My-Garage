@@ -43,8 +43,8 @@ namespace My_Garage
 
             command.ExecuteNonQuery();
 
-            string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn, RentalId) " +
-                "VALUES (@id, @type, @car, @customer, @notes, @dueOn, @rentalId)";
+            string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn, RentalId, CarId) " +
+                "VALUES (@id, @type, @car, @customer, @notes, @dueOn, @rentalId, @carId)";
 
 
             conn.Close();
@@ -62,6 +62,7 @@ namespace My_Garage
             command.Parameters.AddWithValue("@notes", txtNotes.Text);
             command.Parameters.AddWithValue("@dueOn", dateTimeTo.Value.Date);
             command.Parameters.AddWithValue("@rentalId", _rentalId);
+            command.Parameters.AddWithValue("@carId", cmbCar.SelectedValue);
 
             command.ExecuteNonQuery();
 

@@ -57,15 +57,20 @@ namespace My_Garage
         {
             SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\jzissimou\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture");
 
+            SQLiteCommand command;
+            SQLiteDataReader dr;
+
             var currentRow = dataGridCars.CurrentRow.Cells[0].Value;
 
-            string query = "SELECT * FROM Cars WHERE Id = " + currentRow;
+            // Fill in cars
+
+            string queryCars = "SELECT * FROM Cars WHERE Id = " + currentRow;
 
             conn.Open();
 
-            SQLiteCommand command = new SQLiteCommand(query, conn);
+            command = new SQLiteCommand(queryCars, conn);
 
-            SQLiteDataReader dr = command.ExecuteReader();
+            dr = command.ExecuteReader();
 
             while (dr.Read())
             {
@@ -75,6 +80,31 @@ namespace My_Garage
             }
 
             conn.Close();
+
+            // Fill in services
+
+            string queryServices = "SELECT * FROM CarServices WHERE CarId = " + currentRow;
+
+            conn.Open();
+
+            command = new SQLiteCommand(queryServices, conn);
+
+            dr = command.ExecuteReader();
+
+            while (dr.Read())
+            {
+                var roadTaxDate = Convert.ToDateTime(dr["RoadTax"]);
+                string[] roadTaxDurationSplit = dr["RoadTaxDuration"].ToString().Split(' ');
+                var roadTaxDuration = Convert.ToInt32(roadTaxDurationSplit[0]);
+
+                txtRoadTaxExpires.Text = roadTaxDate.AddMonths(roadTaxDuration).ToShortDateString();
+
+                var MOTDate = Convert.ToDateTime(dr["MOT"]);
+                string[] MOTDurationSplit = dr["MOTDuration"].ToString().Split(' ');
+                var MOTDuration = Convert.ToInt32(MOTDurationSplit[0]);
+
+                txtMOTExpires.Text = MOTDate.AddMonths(MOTDuration).ToShortDateString();
+            }
         }
     }
 }
