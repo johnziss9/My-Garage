@@ -43,13 +43,6 @@ namespace My_Garage
             reminders.Show();
         }
 
-        private void btnFutureReminders_Click(object sender, EventArgs e)
-        {
-            Hide();
-            frmFutureReminders futureReminders = new frmFutureReminders();
-            futureReminders.Show();
-        }
-
         private void btnCarServices_Click_1(object sender, EventArgs e)
         {
             Hide();

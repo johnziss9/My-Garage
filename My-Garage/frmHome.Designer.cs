@@ -33,7 +33,6 @@
             this.btnCustomerRegistration = new System.Windows.Forms.Button();
             this.btnCarRental = new System.Windows.Forms.Button();
             this.btnReminders = new System.Windows.Forms.Button();
-            this.btnFutureReminders = new System.Windows.Forms.Button();
             this.btnCarServices = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -92,17 +91,6 @@
             this.btnReminders.UseVisualStyleBackColor = true;
             this.btnReminders.Click += new System.EventHandler(this.btnReminders_Click);
             // 
-            // btnFutureReminders
-            // 
-            this.btnFutureReminders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnFutureReminders.Location = new System.Drawing.Point(12, 460);
-            this.btnFutureReminders.Name = "btnFutureReminders";
-            this.btnFutureReminders.Size = new System.Drawing.Size(328, 55);
-            this.btnFutureReminders.TabIndex = 5;
-            this.btnFutureReminders.Text = "Future Reminders";
-            this.btnFutureReminders.UseVisualStyleBackColor = true;
-            this.btnFutureReminders.Click += new System.EventHandler(this.btnFutureReminders_Click);
-            // 
             // btnCarServices
             // 
             this.btnCarServices.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
@@ -117,7 +105,7 @@
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnSearch.Location = new System.Drawing.Point(12, 489);
+            this.btnSearch.Location = new System.Drawing.Point(12, 460);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(328, 55);
             this.btnSearch.TabIndex = 7;
@@ -132,7 +120,6 @@
             this.ClientSize = new System.Drawing.Size(352, 539);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnCarServices);
-            this.Controls.Add(this.btnFutureReminders);
             this.Controls.Add(this.btnReminders);
             this.Controls.Add(this.btnCarRental);
             this.Controls.Add(this.btnCustomerRegistration);
@@ -155,7 +142,6 @@
         private System.Windows.Forms.Button btnCustomerRegistration;
         private System.Windows.Forms.Button btnCarRental;
         private System.Windows.Forms.Button btnReminders;
-        private System.Windows.Forms.Button btnFutureReminders;
         private System.Windows.Forms.Button btnCarServices;
         private System.Windows.Forms.Button btnSearch;
     }
