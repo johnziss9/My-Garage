@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace My_Garage
@@ -61,7 +55,26 @@ namespace My_Garage
 
         private void dataGridCars_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\johnz\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture");
 
+            var currentRow = dataGridCars.CurrentRow.Cells[0].Value;
+
+            string query = "SELECT * FROM Cars WHERE Id = " + currentRow;
+
+            conn.Open();
+
+            SQLiteCommand command = new SQLiteCommand(query, conn);
+
+            SQLiteDataReader dr = command.ExecuteReader();
+
+            while (dr.Read())
+            {
+                txtCarMake.Text = dr["CarMake"].ToString();
+                txtCarModel.Text = dr["CarModel"].ToString();
+                txtNumberPlate.Text = dr["NumberPlate"].ToString();
+            }
+
+            conn.Close();
         }
     }
 }
