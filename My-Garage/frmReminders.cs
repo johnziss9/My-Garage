@@ -47,6 +47,7 @@ namespace My_Garage
             dataGridReminders.DataSource = bs;
 
             dataGridReminders.Columns[0].Visible = false;
+            dataGridReminders.Columns[6].Visible = false;
 
             foreach (DataGridViewRow row in dataGridReminders.Rows)
             {
@@ -60,7 +61,9 @@ namespace My_Garage
         private void dataGridReminders_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             var reminderId = dataGridReminders.SelectedRows[0].Cells[0].Value.ToString();
+            var carId = dataGridReminders.SelectedRows[0].Cells[6].Value.ToString();
             string query = $"DELETE FROM Reminders WHERE Id = {reminderId}";
+            string rentalQuery = $"UPDATE Rentals SET Rented = false, Returned = true WHERE CarId = {carId}";
 
             using (SQLiteConnection conn = new SQLiteConnection(@"Data Source = C:\Users\johnz\Downloads\GarageDB.db; Version = 3; datetimeformat = CurrentCulture"))
             {
@@ -68,13 +71,37 @@ namespace My_Garage
 
                 SQLiteCommand command = new SQLiteCommand();
 
-                command = new SQLiteCommand(query, conn);
-
-                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this reminder?", "Delete Reminder", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (dialogResult == DialogResult.Yes)
+                if (dataGridReminders.SelectedRows[0].Cells[1].Value.ToString() == "Rental Car")
                 {
-                    command.ExecuteNonQuery();
-                    ShowReminders();
+                    command = new SQLiteCommand(rentalQuery, conn);
+
+                    DialogResult rentalDialogResult = MessageBox.Show("Has the car been returned?", "Returned?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (rentalDialogResult == DialogResult.Yes)
+                    {
+                        command.ExecuteNonQuery();
+
+                        command = new SQLiteCommand(query, conn);
+
+                        DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this reminder?", "Delete Reminder", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            command.ExecuteNonQuery();
+                            ShowReminders();
+                        }
+
+                        ShowReminders();
+                    }
+                }
+                else
+                {
+                    command = new SQLiteCommand(query, conn);
+
+                    DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this reminder?", "Delete Reminder", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        command.ExecuteNonQuery();
+                        ShowReminders();
+                    }
                 }
             }
         }
