@@ -43,8 +43,8 @@ namespace My_Garage
 
             // Reminders Add
 
-            string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn) " +
-                "VALUES (@id, @type, @car, @customer, @notes, @dueOn)";
+            string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn, CarId) " +
+                "VALUES (@id, @type, @car, @customer, @notes, @dueOn, @carId)";
 
 
             conn.Close();
@@ -61,6 +61,7 @@ namespace My_Garage
             command.Parameters.AddWithValue("@customer", cmbCustomer.Text);
             command.Parameters.AddWithValue("@notes", txtNotes.Text);
             command.Parameters.AddWithValue("@dueOn", dateTimeTo.Value.Date);
+            command.Parameters.AddWithValue("@carId", ""); // get car id and assign it to @carId parameter
 
             command.ExecuteNonQuery();
 
@@ -99,7 +100,7 @@ namespace My_Garage
             {
                 try
                 {
-                    string carQuery = "SELECT Id, CarMake, CarModel, (CarMake || ' ' || CarModel) AS Car FROM Cars";
+                    string carQuery = "SELECT Id, CarMake, CarModel, (CarMake || ' ' || CarModel || ' (' || NumberPlate || ')') AS Car FROM Cars";
                     string customerQuery = "SELECT Id, FirstName, LastName, (FirstName || ' ' || LastName) AS [Name] FROM Customers";
 
                     SQLiteDataAdapter daCars = new SQLiteDataAdapter(carQuery, conn);
