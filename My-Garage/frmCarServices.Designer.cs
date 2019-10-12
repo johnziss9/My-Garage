@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCarServices));
             this.lblForMOT = new System.Windows.Forms.Label();
             this.cmbMOTDuration = new System.Windows.Forms.ComboBox();
             this.lblForRT = new System.Windows.Forms.Label();
@@ -93,7 +94,7 @@
             // dateTimeMOT
             // 
             this.dateTimeMOT.Location = new System.Drawing.Point(161, 144);
-            this.dateTimeMOT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimeMOT.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimeMOT.Name = "dateTimeMOT";
             this.dateTimeMOT.Size = new System.Drawing.Size(265, 22);
             this.dateTimeMOT.TabIndex = 4;
@@ -101,7 +102,7 @@
             // dateTimeRoadTax
             // 
             this.dateTimeRoadTax.Location = new System.Drawing.Point(161, 79);
-            this.dateTimeRoadTax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimeRoadTax.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimeRoadTax.Name = "dateTimeRoadTax";
             this.dateTimeRoadTax.Size = new System.Drawing.Size(265, 22);
             this.dateTimeRoadTax.TabIndex = 2;
@@ -142,7 +143,7 @@
             this.cmbCar.Location = new System.Drawing.Point(161, 11);
             this.cmbCar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCar.Name = "cmbCar";
-            this.cmbCar.Size = new System.Drawing.Size(265, 24);
+            this.cmbCar.Size = new System.Drawing.Size(428, 24);
             this.cmbCar.TabIndex = 1;
             // 
             // btnCancel
@@ -173,7 +174,7 @@
             // 
             this.chkRoadTax.AutoSize = true;
             this.chkRoadTax.Location = new System.Drawing.Point(16, 47);
-            this.chkRoadTax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkRoadTax.Margin = new System.Windows.Forms.Padding(4);
             this.chkRoadTax.Name = "chkRoadTax";
             this.chkRoadTax.Size = new System.Drawing.Size(124, 21);
             this.chkRoadTax.TabIndex = 26;
@@ -185,7 +186,7 @@
             // 
             this.chkMOT.AutoSize = true;
             this.chkMOT.Location = new System.Drawing.Point(16, 113);
-            this.chkMOT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkMOT.Margin = new System.Windows.Forms.Padding(4);
             this.chkMOT.Name = "chkMOT";
             this.chkMOT.Size = new System.Drawing.Size(94, 21);
             this.chkMOT.TabIndex = 27;
@@ -193,7 +194,7 @@
             this.chkMOT.UseVisualStyleBackColor = true;
             this.chkMOT.CheckedChanged += new System.EventHandler(this.chkMOT_CheckedChanged);
             // 
-            // frmServices
+            // frmCarServices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -213,9 +214,10 @@
             this.Controls.Add(this.lblMOT);
             this.Controls.Add(this.lblRoadTax);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
-            this.Name = "frmServices";
+            this.Name = "frmCarServices";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Services";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmServices_FormClosing);

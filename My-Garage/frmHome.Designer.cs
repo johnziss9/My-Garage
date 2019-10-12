@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHome));
             this.lblMyGarage = new System.Windows.Forms.Label();
             this.btnCarRegistration = new System.Windows.Forms.Button();
             this.btnCustomerRegistration = new System.Windows.Forms.Button();
@@ -126,6 +127,7 @@
             this.Controls.Add(this.btnCarRegistration);
             this.Controls.Add(this.lblMyGarage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmHome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

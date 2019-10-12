@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSearch));
             this.txtSearchMake = new System.Windows.Forms.TextBox();
             this.lblSearchMake = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -393,6 +394,7 @@
             this.Controls.Add(this.lblSearchMake);
             this.Controls.Add(this.txtSearchMake);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

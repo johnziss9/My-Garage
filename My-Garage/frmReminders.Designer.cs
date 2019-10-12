@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReminders));
             this.dataGridReminders = new System.Windows.Forms.DataGridView();
             this.btnDone = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReminders)).BeginInit();
@@ -64,6 +65,7 @@
             this.Controls.Add(this.btnDone);
             this.Controls.Add(this.dataGridReminders);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmReminders";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
