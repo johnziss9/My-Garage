@@ -65,7 +65,7 @@
             this.cmbMOTDuration.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbMOTDuration.Name = "cmbMOTDuration";
             this.cmbMOTDuration.Size = new System.Drawing.Size(121, 24);
-            this.cmbMOTDuration.TabIndex = 5;
+            this.cmbMOTDuration.TabIndex = 7;
             // 
             // lblForRT
             // 
@@ -89,7 +89,7 @@
             this.cmbRTDuration.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbRTDuration.Name = "cmbRTDuration";
             this.cmbRTDuration.Size = new System.Drawing.Size(121, 24);
-            this.cmbRTDuration.TabIndex = 3;
+            this.cmbRTDuration.TabIndex = 4;
             // 
             // dateTimeMOT
             // 
@@ -97,7 +97,7 @@
             this.dateTimeMOT.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimeMOT.Name = "dateTimeMOT";
             this.dateTimeMOT.Size = new System.Drawing.Size(265, 22);
-            this.dateTimeMOT.TabIndex = 4;
+            this.dateTimeMOT.TabIndex = 6;
             // 
             // dateTimeRoadTax
             // 
@@ -105,7 +105,7 @@
             this.dateTimeRoadTax.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimeRoadTax.Name = "dateTimeRoadTax";
             this.dateTimeRoadTax.Size = new System.Drawing.Size(265, 22);
-            this.dateTimeRoadTax.TabIndex = 2;
+            this.dateTimeRoadTax.TabIndex = 3;
             // 
             // lblMOT
             // 
@@ -153,7 +153,7 @@
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(145, 34);
-            this.btnCancel.TabIndex = 7;
+            this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -165,7 +165,7 @@
             this.btnRegister.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(145, 34);
-            this.btnRegister.TabIndex = 6;
+            this.btnRegister.TabIndex = 8;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
@@ -177,7 +177,7 @@
             this.chkRoadTax.Margin = new System.Windows.Forms.Padding(4);
             this.chkRoadTax.Name = "chkRoadTax";
             this.chkRoadTax.Size = new System.Drawing.Size(124, 21);
-            this.chkRoadTax.TabIndex = 26;
+            this.chkRoadTax.TabIndex = 2;
             this.chkRoadTax.Text = "Add Road Tax:";
             this.chkRoadTax.UseVisualStyleBackColor = true;
             this.chkRoadTax.CheckedChanged += new System.EventHandler(this.chkRoadTax_CheckedChanged);
@@ -189,7 +189,7 @@
             this.chkMOT.Margin = new System.Windows.Forms.Padding(4);
             this.chkMOT.Name = "chkMOT";
             this.chkMOT.Size = new System.Drawing.Size(94, 21);
-            this.chkMOT.TabIndex = 27;
+            this.chkMOT.TabIndex = 5;
             this.chkMOT.Text = "Add MOT:";
             this.chkMOT.UseVisualStyleBackColor = true;
             this.chkMOT.CheckedChanged += new System.EventHandler(this.chkMOT_CheckedChanged);

@@ -70,7 +70,7 @@
             this.txtSearchMake.Location = new System.Drawing.Point(72, 15);
             this.txtSearchMake.Name = "txtSearchMake";
             this.txtSearchMake.Size = new System.Drawing.Size(152, 22);
-            this.txtSearchMake.TabIndex = 0;
+            this.txtSearchMake.TabIndex = 1;
             // 
             // lblSearchMake
             // 
@@ -315,7 +315,7 @@
             this.btnDone.Location = new System.Drawing.Point(573, 707);
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(145, 35);
-            this.btnDone.TabIndex = 9;
+            this.btnDone.TabIndex = 5;
             this.btnDone.Text = "Done";
             this.btnDone.UseVisualStyleBackColor = true;
             this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
@@ -326,7 +326,7 @@
             this.btnSearch.Location = new System.Drawing.Point(566, 45);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(152, 30);
-            this.btnSearch.TabIndex = 10;
+            this.btnSearch.TabIndex = 4;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -346,7 +346,7 @@
             this.txtSearchNumberPlate.Location = new System.Drawing.Point(566, 15);
             this.txtSearchNumberPlate.Name = "txtSearchNumberPlate";
             this.txtSearchNumberPlate.Size = new System.Drawing.Size(152, 22);
-            this.txtSearchNumberPlate.TabIndex = 12;
+            this.txtSearchNumberPlate.TabIndex = 3;
             // 
             // lblSearchModel
             // 
@@ -363,7 +363,7 @@
             this.txtSearchModel.Location = new System.Drawing.Point(312, 15);
             this.txtSearchModel.Name = "txtSearchModel";
             this.txtSearchModel.Size = new System.Drawing.Size(152, 22);
-            this.txtSearchModel.TabIndex = 14;
+            this.txtSearchModel.TabIndex = 2;
             // 
             // dataGridCars
             // 

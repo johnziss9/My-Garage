@@ -76,7 +76,7 @@
             this.btnCarRental.Location = new System.Drawing.Point(12, 300);
             this.btnCarRental.Name = "btnCarRental";
             this.btnCarRental.Size = new System.Drawing.Size(328, 55);
-            this.btnCarRental.TabIndex = 3;
+            this.btnCarRental.TabIndex = 4;
             this.btnCarRental.Text = "Car Rental";
             this.btnCarRental.UseVisualStyleBackColor = true;
             this.btnCarRental.Click += new System.EventHandler(this.btnCarRental_Click);
@@ -87,7 +87,7 @@
             this.btnReminders.Location = new System.Drawing.Point(12, 380);
             this.btnReminders.Name = "btnReminders";
             this.btnReminders.Size = new System.Drawing.Size(328, 55);
-            this.btnReminders.TabIndex = 4;
+            this.btnReminders.TabIndex = 5;
             this.btnReminders.Text = "Reminders";
             this.btnReminders.UseVisualStyleBackColor = true;
             this.btnReminders.Click += new System.EventHandler(this.btnReminders_Click);
@@ -98,7 +98,7 @@
             this.btnCarServices.Location = new System.Drawing.Point(12, 220);
             this.btnCarServices.Name = "btnCarServices";
             this.btnCarServices.Size = new System.Drawing.Size(328, 55);
-            this.btnCarServices.TabIndex = 6;
+            this.btnCarServices.TabIndex = 3;
             this.btnCarServices.Text = "Car Services";
             this.btnCarServices.UseVisualStyleBackColor = true;
             this.btnCarServices.Click += new System.EventHandler(this.btnCarServices_Click_1);
@@ -109,7 +109,7 @@
             this.btnSearch.Location = new System.Drawing.Point(12, 460);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(328, 55);
-            this.btnSearch.TabIndex = 7;
+            this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
