@@ -83,5 +83,20 @@ namespace My_Garage
 
             conn.Close();
         }
+
+        private void txtCarMake_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = (e.KeyChar == (char)Keys.Space);
+        }
+
+        private void txtCarModel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = (e.KeyChar == (char)Keys.Space);
+        }
+
+        private void txtNumberPlate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = (e.KeyChar == (char)Keys.Space);
+        }
     }
 }

@@ -76,6 +76,7 @@
             this.txtNumberPlate.Name = "txtNumberPlate";
             this.txtNumberPlate.Size = new System.Drawing.Size(265, 26);
             this.txtNumberPlate.TabIndex = 3;
+            this.txtNumberPlate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumberPlate_KeyPress);
             // 
             // txtCarModel
             // 
@@ -85,6 +86,7 @@
             this.txtCarModel.Name = "txtCarModel";
             this.txtCarModel.Size = new System.Drawing.Size(265, 26);
             this.txtCarModel.TabIndex = 2;
+            this.txtCarModel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCarModel_KeyPress);
             // 
             // txtCarMake
             // 
@@ -94,6 +96,7 @@
             this.txtCarMake.Name = "txtCarMake";
             this.txtCarMake.Size = new System.Drawing.Size(265, 26);
             this.txtCarMake.TabIndex = 1;
+            this.txtCarMake.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCarMake_KeyPress);
             // 
             // btnRegister
             // 

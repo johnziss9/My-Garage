@@ -71,37 +71,18 @@ namespace My_Garage
 
                 SQLiteCommand command = new SQLiteCommand();
 
-                if (dataGridReminders.SelectedRows[0].Cells[1].Value.ToString() == "Rental Car")
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this reminder?", "Delete Reminder", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
                 {
                     command = new SQLiteCommand(rentalQuery, conn);
 
-                    DialogResult rentalDialogResult = MessageBox.Show("Has the car been returned?", "Returned?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (rentalDialogResult == DialogResult.Yes)
-                    {
-                        command.ExecuteNonQuery();
+                    command.ExecuteNonQuery();
 
-                        command = new SQLiteCommand(query, conn);
-
-                        DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this reminder?", "Delete Reminder", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            command.ExecuteNonQuery();
-                            ShowReminders();
-                        }
-
-                        ShowReminders();
-                    }
-                }
-                else
-                {
                     command = new SQLiteCommand(query, conn);
 
-                    DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this reminder?", "Delete Reminder", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        command.ExecuteNonQuery();
-                        ShowReminders();
-                    }
+                    command.ExecuteNonQuery();
+
+                    ShowReminders();
                 }
             }
         }
