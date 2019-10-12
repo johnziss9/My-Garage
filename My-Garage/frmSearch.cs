@@ -36,21 +36,7 @@ namespace My_Garage
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string connString = @"Data Source=C:\Users\johnz\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture";
-            SQLiteConnection conn = new SQLiteConnection(connString);
-
-            DataTable dt = new DataTable();
-            SQLiteDataAdapter da = new SQLiteDataAdapter();
-            BindingSource bs = new BindingSource();
-
-            dt = new DataTable();
-            da = new SQLiteDataAdapter("SELECT * FROM Cars WHERE CarMake LIKE '%" + txtSearchMake.Text + "%' AND CarModel LIKE '%" + txtSearchModel.Text + "%' AND NumberPlate LIKE '%" + txtSearchNumberPlate.Text + "%'", conn);
-
-            da.Fill(dt);
-            bs.DataSource = dt;
-            dataGridCars.DataSource = bs;
-
-            dataGridCars.Columns[0].Visible = false;
+            Search();
         }
 
         private void dataGridCars_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -139,6 +125,49 @@ namespace My_Garage
                 txtCustomer.Text = dr["Customer"].ToString();
                 txtFrom.Text = Convert.ToDateTime(dr["FromDate"]).ToShortDateString();
                 txtTo.Text = Convert.ToDateTime(dr["ToDate"]).ToShortDateString();
+            }
+        }
+
+        public void Search()
+        {
+            string connString = @"Data Source=C:\Users\johnz\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture";
+            SQLiteConnection conn = new SQLiteConnection(connString);
+
+            DataTable dt = new DataTable();
+            SQLiteDataAdapter da = new SQLiteDataAdapter();
+            BindingSource bs = new BindingSource();
+
+            dt = new DataTable();
+            da = new SQLiteDataAdapter("SELECT * FROM Cars WHERE CarMake LIKE '%" + txtSearchMake.Text + "%' AND CarModel LIKE '%" + txtSearchModel.Text + "%' AND NumberPlate LIKE '%" + txtSearchNumberPlate.Text + "%'", conn);
+
+            da.Fill(dt);
+            bs.DataSource = dt;
+            dataGridCars.DataSource = bs;
+
+            dataGridCars.Columns[0].Visible = false;
+        }
+
+        private void txtSearchMake_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                Search();
+            }
+        }
+
+        private void txtSearchModel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                Search();
+            }
+        }
+
+        private void txtSearchNumberPlate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                Search();
             }
         }
     }

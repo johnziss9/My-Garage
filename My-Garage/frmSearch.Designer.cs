@@ -71,6 +71,7 @@
             this.txtSearchMake.Name = "txtSearchMake";
             this.txtSearchMake.Size = new System.Drawing.Size(152, 22);
             this.txtSearchMake.TabIndex = 1;
+            this.txtSearchMake.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchMake_KeyPress);
             // 
             // lblSearchMake
             // 
@@ -347,6 +348,7 @@
             this.txtSearchNumberPlate.Name = "txtSearchNumberPlate";
             this.txtSearchNumberPlate.Size = new System.Drawing.Size(152, 22);
             this.txtSearchNumberPlate.TabIndex = 3;
+            this.txtSearchNumberPlate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchNumberPlate_KeyPress);
             // 
             // lblSearchModel
             // 
@@ -364,6 +366,7 @@
             this.txtSearchModel.Name = "txtSearchModel";
             this.txtSearchModel.Size = new System.Drawing.Size(152, 22);
             this.txtSearchModel.TabIndex = 2;
+            this.txtSearchModel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchModel_KeyPress);
             // 
             // dataGridCars
             // 
