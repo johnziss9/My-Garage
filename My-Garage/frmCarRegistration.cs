@@ -23,8 +23,8 @@ namespace My_Garage
 
             // Cars Add
 
-            string query = "INSERT INTO Cars (Id, CarMake, CarModel, NumberPlate) " +
-                "VALUES (@id, @carMake, @carModel, @numberPlate)";
+            string query = "INSERT INTO Cars (Id, CarMake, CarModel, NumberPlate, VNumber) " +
+                "VALUES (@id, @carMake, @carModel, @numberPlate, @vNumber)";
 
             GetCarId();
 
@@ -40,6 +40,7 @@ namespace My_Garage
                 command.Parameters.AddWithValue("@carMake", txtCarMake.Text.ToUpper());
                 command.Parameters.AddWithValue("@carModel", txtCarModel.Text.ToUpper());
                 command.Parameters.AddWithValue("@numberPlate", txtNumberPlate.Text.ToUpper());
+                command.Parameters.AddWithValue("@vNumber", txtVNumber.Text.ToUpper());
 
                 command.ExecuteNonQuery();
 

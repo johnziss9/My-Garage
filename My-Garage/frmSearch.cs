@@ -63,6 +63,7 @@ namespace My_Garage
                 txtCarMake.Text = dr["CarMake"].ToString();
                 txtCarModel.Text = dr["CarModel"].ToString();
                 txtNumberPlate.Text = dr["NumberPlate"].ToString();
+                txtVNumber.Text = dr["VNumber"].ToString();
             }
 
             conn.Close();
