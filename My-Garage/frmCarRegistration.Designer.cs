@@ -48,9 +48,9 @@
             this.lblCarMake.Location = new System.Drawing.Point(9, 12);
             this.lblCarMake.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCarMake.Name = "lblCarMake";
-            this.lblCarMake.Size = new System.Drawing.Size(72, 17);
+            this.lblCarMake.Size = new System.Drawing.Size(54, 17);
             this.lblCarMake.TabIndex = 2;
-            this.lblCarMake.Text = "Car Make:";
+            this.lblCarMake.Text = "Μάρκα:";
             // 
             // lblNumberPlate
             // 
@@ -59,9 +59,9 @@
             this.lblNumberPlate.Location = new System.Drawing.Point(9, 76);
             this.lblNumberPlate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNumberPlate.Name = "lblNumberPlate";
-            this.lblNumberPlate.Size = new System.Drawing.Size(98, 17);
+            this.lblNumberPlate.Size = new System.Drawing.Size(101, 17);
             this.lblNumberPlate.TabIndex = 6;
-            this.lblNumberPlate.Text = "Number Plate:";
+            this.lblNumberPlate.Text = "Αρ. Εγγραφής:";
             // 
             // lblCarModel
             // 
@@ -70,14 +70,14 @@
             this.lblCarModel.Location = new System.Drawing.Point(9, 45);
             this.lblCarModel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCarModel.Name = "lblCarModel";
-            this.lblCarModel.Size = new System.Drawing.Size(76, 17);
+            this.lblCarModel.Size = new System.Drawing.Size(67, 17);
             this.lblCarModel.TabIndex = 7;
-            this.lblCarModel.Text = "Car Model:";
+            this.lblCarModel.Text = "Μοντέλο:";
             // 
             // txtNumberPlate
             // 
             this.txtNumberPlate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtNumberPlate.Location = new System.Drawing.Point(122, 74);
+            this.txtNumberPlate.Location = new System.Drawing.Point(114, 76);
             this.txtNumberPlate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNumberPlate.Name = "txtNumberPlate";
             this.txtNumberPlate.Size = new System.Drawing.Size(200, 23);
@@ -87,7 +87,7 @@
             // txtCarModel
             // 
             this.txtCarModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtCarModel.Location = new System.Drawing.Point(122, 42);
+            this.txtCarModel.Location = new System.Drawing.Point(114, 44);
             this.txtCarModel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCarModel.Name = "txtCarModel";
             this.txtCarModel.Size = new System.Drawing.Size(200, 23);
@@ -97,7 +97,7 @@
             // txtCarMake
             // 
             this.txtCarMake.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtCarMake.Location = new System.Drawing.Point(122, 10);
+            this.txtCarMake.Location = new System.Drawing.Point(114, 12);
             this.txtCarMake.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCarMake.Name = "txtCarMake";
             this.txtCarMake.Size = new System.Drawing.Size(200, 23);
@@ -107,12 +107,12 @@
             // btnRegister
             // 
             this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnRegister.Location = new System.Drawing.Point(214, 143);
+            this.btnRegister.Location = new System.Drawing.Point(205, 143);
             this.btnRegister.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(109, 28);
             this.btnRegister.TabIndex = 5;
-            this.btnRegister.Text = "Register";
+            this.btnRegister.Text = "Εγγραφή";
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
@@ -124,14 +124,14 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(109, 28);
             this.btnCancel.TabIndex = 6;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "Ακύρωση";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // txtVNumber
             // 
             this.txtVNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtVNumber.Location = new System.Drawing.Point(122, 106);
+            this.txtVNumber.Location = new System.Drawing.Point(114, 108);
             this.txtVNumber.Margin = new System.Windows.Forms.Padding(2);
             this.txtVNumber.Name = "txtVNumber";
             this.txtVNumber.Size = new System.Drawing.Size(200, 23);
@@ -144,15 +144,15 @@
             this.lblVNumber.Location = new System.Drawing.Point(9, 109);
             this.lblVNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblVNumber.Name = "lblVNumber";
-            this.lblVNumber.Size = new System.Drawing.Size(79, 17);
+            this.lblVNumber.Size = new System.Drawing.Size(92, 17);
             this.lblVNumber.TabIndex = 9;
-            this.lblVNumber.Text = "V. Number:";
+            this.lblVNumber.Text = "Αρ. Πλαισίου:";
             // 
             // frmCarRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 182);
+            this.ClientSize = new System.Drawing.Size(329, 182);
             this.Controls.Add(this.txtVNumber);
             this.Controls.Add(this.lblVNumber);
             this.Controls.Add(this.btnCancel);
@@ -169,7 +169,7 @@
             this.MaximizeBox = false;
             this.Name = "frmCarRegistration";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Car Registration";
+            this.Text = "Εγγραφή Αυτοκινήτου";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCarRegistration_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

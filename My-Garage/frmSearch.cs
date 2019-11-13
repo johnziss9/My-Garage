@@ -80,28 +80,15 @@ namespace My_Garage
 
             while (dr.Read())
             {
-                if (dr["RoadTax"] != DBNull.Value)
-                {
-                    var roadTaxDate = Convert.ToDateTime(dr["RoadTax"]);
-                    string[] roadTaxDurationSplit = dr["RoadTaxDuration"].ToString().Split(' ');
-                    var roadTaxDuration = Convert.ToInt32(roadTaxDurationSplit[0]);
-
-                    txtRoadTaxExpires.Text = roadTaxDate.AddMonths(roadTaxDuration).ToShortDateString();
-                }
+                if (dr["RoadTaxTo"] != DBNull.Value)
+                    txtRoadTaxExpires.Text = Convert.ToDateTime(dr["RoadTaxTo"]).ToShortDateString();
                 else
-                    txtRoadTaxExpires.Text = "Not Added";
+                    txtRoadTaxExpires.Text = "Κενό";
 
-
-                if (dr["MOT"] != DBNull.Value)
-                {
-                    var MOTDate = Convert.ToDateTime(dr["MOT"]);
-                    string[] MOTDurationSplit = dr["MOTDuration"].ToString().Split(' ');
-                    var MOTDuration = Convert.ToInt32(MOTDurationSplit[0]);
-
-                    txtMOTExpires.Text = MOTDate.AddMonths(MOTDuration).ToShortDateString();
-                }
+                if (dr["MOTTo"] != DBNull.Value)
+                    txtMOTExpires.Text = Convert.ToDateTime(dr["MOTTo"]).ToShortDateString();
                 else
-                    txtMOTExpires.Text = "Not Added";
+                    txtMOTExpires.Text = "Κενό";
             }
 
             conn.Close();

@@ -29,130 +29,69 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCarServices));
-            this.lblForMOT = new System.Windows.Forms.Label();
-            this.cmbMOTDuration = new System.Windows.Forms.ComboBox();
-            this.lblForRT = new System.Windows.Forms.Label();
-            this.cmbRTDuration = new System.Windows.Forms.ComboBox();
-            this.dateTimeMOT = new System.Windows.Forms.DateTimePicker();
-            this.dateTimeRoadTax = new System.Windows.Forms.DateTimePicker();
-            this.lblMOT = new System.Windows.Forms.Label();
+            this.dateTimeRoadTaxFrom = new System.Windows.Forms.DateTimePicker();
             this.lblRoadTax = new System.Windows.Forms.Label();
             this.lblCar = new System.Windows.Forms.Label();
             this.cmbCar = new System.Windows.Forms.ComboBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
             this.chkRoadTax = new System.Windows.Forms.CheckBox();
+            this.lblRTFrom = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dateTimeRoadTaxTo = new System.Windows.Forms.DateTimePicker();
             this.chkMOT = new System.Windows.Forms.CheckBox();
+            this.lblMOT = new System.Windows.Forms.Label();
+            this.dateTimeMOTTo = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dateTimeMOTFrom = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
-            // lblForMOT
+            // dateTimeRoadTaxFrom
             // 
-            this.lblForMOT.AutoSize = true;
-            this.lblForMOT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblForMOT.Location = new System.Drawing.Point(433, 142);
-            this.lblForMOT.Name = "lblForMOT";
-            this.lblForMOT.Size = new System.Drawing.Size(29, 20);
-            this.lblForMOT.TabIndex = 24;
-            this.lblForMOT.Text = "for";
-            // 
-            // cmbMOTDuration
-            // 
-            this.cmbMOTDuration.FormattingEnabled = true;
-            this.cmbMOTDuration.Items.AddRange(new object[] {
-            "1 Year",
-            "2 Years"});
-            this.cmbMOTDuration.Location = new System.Drawing.Point(468, 142);
-            this.cmbMOTDuration.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cmbMOTDuration.Name = "cmbMOTDuration";
-            this.cmbMOTDuration.Size = new System.Drawing.Size(121, 24);
-            this.cmbMOTDuration.TabIndex = 7;
-            // 
-            // lblForRT
-            // 
-            this.lblForRT.AutoSize = true;
-            this.lblForRT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblForRT.Location = new System.Drawing.Point(433, 79);
-            this.lblForRT.Name = "lblForRT";
-            this.lblForRT.Size = new System.Drawing.Size(29, 20);
-            this.lblForRT.TabIndex = 23;
-            this.lblForRT.Text = "for";
-            // 
-            // cmbRTDuration
-            // 
-            this.cmbRTDuration.FormattingEnabled = true;
-            this.cmbRTDuration.Items.AddRange(new object[] {
-            "3 Months",
-            "6 Months",
-            "9 Months",
-            "12 Months"});
-            this.cmbRTDuration.Location = new System.Drawing.Point(468, 78);
-            this.cmbRTDuration.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cmbRTDuration.Name = "cmbRTDuration";
-            this.cmbRTDuration.Size = new System.Drawing.Size(121, 24);
-            this.cmbRTDuration.TabIndex = 4;
-            // 
-            // dateTimeMOT
-            // 
-            this.dateTimeMOT.Location = new System.Drawing.Point(161, 144);
-            this.dateTimeMOT.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimeMOT.Name = "dateTimeMOT";
-            this.dateTimeMOT.Size = new System.Drawing.Size(265, 22);
-            this.dateTimeMOT.TabIndex = 6;
-            // 
-            // dateTimeRoadTax
-            // 
-            this.dateTimeRoadTax.Location = new System.Drawing.Point(161, 79);
-            this.dateTimeRoadTax.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimeRoadTax.Name = "dateTimeRoadTax";
-            this.dateTimeRoadTax.Size = new System.Drawing.Size(265, 22);
-            this.dateTimeRoadTax.TabIndex = 3;
-            // 
-            // lblMOT
-            // 
-            this.lblMOT.AutoSize = true;
-            this.lblMOT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMOT.Location = new System.Drawing.Point(15, 146);
-            this.lblMOT.Name = "lblMOT";
-            this.lblMOT.Size = new System.Drawing.Size(51, 20);
-            this.lblMOT.TabIndex = 22;
-            this.lblMOT.Text = "MOT:";
+            this.dateTimeRoadTaxFrom.Location = new System.Drawing.Point(63, 101);
+            this.dateTimeRoadTaxFrom.Name = "dateTimeRoadTaxFrom";
+            this.dateTimeRoadTaxFrom.Size = new System.Drawing.Size(140, 20);
+            this.dateTimeRoadTaxFrom.TabIndex = 3;
             // 
             // lblRoadTax
             // 
             this.lblRoadTax.AutoSize = true;
-            this.lblRoadTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoadTax.Location = new System.Drawing.Point(15, 79);
+            this.lblRoadTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRoadTax.Location = new System.Drawing.Point(11, 75);
+            this.lblRoadTax.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRoadTax.Name = "lblRoadTax";
-            this.lblRoadTax.Size = new System.Drawing.Size(130, 20);
+            this.lblRoadTax.Size = new System.Drawing.Size(127, 16);
             this.lblRoadTax.TabIndex = 19;
-            this.lblRoadTax.Text = "Adia Kikloforias:";
+            this.lblRoadTax.Text = "Άδεια Κυκλοφορίας:";
             // 
             // lblCar
             // 
             this.lblCar.AutoSize = true;
             this.lblCar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCar.Location = new System.Drawing.Point(12, 11);
+            this.lblCar.Location = new System.Drawing.Point(9, 9);
+            this.lblCar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCar.Name = "lblCar";
-            this.lblCar.Size = new System.Drawing.Size(83, 20);
+            this.lblCar.Size = new System.Drawing.Size(84, 17);
             this.lblCar.TabIndex = 25;
-            this.lblCar.Text = "Aftokinito:";
+            this.lblCar.Text = "Αυτοκίνητο:";
             // 
             // cmbCar
             // 
             this.cmbCar.FormattingEnabled = true;
-            this.cmbCar.Location = new System.Drawing.Point(161, 11);
-            this.cmbCar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbCar.Location = new System.Drawing.Point(121, 9);
+            this.cmbCar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbCar.Name = "cmbCar";
-            this.cmbCar.Size = new System.Drawing.Size(428, 24);
+            this.cmbCar.Size = new System.Drawing.Size(322, 21);
             this.cmbCar.TabIndex = 1;
             // 
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnCancel.Location = new System.Drawing.Point(12, 183);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCancel.Location = new System.Drawing.Point(11, 233);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(145, 34);
+            this.btnCancel.Size = new System.Drawing.Size(109, 28);
             this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -161,10 +100,10 @@
             // btnRegister
             // 
             this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnRegister.Location = new System.Drawing.Point(444, 183);
-            this.btnRegister.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRegister.Location = new System.Drawing.Point(334, 233);
+            this.btnRegister.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(145, 34);
+            this.btnRegister.Size = new System.Drawing.Size(109, 28);
             this.btnRegister.TabIndex = 8;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = true;
@@ -173,53 +112,131 @@
             // chkRoadTax
             // 
             this.chkRoadTax.AutoSize = true;
-            this.chkRoadTax.Location = new System.Drawing.Point(16, 47);
-            this.chkRoadTax.Margin = new System.Windows.Forms.Padding(4);
+            this.chkRoadTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.chkRoadTax.Location = new System.Drawing.Point(14, 46);
             this.chkRoadTax.Name = "chkRoadTax";
-            this.chkRoadTax.Size = new System.Drawing.Size(124, 21);
+            this.chkRoadTax.Size = new System.Drawing.Size(230, 21);
             this.chkRoadTax.TabIndex = 2;
-            this.chkRoadTax.Text = "Add Road Tax:";
+            this.chkRoadTax.Text = "Πρόσθεση Άδειας Κυκλοφορίας:";
             this.chkRoadTax.UseVisualStyleBackColor = true;
             this.chkRoadTax.CheckedChanged += new System.EventHandler(this.chkRoadTax_CheckedChanged);
+            // 
+            // lblRTFrom
+            // 
+            this.lblRTFrom.AutoSize = true;
+            this.lblRTFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRTFrom.Location = new System.Drawing.Point(11, 101);
+            this.lblRTFrom.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRTFrom.Name = "lblRTFrom";
+            this.lblRTFrom.Size = new System.Drawing.Size(37, 17);
+            this.lblRTFrom.TabIndex = 26;
+            this.lblRTFrom.Text = "Από:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(220, 101);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 17);
+            this.label2.TabIndex = 27;
+            this.label2.Text = "Μέχρι:";
+            // 
+            // dateTimeRoadTaxTo
+            // 
+            this.dateTimeRoadTaxTo.Location = new System.Drawing.Point(272, 101);
+            this.dateTimeRoadTaxTo.Name = "dateTimeRoadTaxTo";
+            this.dateTimeRoadTaxTo.Size = new System.Drawing.Size(140, 20);
+            this.dateTimeRoadTaxTo.TabIndex = 4;
             // 
             // chkMOT
             // 
             this.chkMOT.AutoSize = true;
-            this.chkMOT.Location = new System.Drawing.Point(16, 113);
-            this.chkMOT.Margin = new System.Windows.Forms.Padding(4);
+            this.chkMOT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.chkMOT.Location = new System.Drawing.Point(14, 143);
             this.chkMOT.Name = "chkMOT";
-            this.chkMOT.Size = new System.Drawing.Size(94, 21);
+            this.chkMOT.Size = new System.Drawing.Size(143, 21);
             this.chkMOT.TabIndex = 5;
-            this.chkMOT.Text = "Add MOT:";
+            this.chkMOT.Text = "Πρόσθεση M.O.T.:";
             this.chkMOT.UseVisualStyleBackColor = true;
-            this.chkMOT.CheckedChanged += new System.EventHandler(this.chkMOT_CheckedChanged);
+            this.chkMOT.CheckedChanged += new System.EventHandler(this.chkMOT_CheckedChanged_1);
+            // 
+            // lblMOT
+            // 
+            this.lblMOT.AutoSize = true;
+            this.lblMOT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMOT.Location = new System.Drawing.Point(11, 172);
+            this.lblMOT.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblMOT.Name = "lblMOT";
+            this.lblMOT.Size = new System.Drawing.Size(127, 16);
+            this.lblMOT.TabIndex = 30;
+            this.lblMOT.Text = "Άδεια Κυκλοφορίας:";
+            // 
+            // dateTimeMOTTo
+            // 
+            this.dateTimeMOTTo.Location = new System.Drawing.Point(272, 199);
+            this.dateTimeMOTTo.Name = "dateTimeMOTTo";
+            this.dateTimeMOTTo.Size = new System.Drawing.Size(140, 20);
+            this.dateTimeMOTTo.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(220, 199);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 17);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "Μέχρι:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(11, 199);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(37, 17);
+            this.label3.TabIndex = 32;
+            this.label3.Text = "Από:";
+            // 
+            // dateTimeMOTFrom
+            // 
+            this.dateTimeMOTFrom.Location = new System.Drawing.Point(63, 199);
+            this.dateTimeMOTFrom.Name = "dateTimeMOTFrom";
+            this.dateTimeMOTFrom.Size = new System.Drawing.Size(140, 20);
+            this.dateTimeMOTFrom.TabIndex = 6;
             // 
             // frmCarServices
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(604, 231);
+            this.ClientSize = new System.Drawing.Size(458, 273);
+            this.Controls.Add(this.dateTimeMOTTo);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.dateTimeMOTFrom);
+            this.Controls.Add(this.lblMOT);
             this.Controls.Add(this.chkMOT);
+            this.Controls.Add(this.dateTimeRoadTaxTo);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblRTFrom);
             this.Controls.Add(this.chkRoadTax);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.cmbCar);
             this.Controls.Add(this.lblCar);
-            this.Controls.Add(this.lblForMOT);
-            this.Controls.Add(this.cmbMOTDuration);
-            this.Controls.Add(this.lblForRT);
-            this.Controls.Add(this.cmbRTDuration);
-            this.Controls.Add(this.dateTimeMOT);
-            this.Controls.Add(this.dateTimeRoadTax);
-            this.Controls.Add(this.lblMOT);
+            this.Controls.Add(this.dateTimeRoadTaxFrom);
             this.Controls.Add(this.lblRoadTax);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "frmCarServices";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Services";
+            this.Text = "Πληροφορίες Αυτοκινήτου";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmServices_FormClosing);
             this.Load += new System.EventHandler(this.frmServices_Load);
             this.ResumeLayout(false);
@@ -228,20 +245,21 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblForMOT;
-        private System.Windows.Forms.ComboBox cmbMOTDuration;
-        private System.Windows.Forms.Label lblForRT;
-        private System.Windows.Forms.ComboBox cmbRTDuration;
-        private System.Windows.Forms.DateTimePicker dateTimeMOT;
-        private System.Windows.Forms.DateTimePicker dateTimeRoadTax;
-        private System.Windows.Forms.Label lblMOT;
+        private System.Windows.Forms.DateTimePicker dateTimeRoadTaxFrom;
         private System.Windows.Forms.Label lblRoadTax;
         private System.Windows.Forms.Label lblCar;
         private System.Windows.Forms.ComboBox cmbCar;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.CheckBox chkRoadTax;
+        private System.Windows.Forms.Label lblRTFrom;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dateTimeRoadTaxTo;
         private System.Windows.Forms.CheckBox chkMOT;
+        private System.Windows.Forms.Label lblMOT;
+        private System.Windows.Forms.DateTimePicker dateTimeMOTTo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dateTimeMOTFrom;
     }
 }
