@@ -32,21 +32,21 @@ namespace My_Garage
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            Hide();
-
-            string query = "INSERT INTO Customers (Id, FirstName, LastName, Address, Phone) " +
-                "VALUES (@id, @firstName, @lastName, @address, @phoneNumber)";
-
-            GetCustomerId();
-
-            conn.Open();
-
-            command = new SQLiteCommand(query, conn);
-
             if (txtFirstName.Text == "" || txtLastName.Text == "" || txtAddress.Text == "" || txtPhoneNo.Text == "")
                 MessageBox.Show("Please fill in all the details.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
+                Hide();
+
+                string query = "INSERT INTO Customers (Id, FirstName, LastName, Address, Phone) " +
+                    "VALUES (@id, @firstName, @lastName, @address, @phoneNumber)";
+
+                GetCustomerId();
+
+                conn.Open();
+
+                command = new SQLiteCommand(query, conn);    
+            
                 command.Parameters.AddWithValue("@id", _customerId);
                 command.Parameters.AddWithValue("@firstName", txtFirstName.Text.Substring(0, 1).ToUpper(CultureInfo.CurrentCulture) + txtFirstName.Text.Substring(1));
                 command.Parameters.AddWithValue("@lastName", txtLastName.Text.Substring(0, 1).ToUpper(CultureInfo.CurrentCulture) + txtLastName.Text.Substring(1));
@@ -56,12 +56,12 @@ namespace My_Garage
                 command.ExecuteNonQuery();
 
                 MessageBox.Show("Customer Added", "Customer Addition", MessageBoxButtons.OK, MessageBoxIcon.None);
+
+                conn.Close();
+
+                frmHome home = new frmHome();
+                home.Show();
             }
-
-            conn.Close();
-
-            frmHome home = new frmHome();
-            home.Show();
         }
 
         public void GetCustomerId()

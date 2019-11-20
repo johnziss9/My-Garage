@@ -57,19 +57,19 @@
             this.lblFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFrom.Location = new System.Drawing.Point(11, 14);
             this.lblFrom.Name = "lblFrom";
-            this.lblFrom.Size = new System.Drawing.Size(53, 20);
+            this.lblFrom.Size = new System.Drawing.Size(43, 20);
             this.lblFrom.TabIndex = 17;
-            this.lblFrom.Text = "From:";
+            this.lblFrom.Text = "Από:";
             // 
             // lblTo
             // 
             this.lblTo.AutoSize = true;
             this.lblTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTo.Location = new System.Drawing.Point(12, 54);
+            this.lblTo.Location = new System.Drawing.Point(11, 54);
             this.lblTo.Name = "lblTo";
-            this.lblTo.Size = new System.Drawing.Size(33, 20);
+            this.lblTo.Size = new System.Drawing.Size(58, 20);
             this.lblTo.TabIndex = 18;
-            this.lblTo.Text = "To:";
+            this.lblTo.Text = "Μέχρι:";
             // 
             // dateTimeTo
             // 
@@ -78,7 +78,6 @@
             this.dateTimeTo.Name = "dateTimeTo";
             this.dateTimeTo.Size = new System.Drawing.Size(266, 22);
             this.dateTimeTo.TabIndex = 2;
-            this.dateTimeTo.ValueChanged += new System.EventHandler(this.dateTimeTo_ValueChanged);
             // 
             // lblCustomer
             // 
@@ -86,9 +85,9 @@
             this.lblCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCustomer.Location = new System.Drawing.Point(12, 92);
             this.lblCustomer.Name = "lblCustomer";
-            this.lblCustomer.Size = new System.Drawing.Size(87, 20);
+            this.lblCustomer.Size = new System.Drawing.Size(78, 20);
             this.lblCustomer.TabIndex = 20;
-            this.lblCustomer.Text = "Customer:";
+            this.lblCustomer.Text = "Πελάτης:";
             // 
             // lblCar
             // 
@@ -96,9 +95,9 @@
             this.lblCar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCar.Location = new System.Drawing.Point(11, 132);
             this.lblCar.Name = "lblCar";
-            this.lblCar.Size = new System.Drawing.Size(41, 20);
+            this.lblCar.Size = new System.Drawing.Size(99, 20);
             this.lblCar.TabIndex = 21;
-            this.lblCar.Text = "Car:";
+            this.lblCar.Text = "Αυτοκίνητο:";
             // 
             // cmbCustomer
             // 
@@ -133,9 +132,9 @@
             this.lblNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNotes.Location = new System.Drawing.Point(12, 172);
             this.lblNotes.Name = "lblNotes";
-            this.lblNotes.Size = new System.Drawing.Size(53, 20);
+            this.lblNotes.Size = new System.Drawing.Size(97, 20);
             this.lblNotes.TabIndex = 25;
-            this.lblNotes.Text = "Notes";
+            this.lblNotes.Text = "Σημειώσεις:";
             // 
             // btnCancel
             // 
@@ -145,7 +144,7 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(145, 34);
             this.btnCancel.TabIndex = 7;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "Ακύρωση";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -157,7 +156,7 @@
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(145, 34);
             this.btnRegister.TabIndex = 6;
-            this.btnRegister.Text = "Register";
+            this.btnRegister.Text = "Εγγραφή";
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
@@ -184,7 +183,7 @@
             this.MaximizeBox = false;
             this.Name = "frmCarRental";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Car Rental";
+            this.Text = "Ενοικιάσεις";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCarRental_FormClosing);
             this.Load += new System.EventHandler(this.frmCarRental_Load);
             this.ResumeLayout(false);

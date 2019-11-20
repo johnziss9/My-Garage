@@ -21,57 +21,76 @@ namespace My_Garage
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            Hide();
+            if (dateTimeFrom.Value > dateTimeTo.Value)
+                MessageBox.Show("From date should be greater than to date.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else
+            {
+                if (cmbCustomer.Text == "")
+                    MessageBox.Show("Please select a customer.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else
+                {
+                    if (cmbCar.Text == "")
+                        MessageBox.Show("Please select a car.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    else
+                    {
+                        Hide();
 
-            string query = "INSERT INTO Rentals(Id, FromDate, ToDate, Customer, Car, Notes, CarId, Rented, Returned) " +
-                "VALUES (@id, @fromDate, @toDate, @customer, @car, @notes, @carId, @rented, @returned)";
+                        string query = "INSERT INTO Rentals(Id, FromDate, ToDate, Customer, Car, Notes, CarId, Rented, Returned) " +
+                            "VALUES (@id, @fromDate, @toDate, @customer, @car, @notes, @carId, @rented, @returned)";
 
-            GetRentalId();
+                        GetRentalId();
 
-            conn.Open();
+                        conn.Open();
 
-            command = new SQLiteCommand(query, conn);
+                        command = new SQLiteCommand(query, conn);
 
-            command.Parameters.AddWithValue("@id", _rentalId);
-            command.Parameters.AddWithValue("@fromDate", dateTimeFrom.Value.Date);
-            command.Parameters.AddWithValue("@toDate", dateTimeTo.Value.Date);
-            command.Parameters.AddWithValue("@customer", cmbCustomer.Text);
-            command.Parameters.AddWithValue("@car", cmbCar.Text);
-            command.Parameters.AddWithValue("@notes", txtNotes.Text);
-            command.Parameters.AddWithValue("@carId", cmbCar.SelectedValue);
-            command.Parameters.AddWithValue("@rented", true);
-            command.Parameters.AddWithValue("@returned", false);
+                        command.Parameters.AddWithValue("@id", _rentalId);
+                        command.Parameters.AddWithValue("@fromDate", dateTimeFrom.Value.Date);
+                        command.Parameters.AddWithValue("@toDate", dateTimeTo.Value.Date);
+                        command.Parameters.AddWithValue("@customer", cmbCustomer.Text);
+                        command.Parameters.AddWithValue("@car", cmbCar.Text);
+                        command.Parameters.AddWithValue("@notes", txtNotes.Text);
+                        command.Parameters.AddWithValue("@carId", cmbCar.SelectedValue);
+                        command.Parameters.AddWithValue("@rented", true);
+                        command.Parameters.AddWithValue("@returned", false);
 
-            command.ExecuteNonQuery();
+                        command.ExecuteNonQuery();
 
-            string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn, CarId) " +
-                "VALUES (@id, @type, @car, @customer, @notes, @dueOn, @carId)";
+                        string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn, CarId, Rented, Returned, Renewal) " +
+                            "VALUES (@id, @type, @car, @customer, @notes, @dueOn, @carId, @rented, @returned, @renewal)";
 
+                        // Add Reminder
 
-            conn.Close();
+                        conn.Close();
 
-            GetReminderId();
+                        GetReminderId();
 
-            conn.Open();
+                        conn.Open();
 
-            command = new SQLiteCommand(queryReminder, conn);
+                        command = new SQLiteCommand(queryReminder, conn);
 
-            command.Parameters.AddWithValue("@id", _reminderId);
-            command.Parameters.AddWithValue("@type", "Rental Car");
-            command.Parameters.AddWithValue("@car", cmbCar.Text);
-            command.Parameters.AddWithValue("@customer", cmbCustomer.Text);
-            command.Parameters.AddWithValue("@notes", txtNotes.Text);
-            command.Parameters.AddWithValue("@dueOn", dateTimeTo.Value.Date);
-            command.Parameters.AddWithValue("@carId", cmbCar.SelectedValue);
+                        command.Parameters.AddWithValue("@id", _reminderId);
+                        command.Parameters.AddWithValue("@type", "Ενοικίαση");
+                        command.Parameters.AddWithValue("@car", cmbCar.Text);
+                        command.Parameters.AddWithValue("@customer", cmbCustomer.Text);
+                        command.Parameters.AddWithValue("@notes", txtNotes.Text);
+                        command.Parameters.AddWithValue("@dueOn", dateTimeTo.Value.Date);
+                        command.Parameters.AddWithValue("@carId", cmbCar.SelectedValue);
+                        command.Parameters.AddWithValue("@rented", true);
+                        command.Parameters.AddWithValue("@returned", false);
+                        command.Parameters.AddWithValue("@renewal", null);
 
-            command.ExecuteNonQuery();
+                        command.ExecuteNonQuery();
 
-            conn.Close();
+                        conn.Close();
 
-            MessageBox.Show("Rental Added", "Rental Addition", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        MessageBox.Show("Rental Added", "Rental Addition", MessageBoxButtons.OK, MessageBoxIcon.None);
 
-            frmHome home = new frmHome();
-            home.Show();
+                        frmHome home = new frmHome();
+                        home.Show();
+                    }
+                }
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -84,15 +103,6 @@ namespace My_Garage
         private void frmCarRental_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
-        }
-
-        private void dateTimeTo_ValueChanged(object sender, EventArgs e)
-        {
-            if (dateTimeFrom.Value > dateTimeTo.Value)
-            {
-                MessageBox.Show("Date should be after From date.");
-                dateTimeTo.Value = DateTime.Now;
-            }
         }
 
         private void frmCarRental_Load(object sender, EventArgs e)

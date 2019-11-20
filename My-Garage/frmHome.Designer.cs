@@ -55,7 +55,7 @@
             this.btnCarRegistration.Name = "btnCarRegistration";
             this.btnCarRegistration.Size = new System.Drawing.Size(328, 55);
             this.btnCarRegistration.TabIndex = 2;
-            this.btnCarRegistration.Text = "Car Registration";
+            this.btnCarRegistration.Text = "Εγγραφή Οχήματος";
             this.btnCarRegistration.UseVisualStyleBackColor = true;
             this.btnCarRegistration.Click += new System.EventHandler(this.btnCarRegistration_Click);
             // 
@@ -66,7 +66,7 @@
             this.btnCustomerRegistration.Name = "btnCustomerRegistration";
             this.btnCustomerRegistration.Size = new System.Drawing.Size(328, 55);
             this.btnCustomerRegistration.TabIndex = 1;
-            this.btnCustomerRegistration.Text = "Customer Registration";
+            this.btnCustomerRegistration.Text = "Εγγραφή Πελάτη";
             this.btnCustomerRegistration.UseVisualStyleBackColor = true;
             this.btnCustomerRegistration.Click += new System.EventHandler(this.btnCustomerRegistration_Click);
             // 
@@ -77,7 +77,7 @@
             this.btnCarRental.Name = "btnCarRental";
             this.btnCarRental.Size = new System.Drawing.Size(328, 55);
             this.btnCarRental.TabIndex = 4;
-            this.btnCarRental.Text = "Car Rental";
+            this.btnCarRental.Text = "Ενοικιάσεις";
             this.btnCarRental.UseVisualStyleBackColor = true;
             this.btnCarRental.Click += new System.EventHandler(this.btnCarRental_Click);
             // 
@@ -88,7 +88,7 @@
             this.btnReminders.Name = "btnReminders";
             this.btnReminders.Size = new System.Drawing.Size(328, 55);
             this.btnReminders.TabIndex = 5;
-            this.btnReminders.Text = "Reminders";
+            this.btnReminders.Text = "Υπενθυμίσεις";
             this.btnReminders.UseVisualStyleBackColor = true;
             this.btnReminders.Click += new System.EventHandler(this.btnReminders_Click);
             // 
@@ -99,7 +99,7 @@
             this.btnCarServices.Name = "btnCarServices";
             this.btnCarServices.Size = new System.Drawing.Size(328, 55);
             this.btnCarServices.TabIndex = 3;
-            this.btnCarServices.Text = "Car Services";
+            this.btnCarServices.Text = "Στοιχεία Οχήματος";
             this.btnCarServices.UseVisualStyleBackColor = true;
             this.btnCarServices.Click += new System.EventHandler(this.btnCarServices_Click_1);
             // 
@@ -110,7 +110,7 @@
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(328, 55);
             this.btnSearch.TabIndex = 6;
-            this.btnSearch.Text = "Search";
+            this.btnSearch.Text = "Αναζήτηση";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 

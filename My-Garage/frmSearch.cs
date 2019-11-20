@@ -37,6 +37,11 @@ namespace My_Garage
         private void btnSearch_Click(object sender, EventArgs e)
         {
             Search();
+
+            dataGridCars.Columns[1].HeaderText = "Μάρκα";
+            dataGridCars.Columns[2].HeaderText = "Μοντέλο";
+            dataGridCars.Columns[3].HeaderText = "Αρ. Εγγραφής";
+            dataGridCars.Columns[4].HeaderText = "Αρ. Πλαισίου";
         }
 
         private void dataGridCars_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -47,6 +52,19 @@ namespace My_Garage
             SQLiteDataReader dr;
 
             var currentRow = dataGridCars.CurrentRow.Cells[0].Value;
+
+            // Clear fields
+            txtCarMake.Text = "";
+            txtCarModel.Text = "";
+            txtNumberPlate.Text = "";
+            txtVNumber.Text = "";
+            txtRoadTaxExpires.Text = "";
+            txtMOTExpires.Text = "";
+            radioYes.Checked = false;
+            radioNo.Checked = false;
+            txtCustomer.Text = "";
+            txtFrom.Text = "";
+            txtTo.Text = "";
 
             // Fill in cars
 
@@ -70,26 +88,28 @@ namespace My_Garage
 
             // Fill in services
 
-            string queryServices = "SELECT * FROM CarServices WHERE CarId = " + currentRow + " ORDER BY Id DESC LIMIT 1";
+            string queryServicesRT = "SELECT * FROM CarServices WHERE CarId = " + currentRow + " AND Type = 'Άδεια Κυκλοφορίας' AND Renewal = false ORDER BY Id DESC LIMIT 1";
+            string queryServicesMOT = "SELECT * FROM CarServices WHERE CarId = " + currentRow + " AND Type = 'M.O.T.' AND Renewal = false ORDER BY Id DESC LIMIT 1";
 
             conn.Open();
 
-            command = new SQLiteCommand(queryServices, conn);
+            // Road Tax
+
+            command = new SQLiteCommand(queryServicesRT, conn);
 
             dr = command.ExecuteReader();
 
             while (dr.Read())
-            {
-                if (dr["RoadTaxTo"] != DBNull.Value)
-                    txtRoadTaxExpires.Text = Convert.ToDateTime(dr["RoadTaxTo"]).ToShortDateString();
-                else
-                    txtRoadTaxExpires.Text = "Κενό";
+                txtRoadTaxExpires.Text = Convert.ToDateTime(dr["ToDate"]).ToShortDateString();
 
-                if (dr["MOTTo"] != DBNull.Value)
-                    txtMOTExpires.Text = Convert.ToDateTime(dr["MOTTo"]).ToShortDateString();
-                else
-                    txtMOTExpires.Text = "Κενό";
-            }
+            // MOT
+
+            command = new SQLiteCommand(queryServicesMOT, conn);
+
+            dr = command.ExecuteReader();
+
+            while (dr.Read())
+                txtMOTExpires.Text = Convert.ToDateTime(dr["ToDate"]).ToShortDateString();
 
             conn.Close();
 

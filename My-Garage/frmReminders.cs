@@ -28,6 +28,12 @@ namespace My_Garage
         private void frmReminders_Shown(object sender, EventArgs e)
         {
             ShowReminders();
+
+            dataGridReminders.Columns[1].HeaderText = "Τύπος";
+            dataGridReminders.Columns[2].HeaderText = "Αυτοκίνητο";
+            dataGridReminders.Columns[3].HeaderText = "Πελάτης";
+            dataGridReminders.Columns[4].HeaderText = "Σημειώσεις";
+            dataGridReminders.Columns[4].HeaderText = "Επιστροφή";
         }
 
         private void ShowReminders()
@@ -40,7 +46,9 @@ namespace My_Garage
             BindingSource bs = new BindingSource();
 
             dt = new DataTable();
-            da = new SQLiteDataAdapter("SELECT * FROM Reminders WHERE DueOn <= DATE('now', '+1 day')", conn);
+            da = new SQLiteDataAdapter("SELECT * FROM Reminders WHERE (((Type = 'Άδεια Κυκλοφορίας' OR Type = 'M.O.T.') " +
+                "AND (DueOn >= DATE('now', '-20 day') AND DueOn <= DATE('now', '+1 day')) AND Renewal = false) OR (Type = 'Ενοικίαση' " +
+                "AND (DueOn >= DATE('now', '-5 day') AND DueOn <= DATE('now', '+1 day')) AND Rented = true))", conn);
 
             da.Fill(dt);
             bs.DataSource = dt;
@@ -48,6 +56,9 @@ namespace My_Garage
 
             dataGridReminders.Columns[0].Visible = false;
             dataGridReminders.Columns[6].Visible = false;
+            dataGridReminders.Columns[7].Visible = false;
+            dataGridReminders.Columns[8].Visible = false;
+            dataGridReminders.Columns[9].Visible = false;
 
             foreach (DataGridViewRow row in dataGridReminders.Rows)
             {
@@ -60,10 +71,13 @@ namespace My_Garage
 
         private void dataGridReminders_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            var reminderId = dataGridReminders.SelectedRows[0].Cells[0].Value.ToString();
+            var type = dataGridReminders.SelectedRows[0].Cells[1].Value.ToString();
             var carId = dataGridReminders.SelectedRows[0].Cells[6].Value.ToString();
-            string query = $"DELETE FROM Reminders WHERE Id = {reminderId}";
+
+            string servicesQuery = $"UPDATE CarServices SET Renewal = true WHERE Type = '{type}' AND Renewal = false AND CarId = {carId}";
+            string servicesReminderQuery = $"UPDATE Reminders SET Renewal = true WHERE Type = '{type}' AND Renewal = false AND CarId = {carId}";
             string rentalQuery = $"UPDATE Rentals SET Rented = false, Returned = true WHERE CarId = {carId}";
+            string rentalReminderQuery = $"UPDATE Reminders SET Rented = false, Returned = true WHERE CarId = {carId} AND Type = 'Ενοικίαση'";
 
             using (SQLiteConnection conn = new SQLiteConnection(@"Data Source = C:\Users\johnz\Downloads\GarageDB.db; Version = 3; datetimeformat = CurrentCulture"))
             {
@@ -71,18 +85,39 @@ namespace My_Garage
 
                 SQLiteCommand command = new SQLiteCommand();
 
-                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this reminder?", "Delete Reminder", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (dialogResult == DialogResult.Yes)
+                if (type == "Άδεια Κυκλοφορίας" || type == "M.O.T.")
                 {
-                    command = new SQLiteCommand(rentalQuery, conn);
+                    string sentenceStart = type == "Άδεια Κυκλοφορίας" ? "Η" : "Το";
 
-                    command.ExecuteNonQuery();
+                    DialogResult dialogResult = MessageBox.Show($"{sentenceStart} {type} θα διαγραφεί. Έχει ανανεωθει;", "Διαγραφή Άδειας Κυκλοφορίας", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        command = new SQLiteCommand(servicesQuery, conn);
 
-                    command = new SQLiteCommand(query, conn);
+                        command.ExecuteNonQuery();
 
-                    command.ExecuteNonQuery();
+                        command = new SQLiteCommand(servicesReminderQuery, conn);
 
-                    ShowReminders();
+                        command.ExecuteNonQuery();
+
+                        ShowReminders();
+                    }
+                }
+                else
+                {
+                    DialogResult dialogResult = MessageBox.Show("Η ενοικίαση θα διαγραφεί. Έχει επιστρέψει το αυτοκίνητο;", "Διαγραφή Ενοικίασης", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        command = new SQLiteCommand(rentalQuery, conn);
+
+                        command.ExecuteNonQuery();
+
+                        command = new SQLiteCommand(rentalReminderQuery, conn);
+
+                        command.ExecuteNonQuery();
+
+                        ShowReminders();
+                    }
                 }
             }
         }

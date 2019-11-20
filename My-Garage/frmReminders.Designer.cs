@@ -53,7 +53,7 @@
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(145, 35);
             this.btnDone.TabIndex = 7;
-            this.btnDone.Text = "Done";
+            this.btnDone.Text = "Oλοκλήρωση";
             this.btnDone.UseVisualStyleBackColor = true;
             this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
             // 
@@ -69,7 +69,7 @@
             this.MaximizeBox = false;
             this.Name = "frmReminders";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Reminders";
+            this.Text = "Υπενθυμίσεις";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmReminders_FormClosing);
             this.Shown += new System.EventHandler(this.frmReminders_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReminders)).EndInit();

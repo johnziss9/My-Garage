@@ -19,23 +19,21 @@ namespace My_Garage
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            Hide();
-
-            // Cars Add
-
-            string query = "INSERT INTO Cars (Id, CarMake, CarModel, NumberPlate, VNumber) " +
-                "VALUES (@id, @carMake, @carModel, @numberPlate, @vNumber)";
-
-            GetCarId();
-
-            conn.Open();
-
-            command = new SQLiteCommand(query, conn);
-
-            if (txtCarMake.Text == "" || txtCarModel.Text == "" || txtNumberPlate.Text == "")
+            if (txtCarMake.Text == "" || txtCarModel.Text == "" || txtNumberPlate.Text == "" || txtVNumber.Text == "")
                 MessageBox.Show("Please enter the car make, model and number plate.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
-            {
+            { 
+                Hide();
+
+                string query = "INSERT INTO Cars (Id, CarMake, CarModel, NumberPlate, VNumber) " +
+                    "VALUES (@id, @carMake, @carModel, @numberPlate, @vNumber)";
+
+                GetCarId();
+
+                conn.Open();
+
+                command = new SQLiteCommand(query, conn);
+
                 command.Parameters.AddWithValue("@id", _carId);
                 command.Parameters.AddWithValue("@carMake", txtCarMake.Text.ToUpper());
                 command.Parameters.AddWithValue("@carModel", txtCarModel.Text.ToUpper());
@@ -45,12 +43,12 @@ namespace My_Garage
                 command.ExecuteNonQuery();
 
                 MessageBox.Show("Car Added", "Car Addition", MessageBoxButtons.OK, MessageBoxIcon.None);
+
+                conn.Close();
+
+                frmHome home = new frmHome();
+                home.Show();
             }
-
-            conn.Close();
-
-            frmHome home = new frmHome();
-            home.Show();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
