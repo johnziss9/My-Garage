@@ -46,6 +46,8 @@ namespace My_Garage
 
                         if (cmbService.Text == "Άδεια Κυκλοφορίας")
                         {
+                            CheckOngoingService((int)cmbCar.SelectedValue, "Άδεια Κυκλοφορίας");
+
                             command = new SQLiteCommand(queryServices, conn);
 
                             command.Parameters.AddWithValue("@id", _serviceId);
@@ -64,6 +66,8 @@ namespace My_Garage
                         }
                         else if (cmbService.Text == "M.O.T.")
                         {
+                            CheckOngoingService((int)cmbCar.SelectedValue, "M.O.T.");
+
                             command = new SQLiteCommand(queryServices, conn);
 
                             command.Parameters.AddWithValue("@id", _serviceId);
@@ -188,6 +192,31 @@ namespace My_Garage
                     cmbCar.DisplayMember = "Car";
                     cmbCar.ValueMember = "Id";
                     cmbCar.DataSource = ds.Tables["Cars"];
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error occured!");
+                }
+            }
+        }
+
+        private void CheckOngoingService(int carId, string type)
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\johnz\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture"))
+            {
+                try
+                {
+                    string checkOngoingServiceQuery = $"SELECT * FROM Reminders WHERE CarId = {carId} AND Type = '{type}' AND Renewal = false";
+
+                    command = new SQLiteCommand(checkOngoingServiceQuery, conn);
+
+                    conn.Open();
+
+                    SQLiteDataReader dr = command.ExecuteReader();
+
+                    if (dr.HasRows)
+                        MessageBox.Show("Test");
+
                 }
                 catch (Exception ex)
                 {
