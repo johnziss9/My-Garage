@@ -22,15 +22,15 @@ namespace My_Garage
         private void btnRegister_Click(object sender, EventArgs e)
         {
             if (cmbCar.Text == "")
-                MessageBox.Show("Please select a car.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Καταχωρίστε το αυτοκίνητο.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
             {
                 if (cmbService.Text == "")
-                    MessageBox.Show("Please select a service.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Καταχωρίστε τα στοιχεία του οχήματος.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 else
                 {
                     if (dateTimeFrom.Value > dateTimeTo.Value)
-                        MessageBox.Show("From date should be greater than to date.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Η 'Μέχρι' ημερομηνία πρέπει να είναι μεγαλύτερη από την 'Από' ημερομηνία.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     else
                     {
                         Hide();
@@ -58,7 +58,7 @@ namespace My_Garage
 
                             command.ExecuteNonQuery();
 
-                            MessageBox.Show("Service Added", "Service Addition", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Τα στοιχεία έχουν προστεθεί.", "Πρόσθεση Στοιχείον", MessageBoxButtons.OK, MessageBoxIcon.None);
 
                             AddReminder("Άδεια Κυκλοφορίας");
                         }
@@ -76,7 +76,7 @@ namespace My_Garage
 
                             command.ExecuteNonQuery();
 
-                            MessageBox.Show("Service Added", "Service Addition", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Τα στοιχεία έχουν προστεθεί.", "Πρόσθεση Στοιχείον", MessageBoxButtons.OK, MessageBoxIcon.None);
 
                             AddReminder("M.O.T.");
                         }

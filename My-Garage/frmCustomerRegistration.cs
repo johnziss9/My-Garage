@@ -33,7 +33,7 @@ namespace My_Garage
         private void btnRegister_Click(object sender, EventArgs e)
         {
             if (txtFirstName.Text == "" || txtLastName.Text == "" || txtAddress.Text == "" || txtPhoneNo.Text == "")
-                MessageBox.Show("Please fill in all the details.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Καταχωρίστε όλα τα στοιχεία.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
                 Hide();
@@ -55,7 +55,7 @@ namespace My_Garage
 
                 command.ExecuteNonQuery();
 
-                MessageBox.Show("Customer Added", "Customer Addition", MessageBoxButtons.OK, MessageBoxIcon.None);
+                MessageBox.Show("Ο πελάτης έχει προστεθεί.", "Προσθήκη Πελάτη", MessageBoxButtons.OK, MessageBoxIcon.None);
 
                 conn.Close();
 
