@@ -47,8 +47,8 @@ namespace My_Garage
 
             dt = new DataTable();
             da = new SQLiteDataAdapter("SELECT * FROM Reminders WHERE (((Type = 'Άδεια Κυκλοφορίας' OR Type = 'M.O.T.') " +
-                "AND (DueOn >= DATE('now', '-20 day') AND DueOn <= DATE('now', '+1 day')) AND Renewal = false) OR (Type = 'Ενοικίαση' " +
-                "AND (DueOn >= DATE('now', '-5 day') AND DueOn <= DATE('now', '+1 day')) AND Rented = true))", conn);
+                "AND(DueOn <= DATE('now', '+21 day')) AND Renewal = false) OR(Type = 'Ενοικίαση' AND(DueOn <= DATE('now', '+6 day')) " +
+                "AND Rented = true))", conn);
 
             da.Fill(dt);
             bs.DataSource = dt;
