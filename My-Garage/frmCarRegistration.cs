@@ -20,7 +20,7 @@ namespace My_Garage
         private void btnRegister_Click(object sender, EventArgs e)
         {
             if (txtCarMake.Text == "" || txtCarModel.Text == "" || txtNumberPlate.Text == "" || txtVNumber.Text == "")
-                MessageBox.Show("Please enter the car make, model and number plate.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Καταχωρίστε τα στοιχεία.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             { 
                 Hide();
@@ -42,7 +42,7 @@ namespace My_Garage
 
                 command.ExecuteNonQuery();
 
-                MessageBox.Show("Car Added", "Car Addition", MessageBoxButtons.OK, MessageBoxIcon.None);
+                MessageBox.Show("Το αυτοκίνητο έχει προστεθεί.", "Προσθήκη Αυτοκινήτου", MessageBoxButtons.OK, MessageBoxIcon.None);
 
                 conn.Close();
 

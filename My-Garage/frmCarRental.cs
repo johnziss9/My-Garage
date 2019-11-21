@@ -22,15 +22,15 @@ namespace My_Garage
         private void btnRegister_Click(object sender, EventArgs e)
         {
             if (dateTimeFrom.Value > dateTimeTo.Value)
-                MessageBox.Show("From date should be greater than to date.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Η 'Από' ημερομηνία πρέπει να είναι μεγαλύτερη από την 'Μέχρι' ημερομηνία.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
             {
                 if (cmbCustomer.Text == "")
-                    MessageBox.Show("Please select a customer.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Καταχωρίστε τον πελάτη.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 else
                 {
                     if (cmbCar.Text == "")
-                        MessageBox.Show("Please select a car.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Καταχωρίστε το αυτοκίνητο.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     else
                     {
                         Hide();
@@ -84,7 +84,7 @@ namespace My_Garage
 
                         conn.Close();
 
-                        MessageBox.Show("Rental Added", "Rental Addition", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        MessageBox.Show("Η ενοικίαση έχει προστεθεί.", "Πρόσθεση Ενοικίασης", MessageBoxButtons.OK, MessageBoxIcon.None);
 
                         frmHome home = new frmHome();
                         home.Show();
