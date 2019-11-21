@@ -20,7 +20,7 @@ namespace My_Garage
         private void btnRegister_Click(object sender, EventArgs e)
         {
             if (txtCarMake.Text == "" || txtCarModel.Text == "" || txtNumberPlate.Text == "" || txtVNumber.Text == "")
-                MessageBox.Show("Καταχωρίστε τα στοιχεία.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Καταχωρίστε όλα τα στοιχεία.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             { 
                 Hide();

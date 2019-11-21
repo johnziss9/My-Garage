@@ -22,7 +22,7 @@ namespace My_Garage
         private void btnRegister_Click(object sender, EventArgs e)
         {
             if (dateTimeFrom.Value > dateTimeTo.Value)
-                MessageBox.Show("Η 'Από' ημερομηνία πρέπει να είναι μεγαλύτερη από την 'Μέχρι' ημερομηνία.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Η 'Μέχρι' ημερομηνία πρέπει να είναι μεγαλύτερη από την 'Από' ημερομηνία.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
             {
                 if (cmbCustomer.Text == "")
