@@ -33,61 +33,66 @@ namespace My_Garage
                         MessageBox.Show("Καταχωρίστε το αυτοκίνητο.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     else
                     {
-                        Hide();
+                        if (CheckOngoingRental((int)cmbCar.SelectedValue) == true)
+                            MessageBox.Show($"Το όχημα έχει ενοικιασμένο.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        else
+                        {
+                            Hide();
 
-                        string query = "INSERT INTO Rentals(Id, FromDate, ToDate, Customer, Car, Notes, CarId, Rented, Returned) " +
-                            "VALUES (@id, @fromDate, @toDate, @customer, @car, @notes, @carId, @rented, @returned)";
+                            string query = "INSERT INTO Rentals(Id, FromDate, ToDate, Customer, Car, Notes, CarId, Rented, Returned) " +
+                                "VALUES (@id, @fromDate, @toDate, @customer, @car, @notes, @carId, @rented, @returned)";
 
-                        GetRentalId();
+                            GetRentalId();
 
-                        conn.Open();
+                            conn.Open();
 
-                        command = new SQLiteCommand(query, conn);
+                            command = new SQLiteCommand(query, conn);
 
-                        command.Parameters.AddWithValue("@id", _rentalId);
-                        command.Parameters.AddWithValue("@fromDate", dateTimeFrom.Value.Date);
-                        command.Parameters.AddWithValue("@toDate", dateTimeTo.Value.Date);
-                        command.Parameters.AddWithValue("@customer", cmbCustomer.Text);
-                        command.Parameters.AddWithValue("@car", cmbCar.Text);
-                        command.Parameters.AddWithValue("@notes", txtNotes.Text);
-                        command.Parameters.AddWithValue("@carId", cmbCar.SelectedValue);
-                        command.Parameters.AddWithValue("@rented", true);
-                        command.Parameters.AddWithValue("@returned", false);
+                            command.Parameters.AddWithValue("@id", _rentalId);
+                            command.Parameters.AddWithValue("@fromDate", dateTimeFrom.Value.Date);
+                            command.Parameters.AddWithValue("@toDate", dateTimeTo.Value.Date);
+                            command.Parameters.AddWithValue("@customer", cmbCustomer.Text);
+                            command.Parameters.AddWithValue("@car", cmbCar.Text);
+                            command.Parameters.AddWithValue("@notes", txtNotes.Text);
+                            command.Parameters.AddWithValue("@carId", cmbCar.SelectedValue);
+                            command.Parameters.AddWithValue("@rented", true);
+                            command.Parameters.AddWithValue("@returned", false);
 
-                        command.ExecuteNonQuery();
+                            command.ExecuteNonQuery();
 
-                        string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn, CarId, Rented, Returned, Renewal) " +
-                            "VALUES (@id, @type, @car, @customer, @notes, @dueOn, @carId, @rented, @returned, @renewal)";
+                            string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn, CarId, Rented, Returned, Renewal) " +
+                                "VALUES (@id, @type, @car, @customer, @notes, @dueOn, @carId, @rented, @returned, @renewal)";
 
-                        // Add Reminder
+                            // Add Reminder
 
-                        conn.Close();
+                            conn.Close();
 
-                        GetReminderId();
+                            GetReminderId();
 
-                        conn.Open();
+                            conn.Open();
 
-                        command = new SQLiteCommand(queryReminder, conn);
+                            command = new SQLiteCommand(queryReminder, conn);
 
-                        command.Parameters.AddWithValue("@id", _reminderId);
-                        command.Parameters.AddWithValue("@type", "Ενοικίαση");
-                        command.Parameters.AddWithValue("@car", cmbCar.Text);
-                        command.Parameters.AddWithValue("@customer", cmbCustomer.Text);
-                        command.Parameters.AddWithValue("@notes", txtNotes.Text);
-                        command.Parameters.AddWithValue("@dueOn", dateTimeTo.Value.Date);
-                        command.Parameters.AddWithValue("@carId", cmbCar.SelectedValue);
-                        command.Parameters.AddWithValue("@rented", true);
-                        command.Parameters.AddWithValue("@returned", false);
-                        command.Parameters.AddWithValue("@renewal", null);
+                            command.Parameters.AddWithValue("@id", _reminderId);
+                            command.Parameters.AddWithValue("@type", "Ενοικίαση");
+                            command.Parameters.AddWithValue("@car", cmbCar.Text);
+                            command.Parameters.AddWithValue("@customer", cmbCustomer.Text);
+                            command.Parameters.AddWithValue("@notes", txtNotes.Text);
+                            command.Parameters.AddWithValue("@dueOn", dateTimeTo.Value.Date);
+                            command.Parameters.AddWithValue("@carId", cmbCar.SelectedValue);
+                            command.Parameters.AddWithValue("@rented", true);
+                            command.Parameters.AddWithValue("@returned", false);
+                            command.Parameters.AddWithValue("@renewal", null);
 
-                        command.ExecuteNonQuery();
+                            command.ExecuteNonQuery();
 
-                        conn.Close();
+                            conn.Close();
 
-                        MessageBox.Show("Η ενοικίαση έχει προστεθεί.", "Πρόσθεση Ενοικίασης", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Η ενοικίαση έχει προστεθεί.", "Πρόσθεση Ενοικίασης", MessageBoxButtons.OK, MessageBoxIcon.None);
 
-                        frmHome home = new frmHome();
-                        home.Show();
+                            frmHome home = new frmHome();
+                            home.Show();
+                        }
                     }
                 }
             }
@@ -178,6 +183,35 @@ namespace My_Garage
             }
 
             conn.Close();
+        }
+
+        private bool CheckOngoingRental(int carId)
+        {
+            bool ongoingRental = false;
+
+            using (SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\johnz\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture"))
+            {
+                try
+                {
+                    string checkOngoingRentalQuery = $"SELECT * FROM Reminders WHERE CarId = {carId} AND Type = 'Ενοικίαση' AND Rented = true";
+
+                    command = new SQLiteCommand(checkOngoingRentalQuery, conn);
+
+                    conn.Open();
+
+                    SQLiteDataReader dr = command.ExecuteReader();
+
+                    if (dr.HasRows)
+                        ongoingRental = true;
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error occured!");
+                }
+            }
+
+            return ongoingRental;
         }
     }
 }

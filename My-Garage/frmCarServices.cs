@@ -33,56 +33,59 @@ namespace My_Garage
                         MessageBox.Show("Η 'Μέχρι' ημερομηνία πρέπει να είναι μεγαλύτερη από την 'Από' ημερομηνία.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     else
                     {
-                        Hide();
-
-                        // Service Add
-
-                        string queryServices = "INSERT INTO CarServices (Id, Car, Type, FromDate, ToDate, CarId, Renewal) " +
-                            "VALUES (@id, @car, @type, @from, @to, @carId, @renewal)";
-
-                        GetServiceId();
-
-                        conn.Open();
-
-                        if (cmbService.Text == "Άδεια Κυκλοφορίας")
+                        if (CheckOngoingService((int)cmbCar.SelectedValue, cmbService.Text) == true)
                         {
-                            CheckOngoingService((int)cmbCar.SelectedValue, "Άδεια Κυκλοφορίας");
+                            string serviceType = cmbService.Text == "Άδεια Κυκλοφορίας" ? "ατέλειωτη άδεια κυκλοφορίας" : "ατέλειωτο M.O.T.";
 
-                            command = new SQLiteCommand(queryServices, conn);
-
-                            command.Parameters.AddWithValue("@id", _serviceId);
-                            command.Parameters.AddWithValue("@car", cmbCar.Text);
-                            command.Parameters.AddWithValue("@type", "Άδεια Κυκλοφορίας");
-                            command.Parameters.AddWithValue("@from", dateTimeFrom.Value.Date);
-                            command.Parameters.AddWithValue("@to", dateTimeTo.Value.Date);
-                            command.Parameters.AddWithValue("@carId", cmbCar.SelectedValue);
-                            command.Parameters.AddWithValue("@renewal", false);
-
-                            command.ExecuteNonQuery();
-
-                            MessageBox.Show("Τα στοιχεία έχουν προστεθεί.", "Πρόσθεση Στοιχείον", MessageBoxButtons.OK, MessageBoxIcon.None);
-
-                            AddReminder("Άδεια Κυκλοφορίας");
+                            MessageBox.Show($"Το όχημα έχει {serviceType}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-                        else if (cmbService.Text == "M.O.T.")
+                        else
                         {
-                            CheckOngoingService((int)cmbCar.SelectedValue, "M.O.T.");
+                            Hide();
 
-                            command = new SQLiteCommand(queryServices, conn);
+                            string queryServices = "INSERT INTO CarServices (Id, Car, Type, FromDate, ToDate, CarId, Renewal) " +
+                                "VALUES (@id, @car, @type, @from, @to, @carId, @renewal)";
 
-                            command.Parameters.AddWithValue("@id", _serviceId);
-                            command.Parameters.AddWithValue("@car", cmbCar.Text);
-                            command.Parameters.AddWithValue("@type", "M.O.T.");
-                            command.Parameters.AddWithValue("@from", dateTimeFrom.Value.Date);
-                            command.Parameters.AddWithValue("@to", dateTimeTo.Value.Date);
-                            command.Parameters.AddWithValue("@carId", cmbCar.SelectedValue);
-                            command.Parameters.AddWithValue("@renewal", false);
+                            GetServiceId();
 
-                            command.ExecuteNonQuery();
+                            conn.Open();
 
-                            MessageBox.Show("Τα στοιχεία έχουν προστεθεί.", "Πρόσθεση Στοιχείον", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            if (cmbService.Text == "Άδεια Κυκλοφορίας")
+                            {
+                                command = new SQLiteCommand(queryServices, conn);
 
-                            AddReminder("M.O.T.");
+                                command.Parameters.AddWithValue("@id", _serviceId);
+                                command.Parameters.AddWithValue("@car", cmbCar.Text);
+                                command.Parameters.AddWithValue("@type", "Άδεια Κυκλοφορίας");
+                                command.Parameters.AddWithValue("@from", dateTimeFrom.Value.Date);
+                                command.Parameters.AddWithValue("@to", dateTimeTo.Value.Date);
+                                command.Parameters.AddWithValue("@carId", cmbCar.SelectedValue);
+                                command.Parameters.AddWithValue("@renewal", false);
+
+                                command.ExecuteNonQuery();
+
+                                MessageBox.Show("Τα στοιχεία έχουν προστεθεί.", "Πρόσθεση Στοιχείον", MessageBoxButtons.OK, MessageBoxIcon.None);
+
+                                AddReminder("Άδεια Κυκλοφορίας");
+                            }
+                            else if (cmbService.Text == "M.O.T.")
+                            {
+                                command = new SQLiteCommand(queryServices, conn);
+
+                                command.Parameters.AddWithValue("@id", _serviceId);
+                                command.Parameters.AddWithValue("@car", cmbCar.Text);
+                                command.Parameters.AddWithValue("@type", "M.O.T.");
+                                command.Parameters.AddWithValue("@from", dateTimeFrom.Value.Date);
+                                command.Parameters.AddWithValue("@to", dateTimeTo.Value.Date);
+                                command.Parameters.AddWithValue("@carId", cmbCar.SelectedValue);
+                                command.Parameters.AddWithValue("@renewal", false);
+
+                                command.ExecuteNonQuery();
+
+                                MessageBox.Show("Τα στοιχεία έχουν προστεθεί.", "Πρόσθεση Στοιχείον", MessageBoxButtons.OK, MessageBoxIcon.None);
+
+                                AddReminder("M.O.T.");
+                            }
                         }
                     }
                 }
@@ -200,8 +203,10 @@ namespace My_Garage
             }
         }
 
-        private void CheckOngoingService(int carId, string type)
+        private bool CheckOngoingService(int carId, string type)
         {
+            bool ongoingService = false;
+
             using (SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\johnz\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture"))
             {
                 try
@@ -215,7 +220,7 @@ namespace My_Garage
                     SQLiteDataReader dr = command.ExecuteReader();
 
                     if (dr.HasRows)
-                        MessageBox.Show("Test");
+                        ongoingService = true;
 
                 }
                 catch (Exception ex)
@@ -223,6 +228,8 @@ namespace My_Garage
                     MessageBox.Show("Error occured!");
                 }
             }
+
+            return ongoingService;
         }
     }
 }
