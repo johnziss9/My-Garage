@@ -39,8 +39,8 @@ namespace My_Garage
                         {
                             Hide();
 
-                            string query = "INSERT INTO Rentals(Id, FromDate, ToDate, Customer, Car, Notes, CarId, Rented, Returned) " +
-                                "VALUES (@id, @fromDate, @toDate, @customer, @car, @notes, @carId, @rented, @returned)";
+                            string query = "INSERT INTO Rentals(Id, FromDate, ToDate, Customer, Car, Notes, CarId, Rented) " +
+                                "VALUES (@id, @fromDate, @toDate, @customer, @car, @notes, @carId, @rented)";
 
                             GetRentalId();
 
@@ -56,12 +56,11 @@ namespace My_Garage
                             command.Parameters.AddWithValue("@notes", txtNotes.Text);
                             command.Parameters.AddWithValue("@carId", cmbCar.SelectedValue);
                             command.Parameters.AddWithValue("@rented", true);
-                            command.Parameters.AddWithValue("@returned", false);
 
                             command.ExecuteNonQuery();
 
-                            string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn, CarId, Rented, Returned, Renewal) " +
-                                "VALUES (@id, @type, @car, @customer, @notes, @dueOn, @carId, @rented, @returned, @renewal)";
+                            string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn, CarId, Rented, Renewal) " +
+                                "VALUES (@id, @type, @car, @customer, @notes, @dueOn, @carId, @rented, @renewal)";
 
                             // Add Reminder
 
@@ -81,7 +80,6 @@ namespace My_Garage
                             command.Parameters.AddWithValue("@dueOn", dateTimeTo.Value.Date);
                             command.Parameters.AddWithValue("@carId", cmbCar.SelectedValue);
                             command.Parameters.AddWithValue("@rented", true);
-                            command.Parameters.AddWithValue("@returned", false);
                             command.Parameters.AddWithValue("@renewal", null);
 
                             command.ExecuteNonQuery();

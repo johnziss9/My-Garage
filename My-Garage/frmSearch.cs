@@ -126,9 +126,15 @@ namespace My_Garage
             while (dr.Read())
             {
                 if (Convert.ToBoolean(dr["Rented"]) == true)
+                {
                     radioYes.Checked = true;
+                    lblRentalDetails.Text = "Ενοικιαστής:";
+                }
                 else
+                {
                     radioNo.Checked = true;
+                    lblRentalDetails.Text = "Τελευταίος Ενοικιαστής:";
+                }
 
                 txtCustomer.Text = dr["Customer"].ToString();
                 txtFrom.Text = Convert.ToDateTime(dr["FromDate"]).ToShortDateString();

@@ -32,6 +32,7 @@
             this.txtSearchMake = new System.Windows.Forms.TextBox();
             this.lblSearchMake = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblRentalDetails = new System.Windows.Forms.Label();
             this.txtVNumber = new System.Windows.Forms.TextBox();
             this.lblVNumber = new System.Windows.Forms.Label();
             this.txtFrom = new System.Windows.Forms.TextBox();
@@ -88,6 +89,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblRentalDetails);
             this.panel1.Controls.Add(this.txtVNumber);
             this.panel1.Controls.Add(this.lblVNumber);
             this.panel1.Controls.Add(this.txtFrom);
@@ -115,8 +117,18 @@
             this.panel1.Location = new System.Drawing.Point(16, 418);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(785, 341);
+            this.panel1.Size = new System.Drawing.Size(785, 307);
             this.panel1.TabIndex = 2;
+            // 
+            // lblRentalDetails
+            // 
+            this.lblRentalDetails.AutoSize = true;
+            this.lblRentalDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Underline);
+            this.lblRentalDetails.Location = new System.Drawing.Point(383, 177);
+            this.lblRentalDetails.Name = "lblRentalDetails";
+            this.lblRentalDetails.Size = new System.Drawing.Size(175, 20);
+            this.lblRentalDetails.TabIndex = 26;
+            this.lblRentalDetails.Text = "Πληροφορίες Πελάτη:";
             // 
             // txtVNumber
             // 
@@ -139,7 +151,7 @@
             // 
             // txtFrom
             // 
-            this.txtFrom.Location = new System.Drawing.Point(149, 271);
+            this.txtFrom.Location = new System.Drawing.Point(516, 241);
             this.txtFrom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtFrom.Name = "txtFrom";
             this.txtFrom.Size = new System.Drawing.Size(210, 22);
@@ -149,7 +161,7 @@
             // 
             this.lblFrom.AutoSize = true;
             this.lblFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblFrom.Location = new System.Drawing.Point(16, 271);
+            this.lblFrom.Location = new System.Drawing.Point(383, 241);
             this.lblFrom.Name = "lblFrom";
             this.lblFrom.Size = new System.Drawing.Size(43, 20);
             this.lblFrom.TabIndex = 22;
@@ -157,7 +169,7 @@
             // 
             // txtTo
             // 
-            this.txtTo.Location = new System.Drawing.Point(149, 300);
+            this.txtTo.Location = new System.Drawing.Point(516, 270);
             this.txtTo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTo.Name = "txtTo";
             this.txtTo.Size = new System.Drawing.Size(210, 22);
@@ -167,7 +179,7 @@
             // 
             this.lblTo.AutoSize = true;
             this.lblTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblTo.Location = new System.Drawing.Point(16, 300);
+            this.lblTo.Location = new System.Drawing.Point(383, 270);
             this.lblTo.Name = "lblTo";
             this.lblTo.Size = new System.Drawing.Size(58, 20);
             this.lblTo.TabIndex = 20;
@@ -175,7 +187,7 @@
             // 
             // txtCustomer
             // 
-            this.txtCustomer.Location = new System.Drawing.Point(149, 242);
+            this.txtCustomer.Location = new System.Drawing.Point(516, 212);
             this.txtCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCustomer.Name = "txtCustomer";
             this.txtCustomer.Size = new System.Drawing.Size(210, 22);
@@ -185,7 +197,7 @@
             // 
             this.lblCustomer.AutoSize = true;
             this.lblCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblCustomer.Location = new System.Drawing.Point(16, 242);
+            this.lblCustomer.Location = new System.Drawing.Point(383, 212);
             this.lblCustomer.Name = "lblCustomer";
             this.lblCustomer.Size = new System.Drawing.Size(78, 20);
             this.lblCustomer.TabIndex = 18;
@@ -348,7 +360,7 @@
             // btnDone
             // 
             this.btnDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnDone.Location = new System.Drawing.Point(656, 763);
+            this.btnDone.Location = new System.Drawing.Point(656, 729);
             this.btnDone.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(145, 34);
@@ -425,7 +437,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(819, 808);
+            this.ClientSize = new System.Drawing.Size(819, 772);
             this.Controls.Add(this.lblSearchModel);
             this.Controls.Add(this.txtSearchModel);
             this.Controls.Add(this.lblSearchCarReg);
@@ -488,5 +500,6 @@
         private System.Windows.Forms.DataGridView dataGridCars;
         private System.Windows.Forms.TextBox txtVNumber;
         private System.Windows.Forms.Label lblVNumber;
+        private System.Windows.Forms.Label lblRentalDetails;
     }
 }

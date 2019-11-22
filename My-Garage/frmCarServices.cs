@@ -146,8 +146,8 @@ namespace My_Garage
 
         public void AddReminder(string serviceType)
         {
-            string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn, CarId, Rented, Returned, Renewal) " +
-            "VALUES (@id, @type, @car, @customer, @notes, @dueOn, @carId, @rented, @returned, @renewal)";
+            string queryReminder = "INSERT INTO Reminders (Id, Type, Car, Customer, Notes, DueOn, CarId, Rented, Renewal) " +
+            "VALUES (@id, @type, @car, @customer, @notes, @dueOn, @carId, @rented, @renewal)";
 
             conn.Close();
 
@@ -165,7 +165,6 @@ namespace My_Garage
             command.Parameters.AddWithValue("@dueOn", dateTimeTo.Value.Date);
             command.Parameters.AddWithValue("@carId", cmbCar.SelectedValue);
             command.Parameters.AddWithValue("@rented", null);
-            command.Parameters.AddWithValue("@returned", null);
             command.Parameters.AddWithValue("@renewal", false);
 
             command.ExecuteNonQuery();

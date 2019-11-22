@@ -58,7 +58,6 @@ namespace My_Garage
             dataGridReminders.Columns[6].Visible = false;
             dataGridReminders.Columns[7].Visible = false;
             dataGridReminders.Columns[8].Visible = false;
-            dataGridReminders.Columns[9].Visible = false;
 
             foreach (DataGridViewRow row in dataGridReminders.Rows)
             {
@@ -76,8 +75,8 @@ namespace My_Garage
 
             string servicesQuery = $"UPDATE CarServices SET Renewal = true WHERE Type = '{type}' AND Renewal = false AND CarId = {carId}";
             string servicesReminderQuery = $"UPDATE Reminders SET Renewal = true WHERE Type = '{type}' AND Renewal = false AND CarId = {carId}";
-            string rentalQuery = $"UPDATE Rentals SET Rented = false, Returned = true WHERE CarId = {carId}";
-            string rentalReminderQuery = $"UPDATE Reminders SET Rented = false, Returned = true WHERE CarId = {carId} AND Type = 'Ενοικίαση'";
+            string rentalQuery = $"UPDATE Rentals SET Rented = false WHERE CarId = {carId}";
+            string rentalReminderQuery = $"UPDATE Reminders SET Rented = false WHERE CarId = {carId} AND Type = 'Ενοικίαση'";
 
             using (SQLiteConnection conn = new SQLiteConnection(@"Data Source = C:\Users\johnz\Downloads\GarageDB.db; Version = 3; datetimeformat = CurrentCulture"))
             {
