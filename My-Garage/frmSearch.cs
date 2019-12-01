@@ -46,7 +46,7 @@ namespace My_Garage
 
         private void dataGridCars_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\johnz\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture");
+            SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\andri\Documents\MyGarage\GarageDB.db;Version=3;datetimeformat=CurrentCulture");
 
             SQLiteCommand command;
             SQLiteDataReader dr;
@@ -144,7 +144,7 @@ namespace My_Garage
 
         public void Search()
         {
-            string connString = @"Data Source=C:\Users\johnz\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture";
+            string connString = @"Data Source=C:\Users\andri\Documents\MyGarage\GarageDB.db;Version=3;datetimeformat=CurrentCulture";
             SQLiteConnection conn = new SQLiteConnection(connString);
 
             DataTable dt = new DataTable();
