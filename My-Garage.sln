@@ -1,24 +1,31 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.168
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My-Garage", "My-Garage\My-Garage.csproj", "{C23B02EA-4F55-4D79-909E-64F06BE2A3B8}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "MyGarageSetup", "MyGarageSetup\MyGarageSetup.vdproj", "{49F02B48-784F-4E15-948C-3AD7F56CAEB6}"
+Project("{840C416C-B8F3-42BC-B0DD-F6BB14C9F8CB}") = "MyGarageSetup", "MyGarageSetup\MyGarageSetup.aiproj", "{091A772D-2B7A-49F3-B850-38E1060BC7C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		All|Any CPU = All|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C23B02EA-4F55-4D79-909E-64F06BE2A3B8}.All|Any CPU.ActiveCfg = Release|Any CPU
+		{C23B02EA-4F55-4D79-909E-64F06BE2A3B8}.All|Any CPU.Build.0 = Release|Any CPU
 		{C23B02EA-4F55-4D79-909E-64F06BE2A3B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C23B02EA-4F55-4D79-909E-64F06BE2A3B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C23B02EA-4F55-4D79-909E-64F06BE2A3B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C23B02EA-4F55-4D79-909E-64F06BE2A3B8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{49F02B48-784F-4E15-948C-3AD7F56CAEB6}.Debug|Any CPU.ActiveCfg = Debug
-		{49F02B48-784F-4E15-948C-3AD7F56CAEB6}.Release|Any CPU.ActiveCfg = Release
+		{091A772D-2B7A-49F3-B850-38E1060BC7C5}.All|Any CPU.ActiveCfg = DefaultBuild
+		{091A772D-2B7A-49F3-B850-38E1060BC7C5}.All|Any CPU.Build.0 = DefaultBuild
+		{091A772D-2B7A-49F3-B850-38E1060BC7C5}.Debug|Any CPU.ActiveCfg = DefaultBuild
+		{091A772D-2B7A-49F3-B850-38E1060BC7C5}.Debug|Any CPU.Build.0 = DefaultBuild
+		{091A772D-2B7A-49F3-B850-38E1060BC7C5}.Release|Any CPU.ActiveCfg = DefaultBuild
+		{091A772D-2B7A-49F3-B850-38E1060BC7C5}.Release|Any CPU.Build.0 = DefaultBuild
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
