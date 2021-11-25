@@ -2,12 +2,13 @@
 using System.Globalization;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Configuration;
 
 namespace My_Garage
 {
     public partial class frmCustomerRegistration : Form
     {
-        SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\andri\Documents\MyGarage\GarageDB.db;Version=3;datetimeformat=CurrentCulture");
+        SQLiteConnection conn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString);
         SQLiteCommand command;
         SQLiteDataAdapter adapter = new SQLiteDataAdapter();
 

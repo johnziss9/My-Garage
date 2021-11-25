@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
 using System.Windows.Forms;
@@ -46,7 +47,7 @@ namespace My_Garage
 
         private void dataGridCars_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\andri\Documents\MyGarage\GarageDB.db;Version=3;datetimeformat=CurrentCulture");
+            SQLiteConnection conn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString);
 
             SQLiteCommand command;
             SQLiteDataReader dr;
@@ -123,6 +124,12 @@ namespace My_Garage
 
             dr = command.ExecuteReader();
 
+            if (!dr.Read())
+            {
+                radioNo.Checked = true;
+                lblRentalDetails.Text = "Τελευταίος Ενοικιαστής:";
+            }
+
             while (dr.Read())
             {
                 if (Convert.ToBoolean(dr["Rented"]) == true)
@@ -144,8 +151,7 @@ namespace My_Garage
 
         public void Search()
         {
-            string connString = @"Data Source=C:\Users\andri\Documents\MyGarage\GarageDB.db;Version=3;datetimeformat=CurrentCulture";
-            SQLiteConnection conn = new SQLiteConnection(connString);
+            SQLiteConnection conn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString);
 
             DataTable dt = new DataTable();
             SQLiteDataAdapter da = new SQLiteDataAdapter();

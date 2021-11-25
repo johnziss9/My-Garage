@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
 using System.Windows.Forms;
@@ -7,7 +8,7 @@ namespace My_Garage
 {
     public partial class frmCarServices : Form
     {
-        SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\andri\Documents\MyGarage\GarageDB.db;Version=3;datetimeformat=CurrentCulture");
+        SQLiteConnection conn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString);
         SQLiteCommand command;
         SQLiteDataAdapter adapter = new SQLiteDataAdapter();
 
@@ -177,7 +178,7 @@ namespace My_Garage
 
         private void frmServices_Load(object sender, EventArgs e)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\andri\Documents\MyGarage\GarageDB.db;Version=3;datetimeformat=CurrentCulture"))
+            using (SQLiteConnection conn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString))
             {
                 try
                 {
@@ -206,7 +207,7 @@ namespace My_Garage
         {
             bool ongoingService = false;
 
-            using (SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\andri\Documents\MyGarage\GarageDB.db;Version=3;datetimeformat=CurrentCulture"))
+            using (SQLiteConnection conn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString))
             {
                 try
                 {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
@@ -38,8 +39,7 @@ namespace My_Garage
 
         private void ShowReminders()
         {
-            string connString = @"Data Source=C:\Users\johnz\Downloads\GarageDB.db;Version=3;datetimeformat=CurrentCulture";
-            SQLiteConnection conn = new SQLiteConnection(connString);
+            SQLiteConnection conn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString);
 
             DataTable dt = new DataTable();
             SQLiteDataAdapter da = new SQLiteDataAdapter();
@@ -78,7 +78,7 @@ namespace My_Garage
             string rentalQuery = $"UPDATE Rentals SET Rented = false WHERE CarId = {carId}";
             string rentalReminderQuery = $"UPDATE Reminders SET Rented = false WHERE CarId = {carId} AND Type = 'Ενοικίαση'";
 
-            using (SQLiteConnection conn = new SQLiteConnection(@"Data Source = C:\Users\johnz\Downloads\GarageDB.db; Version = 3; datetimeformat = CurrentCulture"))
+            using (SQLiteConnection conn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString))
             {
                 conn.Open();
 
@@ -88,7 +88,7 @@ namespace My_Garage
                 {
                     string sentenceStart = type == "Άδεια Κυκλοφορίας" ? "Η" : "Το";
 
-                    DialogResult dialogResult = MessageBox.Show($"{sentenceStart} {type} θα διαγραφεί. Έχει ανανεωθει;", "Διαγραφή Άδειας Κυκλοφορίας", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    DialogResult dialogResult = MessageBox.Show($"{sentenceStart} {type} θα διαγραφεί. Έχει ανανεωθει;", "Διαγραφή", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (dialogResult == DialogResult.Yes)
                     {
                         command = new SQLiteCommand(servicesQuery, conn);

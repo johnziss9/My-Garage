@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
 using System.Windows.Forms;
@@ -7,7 +8,7 @@ namespace My_Garage
 {
     public partial class frmCarRental : Form
     {
-        SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\andri\Documents\MyGarage\GarageDB.db;Version=3;datetimeformat=CurrentCulture");
+        SQLiteConnection conn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString);
         SQLiteCommand command;
         SQLiteDataAdapter adapter = new SQLiteDataAdapter();
 
@@ -34,7 +35,7 @@ namespace My_Garage
                     else
                     {
                         if (CheckOngoingRental((int)cmbCar.SelectedValue) == true)
-                            MessageBox.Show($"Το όχημα έχει ενοικιασμένο.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show($"Το όχημα είναι ενοικιασμένο.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         else
                         {
                             Hide();
@@ -110,7 +111,7 @@ namespace My_Garage
 
         private void frmCarRental_Load(object sender, EventArgs e)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\andri\Documents\MyGarage\GarageDB.db;Version=3;datetimeformat=CurrentCulture"))
+            using (SQLiteConnection conn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString))
             {
                 try
                 {
@@ -187,7 +188,7 @@ namespace My_Garage
         {
             bool ongoingRental = false;
 
-            using (SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\andri\Documents\MyGarage\GarageDB.db;Version=3;datetimeformat=CurrentCulture"))
+            using (SQLiteConnection conn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString))
             {
                 try
                 {
