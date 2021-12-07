@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My-Garage", "My-Garage\My-Garage.csproj", "{C23B02EA-4F55-4D79-909E-64F06BE2A3B8}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupMyGarage", "SetupMyGarage\SetupMyGarage.vdproj", "{096EC7EE-CF17-4670-BF67-5D9CECE4F4E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		All|Any CPU = All|Any CPU
@@ -18,6 +20,9 @@ Global
 		{C23B02EA-4F55-4D79-909E-64F06BE2A3B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C23B02EA-4F55-4D79-909E-64F06BE2A3B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C23B02EA-4F55-4D79-909E-64F06BE2A3B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{096EC7EE-CF17-4670-BF67-5D9CECE4F4E0}.All|Any CPU.ActiveCfg = Debug
+		{096EC7EE-CF17-4670-BF67-5D9CECE4F4E0}.Debug|Any CPU.ActiveCfg = Debug
+		{096EC7EE-CF17-4670-BF67-5D9CECE4F4E0}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

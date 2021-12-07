@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
     <Compile Include="frmCarRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
